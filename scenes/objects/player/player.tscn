@@ -8,7 +8,7 @@ radius = 32.0
 height = 118.0
 
 [sub_resource type="Gradient" id="Gradient_g10m2"]
-offsets = PackedFloat32Array(0.8313253, 1)
+offsets = PackedFloat32Array(0.9, 1)
 colors = PackedColorArray(0, 0, 0, 0, 0, 0, 0, 1)
 
 [sub_resource type="GradientTexture2D" id="GradientTexture2D_0a575"]

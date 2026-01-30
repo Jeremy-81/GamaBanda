@@ -6,7 +6,7 @@ var can_dash : bool = false;
 var gravity : float = 1800.0;
 
 var h_direction : float = 0.0;
-var h_speed : float = 256.0;
+var h_speed : float = 800.0;
 var v_speed : float = 0.0;
 
 func _process(delta) -> void:
