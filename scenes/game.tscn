@@ -12,9 +12,20 @@ script = ExtResource("1_yqjtg")
 ignore_rotation = false
 
 [node name="Polygon2D" type="Polygon2D" parent="." unique_id=248716931]
+position = Vector2(488, 156)
 polygon = PackedVector2Array(-118, 170, 575, 48, 778, 190, 501, 361, 37, 377, -141, 310)
 
 [node name="StaticBody2D" type="StaticBody2D" parent="Polygon2D" unique_id=1945067672]
 
 [node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="Polygon2D/StaticBody2D" unique_id=1273417153]
 polygon = PackedVector2Array(-118, 170, 575, 48, 778, 190, 501, 361, 37, 377, -141, 310)
+
+[node name="Polygon2D2" type="Polygon2D" parent="." unique_id=1687494544]
+position = Vector2(-361, 0)
+polygon = PackedVector2Array(-118, 170, 575, 48, 778, 190, 501, 361, 37, 377, -141, 310)
+
+[node name="StaticBody2D" type="StaticBody2D" parent="Polygon2D2" unique_id=2066691554]
+
+[node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="Polygon2D2/StaticBody2D" unique_id=2120317673]
+polygon = PackedVector2Array(-118, 170, 575, 48, 778, 190, 501, 361, 37, 377, -141, 310)
+metadata/_edit_lock_ = true
