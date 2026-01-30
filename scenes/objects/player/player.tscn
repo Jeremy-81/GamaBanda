@@ -8,8 +8,8 @@ radius = 32.0
 height = 118.0
 
 [sub_resource type="Gradient" id="Gradient_g10m2"]
-offsets = PackedFloat32Array(0.9, 1)
-colors = PackedColorArray(0, 0, 0, 0, 0, 0, 0, 1)
+offsets = PackedFloat32Array(0.78313255, 1)
+colors = PackedColorArray(0, 0, 0, 0, 0, 0, 0, 0.25882354)
 
 [sub_resource type="GradientTexture2D" id="GradientTexture2D_0a575"]
 gradient = SubResource("Gradient_g10m2")

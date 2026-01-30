@@ -11,9 +11,15 @@ config_version=5
 [application]
 
 config/name="GamaBanda"
-run/main_scene="uid://bb6sfex7rg1de"
+run/main_scene="uid://db60o3nemnftl"
 config/features=PackedStringArray("4.6", "Forward Plus")
 config/icon="res://icon.svg"
+
+[display]
+
+window/size/viewport_width=1280
+window/size/viewport_height=720
+window/stretch/mode="canvas_items"
 
 [input]
 
