@@ -1,0 +1,23 @@
+[gd_scene format=3 uid="uid://cq6iebmicilbf"]
+
+[ext_resource type="Texture2D" uid="uid://61wvyl0hmq1o" path="res://icon.svg" id="1_adfyq"]
+[ext_resource type="Script" uid="uid://ldec8y3af7ov" path="res://scenes/objects/boss/boss.gd" id="1_mar8m"]
+
+[node name="Boss" type="CharacterBody2D" unique_id=623795894]
+script = ExtResource("1_mar8m")
+
+[node name="AnimatedSprite" type="AnimatedSprite2D" parent="." unique_id=1608442716]
+
+[node name="Sprite2D" type="Sprite2D" parent="." unique_id=1546540065]
+modulate = Color(0.47164172, 0.00017933518, 0.4805516, 1)
+position = Vector2(-0.99993896, -174.99995)
+rotation = 3.154859
+scale = Vector2(3, 3)
+texture = ExtResource("1_adfyq")
+
+[node name="Timer" type="Timer" parent="." unique_id=2083284811]
+wait_time = 3.0
+one_shot = true
+autostart = true
+
+[connection signal="timeout" from="Timer" to="." method="_on_timer_timeout"]

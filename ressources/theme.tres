@@ -11,9 +11,41 @@ expand_margin_top = 5.0
 expand_margin_right = 10.0
 expand_margin_bottom = 5.0
 
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_cgoy4"]
+bg_color = Color(0.21927088, 0.19392738, 0.20286453, 1)
+border_width_left = 1
+border_width_top = 1
+border_width_right = 1
+border_width_bottom = 1
+border_color = Color(0, 0, 0, 1)
+corner_radius_top_left = 10
+corner_radius_top_right = 10
+corner_radius_bottom_right = 10
+corner_radius_bottom_left = 10
+shadow_size = 3
+shadow_offset = Vector2(1, 1)
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_jb3ky"]
+bg_color = Color(1, 0.2901961, 0.16862746, 1)
+border_width_left = 1
+border_width_top = 1
+border_width_right = 1
+border_width_bottom = 1
+border_color = Color(0, 0, 0, 1)
+corner_radius_top_left = 10
+corner_radius_top_right = 10
+corner_radius_bottom_right = 10
+corner_radius_bottom_left = 10
+shadow_size = 3
+shadow_offset = Vector2(1, 1)
+
 [resource]
 Button/constants/outline_size = 7
 Button/font_sizes/font_size = 21
 Button/styles/normal = SubResource("StyleBoxFlat_cgkd3")
+Label/constants/outline_size = 3
 Label/font_sizes/font_size = 37
 Label/fonts/font = null
+ProgressBar/font_sizes/font_size = 16
+ProgressBar/styles/background = SubResource("StyleBoxFlat_cgoy4")
+ProgressBar/styles/fill = SubResource("StyleBoxFlat_jb3ky")

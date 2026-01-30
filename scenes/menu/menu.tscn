@@ -57,6 +57,11 @@ layout_mode = 2
 size_flags_vertical = 6
 text = "Play"
 
+[node name="Play2" type="Button" parent="MarginContainer/HBoxContainer/VBoxContainer/VBoxContainer" unique_id=1354137266]
+layout_mode = 2
+size_flags_vertical = 6
+text = "BOSS"
+
 [node name="Options" type="Button" parent="MarginContainer/HBoxContainer/VBoxContainer/VBoxContainer" unique_id=491111347]
 layout_mode = 2
 size_flags_vertical = 6
@@ -75,4 +80,5 @@ text = "0.0.1"
 horizontal_alignment = 1
 
 [connection signal="pressed" from="MarginContainer/HBoxContainer/VBoxContainer/VBoxContainer/Play" to="." method="_on_play_pressed"]
+[connection signal="pressed" from="MarginContainer/HBoxContainer/VBoxContainer/VBoxContainer/Play2" to="." method="_on_play_2_pressed"]
 [connection signal="pressed" from="MarginContainer/HBoxContainer/VBoxContainer/VBoxContainer/Exit" to="." method="_on_exit_pressed"]
