@@ -2,6 +2,7 @@ extends CharacterBody2D
 
 signal life_changed(life)
 signal player_ready(name, hp)
+signal player_died
 
 @export var hp: float
 @export var player_name: String
@@ -102,7 +103,15 @@ func _update_darken(value) -> void:
 
 func take_damage(amount: float) -> void:
 	hp -= amount
+	if hp < 0.0:
+		hp = 0.0
 	life_changed.emit(hp)
+	if hp == 0.0:
+		player_die()
 	
 func get_damage() -> float:
 	return damage
+
+
+func player_die() -> void:
+	player_died.emit()

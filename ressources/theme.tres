@@ -3,6 +3,17 @@
 [ext_resource type="FontFile" uid="uid://chla6mhf6wpl0" path="res://assets/fonts/Jersey_10/Jersey10-Regular.ttf" id="1_jb3ky"]
 [ext_resource type="FontFile" uid="uid://duqx5nydbyw75" path="res://assets/fonts/Jacquard_24/Jacquard24-Regular.ttf" id="2_cgoy4"]
 
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_502qo"]
+bg_color = Color(0.5356966, 0.35413286, 0.07996858, 1)
+corner_radius_top_left = 5
+corner_radius_top_right = 5
+corner_radius_bottom_right = 5
+corner_radius_bottom_left = 5
+expand_margin_left = 20.0
+expand_margin_top = 10.0
+expand_margin_right = 20.0
+expand_margin_bottom = 10.0
+
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_cgkd3"]
 bg_color = Color(0.3557113, 0.14816836, 0.6657926, 1)
 corner_radius_top_left = 5
@@ -42,6 +53,7 @@ corner_radius_bottom_left = 10
 Button/constants/outline_size = 7
 Button/font_sizes/font_size = 30
 Button/fonts/font = ExtResource("1_jb3ky")
+Button/styles/hover = SubResource("StyleBoxFlat_502qo")
 Button/styles/normal = SubResource("StyleBoxFlat_cgkd3")
 Label/constants/outline_size = 3
 Label/font_sizes/font_size = 37

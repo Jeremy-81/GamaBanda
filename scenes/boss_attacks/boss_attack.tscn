@@ -39,27 +39,26 @@ animations = [{
 "speed": 5.0
 }]
 
-[sub_resource type="CircleShape2D" id="CircleShape2D_cmqgb"]
-radius = 18.027756
-
-[sub_resource type="CircleShape2D" id="CircleShape2D_fefrm"]
-radius = 28.160255
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_fefrm"]
+size = Vector2(74, 74)
 
 [node name="BossAttack" type="AnimatableBody2D" unique_id=1234559325]
 script = ExtResource("1_fefrm")
-damage = 5.0
-speed = 3.0
+damage = 20.0
+speed = 1.5
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="." unique_id=398896364]
+scale = Vector2(2.25, 2.25)
 sprite_frames = SubResource("SpriteFrames_sddsa")
 autoplay = "default"
 frame_progress = 0.61080515
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=1558523574]
-shape = SubResource("CircleShape2D_cmqgb")
+shape = SubResource("RectangleShape2D_fefrm")
 debug_color = Color(0.8776978, 0.2844998, 0.4937958, 0.41960785)
 
 [node name="Area2D" type="Area2D" parent="." unique_id=146741015]
+collision_mask = 3
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D" unique_id=687042684]
-shape = SubResource("CircleShape2D_fefrm")
+shape = SubResource("RectangleShape2D_fefrm")

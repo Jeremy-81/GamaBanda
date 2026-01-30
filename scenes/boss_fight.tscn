@@ -11,7 +11,7 @@ script = ExtResource("1_1hapx")
 [node name="Player" parent="." unique_id=2105575625 instance=ExtResource("2_7ydql")]
 position = Vector2(0, -3)
 hp = 100.0
-player_name = "PlayerNameHere"
+player_name = "GamaPlayer"
 damage = 5.0
 
 [node name="Polygon2D" type="Polygon2D" parent="." unique_id=1659728634]
@@ -22,9 +22,27 @@ polygon = PackedVector2Array(-118, 170, 575, 48, 1438, 216, 501, 361, 37, 377, -
 [node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="Polygon2D/StaticBody2D" unique_id=973664096]
 polygon = PackedVector2Array(-118, 170, 575, 48, 1438, 216, 501, 361, 37, 377, -1274, 148)
 
+[node name="Polygon2D2" type="Polygon2D" parent="." unique_id=982620267]
+position = Vector2(2485, 150)
+polygon = PackedVector2Array(-118, 170, 575, 48, 1438, 216, 501, 361, 37, 377, -1274, 148)
+
+[node name="StaticBody2D" type="StaticBody2D" parent="Polygon2D2" unique_id=766187889]
+
+[node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="Polygon2D2/StaticBody2D" unique_id=299076206]
+polygon = PackedVector2Array(-118, 170, 575, 48, 1438, 216, 501, 361, 37, 377, -1274, 148)
+
+[node name="Polygon2D3" type="Polygon2D" parent="." unique_id=1261851504]
+position = Vector2(-2107, 128)
+polygon = PackedVector2Array(-118, 170, 575, 48, 1438, 216, 501, 361, 37, 377, -1274, 148)
+
+[node name="StaticBody2D" type="StaticBody2D" parent="Polygon2D3" unique_id=1910245472]
+
+[node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="Polygon2D3/StaticBody2D" unique_id=1483175708]
+polygon = PackedVector2Array(-118, 170, 575, 48, 1438, 216, 501, 361, 37, 377, -1274, 148)
+
 [node name="Boss" parent="." unique_id=623795894 node_paths=PackedStringArray("player") instance=ExtResource("3_7ydql")]
 position = Vector2(-1, -27)
-boss_name = "Mask1"
+boss_name = "Boss One"
 hp = 100.0
 player = NodePath("../Player")
 

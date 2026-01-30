@@ -1,18 +1,23 @@
 extends AnimatableBody2D
 
 @export var damage: float
-@export var target: Node
 @export var speed: float
+@export var player: Node
 
-var player
+var damage_dealt := false
 
-func _ready() -> void:
-	pass
-	
+
 func _physics_process(delta: float) -> void:
+	if damage_dealt:
+		return
 	var step := speed * delta
 	var direction = player.global_position
 	global_position += direction * step
 
+
 func get_damage() -> float:
+	damage_dealt = true
 	return damage
+
+func destroy_object() -> void:
+	queue_free()

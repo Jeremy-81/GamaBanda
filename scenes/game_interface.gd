@@ -16,6 +16,8 @@ func _ready() -> void:
 	
 	player.player_ready.connect(player_interface_init)
 	player.life_changed.connect(update_player_life)
+	player.player_died.connect(game_loose)
+
 
 func update_boss_life(hp) -> void:
 	boss_life.value = hp
@@ -35,5 +37,13 @@ func player_interface_init(name, hp) -> void:
 
 
 func game_won() -> void:
-	boss_name.text = "Boss DEAD - VICTORY"
+	get_tree().paused = true
+	%GameWon.show()
 	
+func game_loose() -> void:
+	get_tree().paused = true
+	%GameOver.show()
+
+func _on_menu_button_pressed() -> void:
+	get_tree().paused = false
+	get_tree().change_scene_to_file("res://scenes/menu/menu.tscn")

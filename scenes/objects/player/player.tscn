@@ -37,7 +37,7 @@ scale_min = 0.19999999
 scale_max = 0.59999996
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_0a575"]
-size = Vector2(60, 123.5)
+size = Vector2(80, 131)
 
 [node name="Player" type="CharacterBody2D" unique_id=2105575625]
 script = ExtResource("1_g10m2")
@@ -89,5 +89,5 @@ damage = 10.0
 entity = NodePath("..")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Hitbox" unique_id=1238569936]
-position = Vector2(-1, -0.75)
+position = Vector2(0, -0.5)
 shape = SubResource("RectangleShape2D_0a575")
