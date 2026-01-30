@@ -7,6 +7,18 @@
 radius = 32.0
 height = 118.0
 
+[sub_resource type="Gradient" id="Gradient_g10m2"]
+offsets = PackedFloat32Array(0.8313253, 1)
+colors = PackedColorArray(0, 0, 0, 0, 0, 0, 0, 1)
+
+[sub_resource type="GradientTexture2D" id="GradientTexture2D_0a575"]
+gradient = SubResource("Gradient_g10m2")
+width = 128
+height = 128
+fill = 1
+fill_from = Vector2(0.5, 0.5)
+fill_to = Vector2(1, 1)
+
 [node name="Player" type="CharacterBody2D" unique_id=2105575625]
 script = ExtResource("1_g10m2")
 
@@ -28,3 +40,14 @@ texture = ExtResource("1_1bf4k")
 [node name="DashTimer" type="Timer" parent="." unique_id=64227075]
 wait_time = 0.2
 one_shot = true
+
+[node name="CanvasLayer" type="CanvasLayer" parent="." unique_id=422284375]
+
+[node name="ScreenShadow" type="TextureRect" parent="CanvasLayer" unique_id=189282505]
+unique_name_in_owner = true
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+texture = SubResource("GradientTexture2D_0a575")

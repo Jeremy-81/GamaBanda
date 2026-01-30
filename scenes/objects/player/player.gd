@@ -1,25 +1,33 @@
 extends CharacterBody2D
 
 var DASH_SPEED : float = 2500.0;
+var can_dash : bool = false;
 
-var gravity = 1500.0;
+var gravity : float = 1800.0;
 
 var h_direction : float = 0.0;
 var h_speed : float = 256.0;
 var v_speed : float = 0.0;
 
-func _process(delta):
+func _process(delta) -> void:
 	# Dash state overwrites all movement.
 	if $DashTimer.time_left > 0.0:
-		velocity = Vector2(DASH_SPEED * h_direction, 0.0);
+		velocity = Vector2(DASH_SPEED * h_direction, v_speed);
 		move_and_slide();
 		return;
 	
 	h_direction = Input.get_axis("go_left", "go_right");
 	
-	if Input.is_action_just_pressed("dash"):
+	if is_on_floor():
+		can_dash = true;
+	
+	if Input.is_action_just_pressed("dash") and can_dash:
 		h_direction = sign(h_direction);
+		v_speed = 0.0;
 		$DashTimer.start();
+		_shake_screen();
+		_darken_screen();
+		can_dash = false;
 		return;
 	
 	if Input.is_action_just_pressed("jump") and is_on_floor():
@@ -29,4 +37,24 @@ func _process(delta):
 	velocity = Vector2(h_direction * h_speed, v_speed);
 	move_and_slide();
 	v_speed = velocity.y;
+	pass;
+
+
+func _shake_screen() -> void:
+	var shake_tween = get_tree().create_tween();
+	shake_tween.tween_property($CameraTransform, "rotation", -0.08 * h_direction, 0.2);
+	shake_tween.tween_property($CameraTransform, "rotation", 0., 0.1);
+	shake_tween.play();
+	pass;
+
+func _darken_screen() -> void:
+	var darken_tween = get_tree().create_tween();
+	darken_tween.tween_method(_update_darken, 0.9, 0.8, 0.1);
+	darken_tween.tween_interval($DashTimer.wait_time - 0.1);
+	darken_tween.tween_method(_update_darken, 0.8, 0.9, 0.08);
+	darken_tween.play();
+	pass;
+
+func _update_darken(value) -> void:
+	%ScreenShadow.texture.gradient.set_offset(0, value);
 	pass;
