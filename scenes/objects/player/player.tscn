@@ -52,6 +52,7 @@ scale = Vector2(0.5, 1)
 texture = ExtResource("1_1bf4k")
 
 [node name="CameraTransform" type="RemoteTransform2D" parent="." unique_id=1222825734]
+position = Vector2(0, -182)
 
 [node name="DashTimer" type="Timer" parent="." unique_id=64227075]
 wait_time = 0.2
