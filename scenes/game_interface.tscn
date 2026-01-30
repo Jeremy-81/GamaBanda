@@ -31,16 +31,19 @@ alignment = 1
 layout_mode = 2
 size_flags_horizontal = 0
 size_flags_vertical = 2
+theme_override_constants/separation = 17
 
 [node name="PlayerName" type="Label" parent="MarginContainer/VBoxContainer/HBoxContainer" unique_id=1060822646]
 layout_mode = 2
-text = "PLAYER : "
+size_flags_horizontal = 0
+text = "PLAYER"
 
 [node name="PlayerLife" type="ProgressBar" parent="MarginContainer/VBoxContainer/HBoxContainer" unique_id=340610829]
 clip_contents = true
-custom_minimum_size = Vector2(150, 30)
+custom_minimum_size = Vector2(150, 20)
 layout_mode = 2
-size_flags_horizontal = 3
+size_flags_horizontal = 0
+size_flags_vertical = 4
 step = 0.1
 value = 100.0
 
@@ -56,7 +59,7 @@ text = "Boss name"
 horizontal_alignment = 1
 
 [node name="BossLife" type="ProgressBar" parent="MarginContainer/VBoxContainer/VBoxContainer" unique_id=1144984005]
-custom_minimum_size = Vector2(700, 50)
+custom_minimum_size = Vector2(700, 40)
 layout_mode = 2
 step = 0.1
 value = 70.0
