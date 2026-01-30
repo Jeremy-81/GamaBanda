@@ -1,7 +1,19 @@
 [gd_scene format=3 uid="uid://db60o3nemnftl"]
 
-[ext_resource type="PackedScene" uid="uid://btg0d1sc8nd3r" path="res://scenes/player.tscn" id="1_uwrxv"]
+[ext_resource type="PackedScene" uid="uid://btg0d1sc8nd3r" path="res://scenes/objects/player/player.tscn" id="1_uwrxv"]
+[ext_resource type="Script" uid="uid://ctrak3s5n8qty" path="res://scenes/game.gd" id="1_yqjtg"]
 
 [node name="Game" type="Node2D" unique_id=137855227]
+script = ExtResource("1_yqjtg")
 
 [node name="Player" parent="." unique_id=2105575625 instance=ExtResource("1_uwrxv")]
+
+[node name="Camera2D" type="Camera2D" parent="." unique_id=396707025]
+
+[node name="Polygon2D" type="Polygon2D" parent="." unique_id=248716931]
+polygon = PackedVector2Array(-118, 170, 575, 48, 778, 190, 501, 361, 37, 377, -141, 310)
+
+[node name="StaticBody2D" type="StaticBody2D" parent="Polygon2D" unique_id=1945067672]
+
+[node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="Polygon2D/StaticBody2D" unique_id=1273417153]
+polygon = PackedVector2Array(-118, 170, 575, 48, 778, 190, 501, 361, 37, 377, -141, 310)
