@@ -1,0 +1,64 @@
+[gd_scene format=3 uid="uid://bgvesaacofdjy"]
+
+[ext_resource type="Texture2D" uid="uid://61wvyl0hmq1o" path="res://icon.svg" id="1_cmqgb"]
+[ext_resource type="Script" uid="uid://ctvwpnuy61a2o" path="res://scenes/boss_attacks/boss_attack.gd" id="1_fefrm"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_fefrm"]
+atlas = ExtResource("1_cmqgb")
+region = Rect2(64, 32, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_7qgqo"]
+atlas = ExtResource("1_cmqgb")
+region = Rect2(32, 32, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_hlfr0"]
+atlas = ExtResource("1_cmqgb")
+region = Rect2(64, 64, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_hmx8u"]
+atlas = ExtResource("1_cmqgb")
+region = Rect2(32, 96, 32, 32)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_sddsa"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_fefrm")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_7qgqo")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_hlfr0")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_hmx8u")
+}],
+"loop": true,
+"name": &"default",
+"speed": 5.0
+}]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_fefrm"]
+size = Vector2(74, 74)
+
+[node name="BossAttack" type="AnimatableBody2D" unique_id=1234559325]
+script = ExtResource("1_fefrm")
+damage = 20.0
+speed = 1.5
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="." unique_id=398896364]
+scale = Vector2(2.25, 2.25)
+sprite_frames = SubResource("SpriteFrames_sddsa")
+autoplay = "default"
+frame_progress = 0.61080515
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=1558523574]
+shape = SubResource("RectangleShape2D_fefrm")
+debug_color = Color(0.8776978, 0.2844998, 0.4937958, 0.41960785)
+
+[node name="Area2D" type="Area2D" parent="." unique_id=146741015]
+collision_mask = 3
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D" unique_id=687042684]
+shape = SubResource("RectangleShape2D_fefrm")

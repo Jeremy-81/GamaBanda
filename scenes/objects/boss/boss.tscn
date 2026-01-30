@@ -2,6 +2,10 @@
 
 [ext_resource type="Texture2D" uid="uid://61wvyl0hmq1o" path="res://icon.svg" id="1_adfyq"]
 [ext_resource type="Script" uid="uid://ldec8y3af7ov" path="res://scenes/objects/boss/boss.gd" id="1_mar8m"]
+[ext_resource type="PackedScene" uid="uid://v03j4dmf32so" path="res://scenes/objects/hitbox/hitbox.tscn" id="3_4e6rw"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_4e6rw"]
+size = Vector2(363.75, 369)
 
 [node name="Boss" type="CharacterBody2D" unique_id=623795894]
 script = ExtResource("1_mar8m")
@@ -16,8 +20,16 @@ scale = Vector2(3, 3)
 texture = ExtResource("1_adfyq")
 
 [node name="Timer" type="Timer" parent="." unique_id=2083284811]
-wait_time = 3.0
-one_shot = true
+wait_time = 2.0
 autostart = true
+
+[node name="Hitbox" parent="." unique_id=487133279 node_paths=PackedStringArray("entity") instance=ExtResource("3_4e6rw")]
+collision_layer = 4
+collision_mask = 2
+entity = NodePath("..")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Hitbox" unique_id=674501838]
+position = Vector2(-3, -179)
+shape = SubResource("RectangleShape2D_4e6rw")
 
 [connection signal="timeout" from="Timer" to="." method="_on_timer_timeout"]

@@ -216,6 +216,7 @@ animations = [{
 "name": &"run",
 "speed": 12.0
 }]
+[ext_resource type="PackedScene" uid="uid://v03j4dmf32so" path="res://scenes/objects/hitbox/hitbox.tscn" id="3_0a575"]
 
 [sub_resource type="CapsuleShape2D" id="CapsuleShape2D_g10m2"]
 radius = 32.0
@@ -406,6 +407,8 @@ nodes/Add2/position = Vector2(-220, 140)
 nodes/Movement/node = SubResource("AnimationNodeBlendSpace1D_dvfu2")
 nodes/Movement/position = Vector2(-840, 400)
 node_connections = [&"output", 0, &"Jump", &"Jump", 0, &"Add2", &"Jump", 1, &"Animation", &"Add2", 0, &"Direction", &"Add2", 1, &"Movement"]
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_0a575"]
+size = Vector2(80, 131)
 
 [node name="Player" type="CharacterBody2D" unique_id=2105575625]
 script = ExtResource("1_g10m2")
@@ -423,6 +426,9 @@ shape = SubResource("CapsuleShape2D_g10m2")
 [node name="Hurtbox" type="Area2D" parent="." unique_id=2067084583]
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Hurtbox" unique_id=1155637641]
+[node name="Sprite2D" type="Sprite2D" parent="." unique_id=898765978]
+scale = Vector2(0.5, 1)
+texture = ExtResource("1_1bf4k")
 
 [node name="CameraTransform" type="RemoteTransform2D" parent="." unique_id=1222825734]
 position = Vector2(0, -127)
@@ -464,3 +470,12 @@ parameters/Jump/internal_active = false
 parameters/Jump/request = 0
 parameters/Add2/add_amount = 1.0
 parameters/Movement/blend_position = 0.691
+[node name="Hitbox" parent="." unique_id=487133279 node_paths=PackedStringArray("entity") instance=ExtResource("3_0a575")]
+collision_layer = 2
+collision_mask = 5
+damage = 10.0
+entity = NodePath("..")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Hitbox" unique_id=1238569936]
+position = Vector2(0, -0.5)
+shape = SubResource("RectangleShape2D_0a575")

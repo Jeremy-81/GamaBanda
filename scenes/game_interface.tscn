@@ -65,3 +65,80 @@ custom_minimum_size = Vector2(700, 40)
 layout_mode = 2
 step = 0.1
 value = 70.0
+
+[node name="GameOver" type="ColorRect" parent="." unique_id=1863885616]
+unique_name_in_owner = true
+process_mode = 2
+visible = false
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+color = Color(0, 0, 0, 0.6313726)
+
+[node name="MarginContainer" type="MarginContainer" parent="GameOver" unique_id=1404996130]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="VBoxContainer" type="VBoxContainer" parent="GameOver/MarginContainer" unique_id=1378016458]
+layout_mode = 2
+theme_override_constants/separation = 130
+alignment = 1
+
+[node name="Label" type="Label" parent="GameOver/MarginContainer/VBoxContainer" unique_id=815151058]
+layout_mode = 2
+theme_type_variation = &"Title"
+text = "Game over !"
+horizontal_alignment = 1
+
+[node name="MenuButton" type="Button" parent="GameOver/MarginContainer/VBoxContainer" unique_id=1451284038]
+layout_mode = 2
+size_flags_horizontal = 4
+size_flags_vertical = 4
+text = "Menu"
+
+[node name="GameWon" type="ColorRect" parent="." unique_id=2039490906]
+unique_name_in_owner = true
+process_mode = 2
+visible = false
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+color = Color(1, 1, 1, 0.6313726)
+
+[node name="MarginContainer" type="MarginContainer" parent="GameWon" unique_id=327640521]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="VBoxContainer" type="VBoxContainer" parent="GameWon/MarginContainer" unique_id=632715889]
+layout_mode = 2
+theme_override_constants/separation = 130
+alignment = 1
+
+[node name="Label" type="Label" parent="GameWon/MarginContainer/VBoxContainer" unique_id=1832827036]
+layout_mode = 2
+theme_type_variation = &"Title"
+text = "Game Won !"
+horizontal_alignment = 1
+
+[node name="MenuButton" type="Button" parent="GameWon/MarginContainer/VBoxContainer" unique_id=674199456]
+layout_mode = 2
+size_flags_horizontal = 4
+size_flags_vertical = 4
+text = "Menu"
+
+[connection signal="pressed" from="GameOver/MarginContainer/VBoxContainer/MenuButton" to="." method="_on_menu_button_pressed"]
+[connection signal="pressed" from="GameWon/MarginContainer/VBoxContainer/MenuButton" to="." method="_on_menu_button_pressed"]
