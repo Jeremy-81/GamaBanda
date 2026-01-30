@@ -27,6 +27,9 @@ func _process(delta) -> void:
 	
 	h_direction = Input.get_axis("go_left", "go_right");
 	
+	$AnimationTree.set("parameters/Direction/blend_position", h_direction);
+	$AnimationTree.set("parameters/Movement/blend_position", h_direction);
+	
 	if is_on_floor():
 		can_dash = true;
 		has_jumped = false;
@@ -50,6 +53,7 @@ func _process(delta) -> void:
 	
 	if Input.is_action_just_pressed("jump") and (in_coyote_time and $CoyoteTimer.time_left > 0.0 || is_on_floor()):
 		v_speed = -800.0;
+		$AnimationTree.set("parameters/Jump/request", AnimationNodeOneShot.ONE_SHOT_REQUEST_FIRE);
 	if Input.is_action_just_released("jump") and !has_jumped:
 		has_jumped = true;
 	
