@@ -1,13 +1,21 @@
 extends CharacterBody2D
 
+var base_darken_factor : float;
+
 var DASH_SPEED : float = 2500.0;
 var can_dash : bool = false;
+var has_jumped : bool = false;
 
 var gravity : float = 1800.0;
 
 var h_direction : float = 0.0;
 var h_speed : float = 800.0;
 var v_speed : float = 0.0;
+
+func _ready():
+	base_darken_factor = %ScreenShadow.texture.gradient.get_offset(0);
+	pass;
+
 
 func _process(delta) -> void:
 	# Dash state overwrites all movement.
@@ -20,6 +28,11 @@ func _process(delta) -> void:
 	
 	if is_on_floor():
 		can_dash = true;
+		has_jumped = false;
+	
+	var is_speed_falling := false;
+	if has_jumped and not is_on_floor() and Input.is_action_pressed("jump"):
+		is_speed_falling = true;
 	
 	if Input.is_action_just_pressed("dash") and can_dash:
 		h_direction = sign(h_direction);
@@ -32,11 +45,20 @@ func _process(delta) -> void:
 	
 	if Input.is_action_just_pressed("jump") and is_on_floor():
 		v_speed = -800.0;
-	v_speed += gravity * delta;
+	if Input.is_action_just_released("jump") and !has_jumped:
+		has_jumped = true;
+	
+	if is_speed_falling:
+		v_speed += gravity * delta * 16;
+	else:
+		v_speed += gravity * delta;
 	
 	velocity = Vector2(h_direction * h_speed, v_speed);
 	move_and_slide();
 	v_speed = velocity.y;
+	
+	if is_speed_falling and is_on_floor():
+		$FloorImpactParticles.restart();
 	pass;
 
 
@@ -49,9 +71,9 @@ func _shake_screen() -> void:
 
 func _darken_screen() -> void:
 	var darken_tween = get_tree().create_tween();
-	darken_tween.tween_method(_update_darken, 0.9, 0.8, 0.1);
+	darken_tween.tween_method(_update_darken, base_darken_factor, 0.9 * base_darken_factor, 0.1);
 	darken_tween.tween_interval($DashTimer.wait_time - 0.1);
-	darken_tween.tween_method(_update_darken, 0.8, 0.9, 0.08);
+	darken_tween.tween_method(_update_darken, 0.9 * base_darken_factor, base_darken_factor, 0.08);
 	darken_tween.play();
 	pass;
 
