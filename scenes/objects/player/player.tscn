@@ -84,7 +84,7 @@ process_material = SubResource("ParticleProcessMaterial_wim6f")
 
 [node name="Hitbox" parent="." unique_id=487133279 node_paths=PackedStringArray("entity") instance=ExtResource("3_0a575")]
 collision_layer = 2
-collision_mask = 4
+collision_mask = 5
 damage = 10.0
 entity = NodePath("..")
 

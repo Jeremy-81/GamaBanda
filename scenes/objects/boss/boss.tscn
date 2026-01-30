@@ -20,8 +20,7 @@ scale = Vector2(3, 3)
 texture = ExtResource("1_adfyq")
 
 [node name="Timer" type="Timer" parent="." unique_id=2083284811]
-wait_time = 3.0
-one_shot = true
+wait_time = 2.0
 autostart = true
 
 [node name="Hitbox" parent="." unique_id=487133279 node_paths=PackedStringArray("entity") instance=ExtResource("3_4e6rw")]

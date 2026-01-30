@@ -8,7 +8,7 @@ signal boss_died()
 @export var hp: float
 @export var heavy_damage_bar: float
 @export var damage: float
-
+@export var player : Node
 
 @onready var sprite_2d: Sprite2D = $Sprite2D
 
@@ -22,11 +22,14 @@ func _process(delta: float) -> void:
 func moove_to_background() -> void:
 	sprite_2d.scale = sprite_2d.scale /2
 	
-func attack(target) -> void:
-	pass
+func attack() -> void:
+	var attack : Node = preload("res://scenes/boss_attacks/boss_attack.tscn").instantiate()
+	attack.player = player
+	add_child(attack)
 
 func _on_timer_timeout() -> void:
 	moove_to_background()
+	attack()
 
 func take_damage(amount: float) -> void:
 	hp -= amount
@@ -39,3 +42,6 @@ func take_damage(amount: float) -> void:
 func boss_die() -> void:
 	boss_died.emit()
 	queue_free()
+	
+func get_damage() -> float:
+	return damage

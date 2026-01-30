@@ -5,14 +5,14 @@
 [ext_resource type="PackedScene" uid="uid://cq6iebmicilbf" path="res://scenes/objects/boss/boss.tscn" id="3_7ydql"]
 [ext_resource type="PackedScene" uid="uid://bo8pyxkcykbab" path="res://scenes/game_interface.tscn" id="4_85w88"]
 
-[sub_resource type="RectangleShape2D" id="RectangleShape2D_7ydql"]
-size = Vector2(1278.5, 313)
-
 [node name="BossFight" type="Node2D" unique_id=1442488628]
 script = ExtResource("1_1hapx")
 
 [node name="Player" parent="." unique_id=2105575625 instance=ExtResource("2_7ydql")]
 position = Vector2(0, -3)
+hp = 100.0
+player_name = "PlayerNameHere"
+damage = 5.0
 
 [node name="Polygon2D" type="Polygon2D" parent="." unique_id=1659728634]
 polygon = PackedVector2Array(-118, 170, 575, 48, 1438, 216, 501, 361, 37, 377, -1274, 148)
@@ -22,10 +22,11 @@ polygon = PackedVector2Array(-118, 170, 575, 48, 1438, 216, 501, 361, 37, 377, -
 [node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="Polygon2D/StaticBody2D" unique_id=973664096]
 polygon = PackedVector2Array(-118, 170, 575, 48, 1438, 216, 501, 361, 37, 377, -1274, 148)
 
-[node name="Boss" parent="." unique_id=623795894 instance=ExtResource("3_7ydql")]
+[node name="Boss" parent="." unique_id=623795894 node_paths=PackedStringArray("player") instance=ExtResource("3_7ydql")]
 position = Vector2(-1, -27)
 boss_name = "Mask1"
 hp = 100.0
+player = NodePath("../Player")
 
 [node name="Camera2D" type="Camera2D" parent="." unique_id=1386835362]
 position = Vector2(0, 4)
@@ -33,14 +34,6 @@ ignore_rotation = false
 
 [node name="CanvasLayer" type="CanvasLayer" parent="." unique_id=254839686]
 
-[node name="GameInterface" parent="CanvasLayer" unique_id=1741185875 node_paths=PackedStringArray("boss") instance=ExtResource("4_85w88")]
+[node name="GameInterface" parent="CanvasLayer" unique_id=1741185875 node_paths=PackedStringArray("boss", "player") instance=ExtResource("4_85w88")]
 boss = NodePath("../../Boss")
-
-[node name="Hitbox" type="Area2D" parent="CanvasLayer" unique_id=1074399446]
-position = Vector2(667, 455)
-
-[node name="CollisionShape2D" type="CollisionShape2D" parent="CanvasLayer/Hitbox" unique_id=1021884328]
-visible = false
-position = Vector2(-24.75, -296.5)
-shape = SubResource("RectangleShape2D_7ydql")
-debug_color = Color(0.9210532, 0.23520407, 0.39786527, 0.41960785)
+player = NodePath("../../Player")

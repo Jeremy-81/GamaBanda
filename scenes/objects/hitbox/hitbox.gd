@@ -11,4 +11,4 @@ func take_damage(amount: float) -> void:
 
 
 func _on_area_entered(area: Area2D) -> void:
-	take_damage(area.damage)
+	take_damage(area.get_parent().get_damage())

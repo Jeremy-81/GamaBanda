@@ -1,6 +1,11 @@
 extends CharacterBody2D
 
+signal life_changed(life)
+signal player_ready(name, hp)
+
 @export var hp: float
+@export var player_name: String
+@export var damage: float
 
 var base_darken_factor : float;
 
@@ -17,7 +22,9 @@ var v_speed : float = 0.0;
 
 func _ready():
 	base_darken_factor = %ScreenShadow.texture.gradient.get_offset(0);
-	pass;
+	
+	await get_tree().process_frame
+	player_ready.emit(player_name, hp)
 
 
 func _process(delta) -> void:
@@ -95,3 +102,7 @@ func _update_darken(value) -> void:
 
 func take_damage(amount: float) -> void:
 	hp -= amount
+	life_changed.emit(hp)
+	
+func get_damage() -> float:
+	return damage
