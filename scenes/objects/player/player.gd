@@ -1,5 +1,7 @@
 extends CharacterBody2D
 
+@export var hp: float
+
 var base_darken_factor : float;
 
 var DASH_SPEED : float = 2500.0;
@@ -89,3 +91,7 @@ func _darken_screen(wait_time : float = 0.0) -> void:
 func _update_darken(value) -> void:
 	%ScreenShadow.texture.gradient.set_offset(0, value);
 	pass;
+	
+
+func take_damage(amount: float) -> void:
+	hp -= amount

@@ -2,6 +2,7 @@
 
 [ext_resource type="Texture2D" uid="uid://61wvyl0hmq1o" path="res://icon.svg" id="1_1bf4k"]
 [ext_resource type="Script" uid="uid://c6cb16oqkrwgg" path="res://scenes/objects/player/player.gd" id="1_g10m2"]
+[ext_resource type="PackedScene" uid="uid://v03j4dmf32so" path="res://scenes/objects/hitbox/hitbox.tscn" id="3_0a575"]
 
 [sub_resource type="CapsuleShape2D" id="CapsuleShape2D_g10m2"]
 radius = 32.0
@@ -35,6 +36,9 @@ gravity = Vector3(0, 1800, 0)
 scale_min = 0.19999999
 scale_max = 0.59999996
 
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_0a575"]
+size = Vector2(60, 123.5)
+
 [node name="Player" type="CharacterBody2D" unique_id=2105575625]
 script = ExtResource("1_g10m2")
 
@@ -42,10 +46,6 @@ script = ExtResource("1_g10m2")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=1364101473]
 shape = SubResource("CapsuleShape2D_g10m2")
-
-[node name="Hurtbox" type="Area2D" parent="." unique_id=2067084583]
-
-[node name="CollisionShape2D" type="CollisionShape2D" parent="Hurtbox" unique_id=1155637641]
 
 [node name="Sprite2D" type="Sprite2D" parent="." unique_id=898765978]
 scale = Vector2(0.5, 1)
@@ -81,3 +81,13 @@ texture = SubResource("GradientTexture2D_nkbs0")
 one_shot = true
 explosiveness = 1.0
 process_material = SubResource("ParticleProcessMaterial_wim6f")
+
+[node name="Hitbox" parent="." unique_id=487133279 node_paths=PackedStringArray("entity") instance=ExtResource("3_0a575")]
+collision_layer = 2
+collision_mask = 4
+damage = 10.0
+entity = NodePath("..")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Hitbox" unique_id=1238569936]
+position = Vector2(-1, -0.75)
+shape = SubResource("RectangleShape2D_0a575")

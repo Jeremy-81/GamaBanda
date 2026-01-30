@@ -1,9 +1,12 @@
 extends CharacterBody2D
 
 signal boss_ready(name, hp)
+signal boss_damage(hp)
+signal boss_died()
 
 @export var boss_name: String
 @export var hp: float
+@export var heavy_damage_bar: float
 @export var damage: float
 
 
@@ -27,3 +30,12 @@ func _on_timer_timeout() -> void:
 
 func take_damage(amount: float) -> void:
 	hp -= amount
+	if hp < 0.0:
+		hp = 0.0
+	boss_damage.emit(hp)
+	if hp == 0.0:
+		boss_die()
+		
+func boss_die() -> void:
+	boss_died.emit()
+	queue_free()
