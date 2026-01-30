@@ -1,6 +1,7 @@
 [gd_scene format=3 uid="uid://bo8pyxkcykbab"]
 
 [ext_resource type="Theme" uid="uid://duj7cgl0u7wd3" path="res://ressources/theme.tres" id="1_mtuya"]
+[ext_resource type="Script" uid="uid://b3glj8ydh7f4f" path="res://scenes/game_interface.gd" id="2_7buk7"]
 
 [node name="GameInterface" type="Control" unique_id=1741185875]
 layout_mode = 3
@@ -10,6 +11,7 @@ anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
 theme = ExtResource("1_mtuya")
+script = ExtResource("2_7buk7")
 
 [node name="MarginContainer" type="MarginContainer" parent="." unique_id=1630382994]
 layout_mode = 1
