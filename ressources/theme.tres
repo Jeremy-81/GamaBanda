@@ -1,15 +1,18 @@
 [gd_resource type="Theme" format=3 uid="uid://duj7cgl0u7wd3"]
 
+[ext_resource type="FontFile" uid="uid://chla6mhf6wpl0" path="res://assets/fonts/Jersey_10/Jersey10-Regular.ttf" id="1_jb3ky"]
+[ext_resource type="FontFile" uid="uid://duqx5nydbyw75" path="res://assets/fonts/Jacquard_24/Jacquard24-Regular.ttf" id="2_cgoy4"]
+
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_cgkd3"]
 bg_color = Color(0.3557113, 0.14816836, 0.6657926, 1)
 corner_radius_top_left = 5
 corner_radius_top_right = 5
 corner_radius_bottom_right = 5
 corner_radius_bottom_left = 5
-expand_margin_left = 10.0
-expand_margin_top = 5.0
-expand_margin_right = 10.0
-expand_margin_bottom = 5.0
+expand_margin_left = 20.0
+expand_margin_top = 10.0
+expand_margin_right = 20.0
+expand_margin_bottom = 10.0
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_cgoy4"]
 bg_color = Color(0.21927088, 0.19392738, 0.20286453, 1)
@@ -22,8 +25,6 @@ corner_radius_top_left = 10
 corner_radius_top_right = 10
 corner_radius_bottom_right = 10
 corner_radius_bottom_left = 10
-shadow_size = 3
-shadow_offset = Vector2(1, 1)
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_jb3ky"]
 bg_color = Color(1, 0.2901961, 0.16862746, 1)
@@ -36,16 +37,19 @@ corner_radius_top_left = 10
 corner_radius_top_right = 10
 corner_radius_bottom_right = 10
 corner_radius_bottom_left = 10
-shadow_size = 3
-shadow_offset = Vector2(1, 1)
 
 [resource]
 Button/constants/outline_size = 7
-Button/font_sizes/font_size = 21
+Button/font_sizes/font_size = 30
+Button/fonts/font = ExtResource("1_jb3ky")
 Button/styles/normal = SubResource("StyleBoxFlat_cgkd3")
 Label/constants/outline_size = 3
 Label/font_sizes/font_size = 37
-Label/fonts/font = null
-ProgressBar/font_sizes/font_size = 16
+Label/fonts/font = ExtResource("1_jb3ky")
+ProgressBar/font_sizes/font_size = 30
+ProgressBar/fonts/font = ExtResource("1_jb3ky")
 ProgressBar/styles/background = SubResource("StyleBoxFlat_cgoy4")
 ProgressBar/styles/fill = SubResource("StyleBoxFlat_jb3ky")
+Title/base_type = &"Label"
+Title/font_sizes/font_size = 70
+Title/fonts/font = ExtResource("2_cgoy4")
