@@ -1,8 +1,7 @@
 [gd_scene format=3 uid="uid://db60o3nemnftl"]
 
+[ext_resource type="PackedScene" uid="uid://btg0d1sc8nd3r" path="res://scenes/player.tscn" id="1_uwrxv"]
+
 [node name="Game" type="Node2D" unique_id=137855227]
 
-[node name="Label" type="Label" parent="." unique_id=2109819530]
-offset_right = 40.0
-offset_bottom = 23.0
-text = "Hola !"
+[node name="Player" parent="." unique_id=2105575625 instance=ExtResource("1_uwrxv")]

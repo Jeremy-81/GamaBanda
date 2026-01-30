@@ -1,0 +1,19 @@
+[gd_resource type="Theme" format=3 uid="uid://duj7cgl0u7wd3"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_cgkd3"]
+bg_color = Color(0.3557113, 0.14816836, 0.6657926, 1)
+corner_radius_top_left = 5
+corner_radius_top_right = 5
+corner_radius_bottom_right = 5
+corner_radius_bottom_left = 5
+expand_margin_left = 10.0
+expand_margin_top = 5.0
+expand_margin_right = 10.0
+expand_margin_bottom = 5.0
+
+[resource]
+Button/constants/outline_size = 7
+Button/font_sizes/font_size = 21
+Button/styles/normal = SubResource("StyleBoxFlat_cgkd3")
+Label/font_sizes/font_size = 37
+Label/fonts/font = null
