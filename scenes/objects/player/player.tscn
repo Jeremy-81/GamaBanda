@@ -157,13 +157,13 @@ animations = [{
 "speed": 1.0
 }, {
 "frames": [{
-"duration": 1.0,
+"duration": 0.2,
 "texture": SubResource("AtlasTexture_nkbs0")
 }, {
-"duration": 1.0,
+"duration": 0.1,
 "texture": SubResource("AtlasTexture_wim6f")
 }, {
-"duration": 1.0,
+"duration": 0.4,
 "texture": SubResource("AtlasTexture_gmdvr")
 }, {
 "duration": 1.0,
@@ -265,6 +265,22 @@ tracks/0/keys = {
 "values": [false]
 }
 
+[sub_resource type="Animation" id="Animation_dvfu2"]
+resource_name = "dash"
+length = 0.6667
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("AnimatedSprite:animation")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [&"dash"]
+}
+
 [sub_resource type="Animation" id="Animation_bdcal"]
 resource_name = "idle"
 tracks/0/type = "value"
@@ -282,6 +298,7 @@ tracks/0/keys = {
 
 [sub_resource type="Animation" id="Animation_io36v"]
 resource_name = "jump"
+length = 0.6417
 tracks/0/type = "value"
 tracks/0/imported = false
 tracks/0/enabled = true
@@ -345,6 +362,7 @@ tracks/0/keys = {
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_io36v"]
 _data = {
 &"RESET": SubResource("Animation_nkbs0"),
+&"dash": SubResource("Animation_dvfu2"),
 &"idle": SubResource("Animation_bdcal"),
 &"jump": SubResource("Animation_io36v"),
 &"run": SubResource("Animation_ponut"),
@@ -356,8 +374,15 @@ _data = {
 filter_enabled = true
 filters = ["AnimatedSprite:animation"]
 
+[sub_resource type="AnimationNodeAnimation" id="AnimationNodeAnimation_dvfu2"]
+animation = &"dash"
+
 [sub_resource type="AnimationNodeAnimation" id="AnimationNodeAnimation_wim6f"]
 animation = &"jump"
+
+[sub_resource type="AnimationNodeOneShot" id="AnimationNodeOneShot_vwou5"]
+filter_enabled = true
+filters = ["AnimatedSprite:animation"]
 
 [sub_resource type="AnimationNodeAnimation" id="AnimationNodeAnimation_nkbs0"]
 animation = &"turn_left"
@@ -395,6 +420,8 @@ blend_point_2/pos = -0.1
 blend_mode = 1
 
 [sub_resource type="AnimationNodeBlendTree" id="AnimationNodeBlendTree_bdcal"]
+graph_offset = Vector2(-584.8584, 18.72744)
+nodes/output/position = Vector2(540, 140)
 nodes/Direction/node = SubResource("AnimationNodeBlendSpace1D_gmdvr")
 nodes/Direction/position = Vector2(-840, 160)
 nodes/Jump/node = SubResource("AnimationNodeOneShot_gmdvr")
@@ -405,7 +432,11 @@ nodes/Add2/node = SubResource("AnimationNodeAdd2_nkbs0")
 nodes/Add2/position = Vector2(-220, 140)
 nodes/Movement/node = SubResource("AnimationNodeBlendSpace1D_dvfu2")
 nodes/Movement/position = Vector2(-840, 400)
-node_connections = [&"output", 0, &"Jump", &"Jump", 0, &"Add2", &"Jump", 1, &"Animation", &"Add2", 0, &"Direction", &"Add2", 1, &"Movement"]
+nodes/Dash/node = SubResource("AnimationNodeOneShot_vwou5")
+nodes/Dash/position = Vector2(340, 140)
+"nodes/Animation 2/node" = SubResource("AnimationNodeAnimation_dvfu2")
+"nodes/Animation 2/position" = Vector2(140, 480)
+node_connections = [&"output", 0, &"Dash", &"Jump", 0, &"Add2", &"Jump", 1, &"Animation", &"Add2", 0, &"Direction", &"Add2", 1, &"Movement", &"Dash", 0, &"Jump", &"Dash", 1, &"Animation 2"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_0a575"]
 size = Vector2(80, 131)
@@ -419,6 +450,7 @@ scale = Vector2(2, 2)
 sprite_frames = SubResource("SpriteFrames_g65c7")
 animation = &"run"
 autoplay = "default"
+frame_progress = 0.9769773
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=1364101473]
 shape = SubResource("CapsuleShape2D_g10m2")
@@ -428,7 +460,7 @@ shape = SubResource("CapsuleShape2D_g10m2")
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Hurtbox" unique_id=1155637641]
 
 [node name="CameraTransform" type="RemoteTransform2D" parent="." unique_id=1222825734]
-position = Vector2(0, -127)
+position = Vector2(0, -76)
 
 [node name="DashTimer" type="Timer" parent="." unique_id=64227075]
 wait_time = 0.2
@@ -467,6 +499,9 @@ parameters/Jump/internal_active = false
 parameters/Jump/request = 0
 parameters/Add2/add_amount = 1.0
 parameters/Movement/blend_position = 0.691
+parameters/Dash/active = false
+parameters/Dash/internal_active = false
+parameters/Dash/request = 0
 
 [node name="Hitbox" parent="." unique_id=487133279 node_paths=PackedStringArray("entity") instance=ExtResource("3_0a575")]
 collision_layer = 2
