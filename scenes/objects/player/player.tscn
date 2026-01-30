@@ -3,6 +3,7 @@
 [ext_resource type="Script" uid="uid://c6cb16oqkrwgg" path="res://scenes/objects/player/player.gd" id="1_g10m2"]
 [ext_resource type="Texture2D" uid="uid://dr0qawuq7wi86" path="res://assets/player/jump-Sheet 80x80.png" id="2_0a575"]
 [ext_resource type="Texture2D" uid="uid://c62574nyu5pg2" path="res://assets/player/roll-dash-Sheet 80x80.png" id="2_nkbs0"]
+[ext_resource type="PackedScene" uid="uid://v03j4dmf32so" path="res://scenes/objects/hitbox/hitbox.tscn" id="3_0a575"]
 [ext_resource type="Texture2D" uid="uid://bjhocqn3kj700" path="res://assets/player/run-Sheet 80x80.png" id="4_wim6f"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_g65c7"]
@@ -216,7 +217,6 @@ animations = [{
 "name": &"run",
 "speed": 12.0
 }]
-[ext_resource type="PackedScene" uid="uid://v03j4dmf32so" path="res://scenes/objects/hitbox/hitbox.tscn" id="3_0a575"]
 
 [sub_resource type="CapsuleShape2D" id="CapsuleShape2D_g10m2"]
 radius = 32.0
@@ -395,7 +395,6 @@ blend_point_2/pos = -0.1
 blend_mode = 1
 
 [sub_resource type="AnimationNodeBlendTree" id="AnimationNodeBlendTree_bdcal"]
-graph_offset = Vector2(-816.40515, 18.938828)
 nodes/Direction/node = SubResource("AnimationNodeBlendSpace1D_gmdvr")
 nodes/Direction/position = Vector2(-840, 160)
 nodes/Jump/node = SubResource("AnimationNodeOneShot_gmdvr")
@@ -407,6 +406,7 @@ nodes/Add2/position = Vector2(-220, 140)
 nodes/Movement/node = SubResource("AnimationNodeBlendSpace1D_dvfu2")
 nodes/Movement/position = Vector2(-840, 400)
 node_connections = [&"output", 0, &"Jump", &"Jump", 0, &"Add2", &"Jump", 1, &"Animation", &"Add2", 0, &"Direction", &"Add2", 1, &"Movement"]
+
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_0a575"]
 size = Vector2(80, 131)
 
@@ -426,9 +426,6 @@ shape = SubResource("CapsuleShape2D_g10m2")
 [node name="Hurtbox" type="Area2D" parent="." unique_id=2067084583]
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Hurtbox" unique_id=1155637641]
-[node name="Sprite2D" type="Sprite2D" parent="." unique_id=898765978]
-scale = Vector2(0.5, 1)
-texture = ExtResource("1_1bf4k")
 
 [node name="CameraTransform" type="RemoteTransform2D" parent="." unique_id=1222825734]
 position = Vector2(0, -127)
@@ -470,10 +467,10 @@ parameters/Jump/internal_active = false
 parameters/Jump/request = 0
 parameters/Add2/add_amount = 1.0
 parameters/Movement/blend_position = 0.691
+
 [node name="Hitbox" parent="." unique_id=487133279 node_paths=PackedStringArray("entity") instance=ExtResource("3_0a575")]
 collision_layer = 2
 collision_mask = 5
-damage = 10.0
 entity = NodePath("..")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Hitbox" unique_id=1238569936]
