@@ -687,8 +687,6 @@ wait_time = 0.5
 one_shot = true
 
 [node name="Hurtbox" type="Area2D" parent="." unique_id=370638679 node_paths=PackedStringArray("entity")]
-collision_layer = 2
-collision_mask = 17
 script = ExtResource("6_bdcal")
 entity = NodePath("..")
 is_player = true
@@ -698,8 +696,6 @@ metadata/_custom_type_script = "uid://b13w1i1ecf06o"
 shape = SubResource("CapsuleShape2D_io36v")
 
 [node name="Hitbox" type="Area2D" parent="." unique_id=1495450262 node_paths=PackedStringArray("entity")]
-collision_layer = 8
-collision_mask = 5
 script = ExtResource("7_ponut")
 entity = NodePath("..")
 damage = 10.0
