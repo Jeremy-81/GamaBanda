@@ -1,9 +1,9 @@
+class_name Player
 extends CharacterBody2D
 
 signal life_changed(life)
 signal player_ready(name, hp)
 signal player_died
-signal attack_boss
 
 @export var hp: float
 @export var player_name: String
@@ -91,24 +91,22 @@ func _process(delta) -> void:
 		$FloorImpactParticles.restart();
 	pass;
 	
-	#if Input.is_action_just_pressed("attack"):
-		#attack()
+	# Attack inputs
+	if Input.is_action_just_pressed("attack"):
+		$Hitbox.attack();
 	
 	if Input.is_action_pressed("attack"):
-		loading_attack += delta
+		loading_attack += delta;
 	
 	if Input.is_action_just_released("attack"):
 		if loading_attack > 1.0:
-			attack(damage * 10, 1)
+			$Hitbox.attack(damage, 2.0);
 		else:
-			attack(damage, 0)
-			
-		loading_attack = 0.0
+			$Hitbox.attack();
+		loading_attack = 0.0;
 
-func attack(attack_damage: float, type: int) -> void:
-	attack_boss.emit(attack_damage, type)
 
-func _shake_screen(random_shake := false, shake_time : float = 1.0) -> void:
+func _shake_screen(random_shake: bool = false, shake_time: float = 1.0) -> void:
 	var shake_tween : Tween = get_tree().create_tween();
 	var shake_direction : float = (-1.0 if randi() % 2 == 0 else 1.0) if random_shake else h_direction;
 	shake_tween.tween_property($CameraTransform, "rotation", -0.08 * shake_direction, 0.2 * shake_time);
@@ -130,17 +128,13 @@ func _update_darken(value) -> void:
 	pass;
 	
 
-func take_damage(amount: float) -> void:
+func take_damage(amount: float, _ko_damage : float) -> void:
 	hp -= amount
 	if hp < 0.0:
 		hp = 0.0
 	life_changed.emit(hp)
 	if hp == 0.0:
 		player_die()
-	
-func get_damage() -> float:
-	return damage
-
 
 func player_die() -> void:
 	player_died.emit()

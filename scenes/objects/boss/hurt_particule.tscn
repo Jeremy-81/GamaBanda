@@ -18,7 +18,7 @@ gravity = Vector3(0, 1000, 0)
 scale_min = 0.19999999
 scale_max = 0.59999996
 
-[node name="HitParitcules" type="GPUParticles2D" unique_id=1008605748]
+[node name="HitParticles" type="GPUParticles2D" unique_id=1008605748]
 emitting = false
 amount = 30
 texture = SubResource("GradientTexture2D_4e6rw")

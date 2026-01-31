@@ -3,10 +3,10 @@
 [ext_resource type="Script" uid="uid://c6cb16oqkrwgg" path="res://scenes/objects/player/player.gd" id="1_g10m2"]
 [ext_resource type="Texture2D" uid="uid://dr0qawuq7wi86" path="res://assets/player/jump-Sheet 80x80.png" id="2_0a575"]
 [ext_resource type="Texture2D" uid="uid://c62574nyu5pg2" path="res://assets/player/roll-dash-Sheet 80x80.png" id="2_nkbs0"]
-[ext_resource type="PackedScene" uid="uid://v03j4dmf32so" path="res://scenes/objects/hitbox/hitbox.tscn" id="3_0a575"]
 [ext_resource type="Texture2D" uid="uid://0i4vxouppdl6" path="res://assets/player/speed-fall-Sheet 80x80.png" id="4_io36v"]
 [ext_resource type="Texture2D" uid="uid://bjhocqn3kj700" path="res://assets/player/run-Sheet 80x80.png" id="4_wim6f"]
-[ext_resource type="PackedScene" uid="uid://d2yx60hb2b6t" path="res://scenes/objects/hurtbox/hurtbox.tscn" id="5_gmdvr"]
+[ext_resource type="Script" uid="uid://b13w1i1ecf06o" path="res://scenes/objects/components/hurtbox.gd" id="6_bdcal"]
+[ext_resource type="Script" uid="uid://ct2ao5y04qtji" path="res://scenes/objects/components/hitbox.gd" id="7_ponut"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_g65c7"]
 atlas = ExtResource("2_nkbs0")
@@ -300,17 +300,12 @@ animations = [{
 radius = 32.0
 height = 118.0
 
-[sub_resource type="Gradient" id="Gradient_g10m2"]
-offsets = PackedFloat32Array(0.78313255, 1)
-colors = PackedColorArray(0, 0, 0, 0, 0, 0, 0, 0.25882354)
+[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_io36v"]
+radius = 29.0
+height = 106.0
 
-[sub_resource type="GradientTexture2D" id="GradientTexture2D_0a575"]
-gradient = SubResource("Gradient_g10m2")
-width = 128
-height = 128
-fill = 1
-fill_from = Vector2(0.5, 0.5)
-fill_to = Vector2(1, 1)
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_dvfu2"]
+size = Vector2(150, 150)
 
 [sub_resource type="Gradient" id="Gradient_0a575"]
 offsets = PackedFloat32Array(1)
@@ -327,6 +322,18 @@ initial_velocity_max = 414.28998
 gravity = Vector3(0, 1800, 0)
 scale_min = 0.19999999
 scale_max = 0.59999996
+
+[sub_resource type="Gradient" id="Gradient_g10m2"]
+offsets = PackedFloat32Array(0.78313255, 1)
+colors = PackedColorArray(0, 0, 0, 0, 0, 0, 0, 0.25882354)
+
+[sub_resource type="GradientTexture2D" id="GradientTexture2D_0a575"]
+gradient = SubResource("Gradient_g10m2")
+width = 128
+height = 128
+fill = 1
+fill_from = Vector2(0.5, 0.5)
+fill_to = Vector2(1, 1)
 
 [sub_resource type="Animation" id="Animation_nkbs0"]
 length = 0.001
@@ -635,7 +642,6 @@ states/land/position = Vector2(723, 95)
 transitions = ["Start", "jump", SubResource("AnimationNodeStateMachineTransition_nqkks"), "land", "End", SubResource("AnimationNodeStateMachineTransition_8bans"), "falling_normal", "land", SubResource("AnimationNodeStateMachineTransition_jxhie"), "jump", "falling_normal", SubResource("AnimationNodeStateMachineTransition_qfccq"), "falling_normal", "fall_impulse", SubResource("AnimationNodeStateMachineTransition_vx2qb"), "fall_impulse", "falling_fast", SubResource("AnimationNodeStateMachineTransition_ibpxp"), "falling_fast", "land", SubResource("AnimationNodeStateMachineTransition_5t4rm"), "jump", "fall_impulse", SubResource("AnimationNodeStateMachineTransition_io36v")]
 
 [sub_resource type="AnimationNodeBlendTree" id="AnimationNodeBlendTree_bdcal"]
-graph_offset = Vector2(-615.35077, 69.621765)
 nodes/output/position = Vector2(820, 140)
 nodes/Direction/node = SubResource("AnimationNodeBlendSpace1D_gmdvr")
 nodes/Direction/position = Vector2(-840, 160)
@@ -653,9 +659,6 @@ nodes/Jump/node = SubResource("AnimationNodeOneShot_gmdvr")
 nodes/Jump/position = Vector2(40, 140)
 node_connections = [&"output", 0, &"Dash", &"Add2", 0, &"Direction", &"Add2", 1, &"Movement", &"Dash", 0, &"Jump", &"Dash", 1, &"Animation 2", &"Jump", 0, &"Add2", &"Jump", 1, &"StateMachine"]
 
-[sub_resource type="RectangleShape2D" id="RectangleShape2D_0a575"]
-size = Vector2(80, 131)
-
 [node name="Player" type="CharacterBody2D" unique_id=2105575625]
 script = ExtResource("1_g10m2")
 hp = 100.0
@@ -672,8 +675,6 @@ frame_progress = 0.6526183
 [node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=1364101473]
 shape = SubResource("CapsuleShape2D_g10m2")
 
-[node name="Hurtbox" parent="." unique_id=561438575 instance=ExtResource("5_gmdvr")]
-
 [node name="CameraTransform" type="RemoteTransform2D" parent="." unique_id=1222825734]
 position = Vector2(0, -76)
 
@@ -685,6 +686,36 @@ one_shot = true
 wait_time = 0.5
 one_shot = true
 
+[node name="Hurtbox" type="Area2D" parent="." unique_id=370638679 node_paths=PackedStringArray("entity")]
+script = ExtResource("6_bdcal")
+entity = NodePath("..")
+is_player = true
+metadata/_custom_type_script = "uid://b13w1i1ecf06o"
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Hurtbox" unique_id=396951705]
+shape = SubResource("CapsuleShape2D_io36v")
+
+[node name="Hitbox" type="Area2D" parent="." unique_id=1495450262 node_paths=PackedStringArray("entity")]
+script = ExtResource("7_ponut")
+entity = NodePath("..")
+damage = 10.0
+ko_damage = null
+hit_on_touch = null
+is_player = true
+metadata/_custom_type_script = "uid://ct2ao5y04qtji"
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Hitbox" unique_id=388292858]
+shape = SubResource("RectangleShape2D_dvfu2")
+
+[node name="FloorImpactParticles" type="GPUParticles2D" parent="." unique_id=1556150090]
+position = Vector2(0, 72)
+emitting = false
+amount = 20
+texture = SubResource("GradientTexture2D_nkbs0")
+one_shot = true
+explosiveness = 1.0
+process_material = SubResource("ParticleProcessMaterial_wim6f")
+
 [node name="CanvasLayer" type="CanvasLayer" parent="." unique_id=422284375]
 
 [node name="ScreenShadow" type="TextureRect" parent="CanvasLayer" unique_id=189282505]
@@ -695,15 +726,6 @@ anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
 texture = SubResource("GradientTexture2D_0a575")
-
-[node name="FloorImpactParticles" type="GPUParticles2D" parent="." unique_id=1556150090]
-position = Vector2(0, 72)
-emitting = false
-amount = 20
-texture = SubResource("GradientTexture2D_nkbs0")
-one_shot = true
-explosiveness = 1.0
-process_material = SubResource("ParticleProcessMaterial_wim6f")
 
 [node name="AnimationTree" type="AnimationTree" parent="." unique_id=1704876674]
 libraries/ = SubResource("AnimationLibrary_io36v")
@@ -719,12 +741,3 @@ parameters/Dash/request = 0
 parameters/Jump/active = false
 parameters/Jump/internal_active = false
 parameters/Jump/request = 0
-
-[node name="Hitbox" parent="." unique_id=487133279 node_paths=PackedStringArray("entity") instance=ExtResource("3_0a575")]
-collision_layer = 2
-collision_mask = 5
-entity = NodePath("..")
-
-[node name="CollisionShape2D" type="CollisionShape2D" parent="Hitbox" unique_id=1238569936]
-position = Vector2(0, -0.5)
-shape = SubResource("RectangleShape2D_0a575")

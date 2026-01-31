@@ -2,7 +2,7 @@
 
 [ext_resource type="Texture2D" uid="uid://61wvyl0hmq1o" path="res://icon.svg" id="1_adfyq"]
 [ext_resource type="Script" uid="uid://ldec8y3af7ov" path="res://scenes/objects/boss/boss.gd" id="1_mar8m"]
-[ext_resource type="PackedScene" uid="uid://v03j4dmf32so" path="res://scenes/objects/hitbox/hitbox.tscn" id="3_4e6rw"]
+[ext_resource type="Script" uid="uid://ct2ao5y04qtji" path="res://scenes/objects/components/hitbox.gd" id="3_dnwl1"]
 [ext_resource type="PackedScene" uid="uid://hqlkttia3yu4" path="res://scenes/objects/boss/hurt_particule.tscn" id="4_dnwl1"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_4e6rw"]
@@ -33,16 +33,15 @@ texture = ExtResource("1_adfyq")
 wait_time = 2.0
 autostart = true
 
-[node name="Hitbox" parent="." unique_id=487133279 node_paths=PackedStringArray("entity") instance=ExtResource("3_4e6rw")]
-collision_layer = 4
-collision_mask = 2
-entity = NodePath("..")
+[node name="Hitbox" type="Area2D" parent="." unique_id=571835088]
+script = ExtResource("3_dnwl1")
+metadata/_custom_type_script = "uid://ct2ao5y04qtji"
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Hitbox" unique_id=674501838]
 position = Vector2(-3, -179)
 shape = SubResource("RectangleShape2D_4e6rw")
 
-[node name="BigHitParitcules" parent="." unique_id=1008605748 instance=ExtResource("4_dnwl1")]
+[node name="BigHitParticles" parent="." unique_id=1008605748 instance=ExtResource("4_dnwl1")]
 amount = 100
 texture = SubResource("GradientTexture2D_dnwl1")
 
