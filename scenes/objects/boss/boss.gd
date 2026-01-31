@@ -11,6 +11,7 @@ signal boss_died()
 @export var player : Node
 
 @onready var sprite_2d: Sprite2D = $Sprite2D
+@onready var hit_paritcules: GPUParticles2D = $HitParitcules
 
 var in_range: bool = false
 
@@ -35,6 +36,7 @@ func take_player_damage(amount: float) -> void:
 		take_damage(amount)
 
 func take_damage(amount: float) -> void:
+	hit_paritcules.restart()
 	hp -= amount
 	if hp < 0.0:
 		hp = 0.0

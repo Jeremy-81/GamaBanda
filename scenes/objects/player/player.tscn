@@ -658,6 +658,8 @@ size = Vector2(80, 131)
 
 [node name="Player" type="CharacterBody2D" unique_id=2105575625]
 script = ExtResource("1_g10m2")
+hp = 100.0
+player_name = "Player"
 
 [node name="AnimatedSprite" type="AnimatedSprite2D" parent="." unique_id=66283099]
 texture_filter = 3
