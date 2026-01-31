@@ -63,14 +63,12 @@ player = NodePath("../Player")
 position = Vector2(0, 4)
 ignore_rotation = false
 
-[node name="CanvasLayer" type="CanvasLayer" parent="." unique_id=254839686]
-
-[node name="GameInterface" parent="CanvasLayer" unique_id=1741185875 node_paths=PackedStringArray("boss", "player") instance=ExtResource("4_85w88")]
-boss = NodePath("../../Boss")
-player = NodePath("../../Player")
-
 [node name="AnimationBoss" type="AnimationPlayer" parent="." unique_id=964214574]
 libraries/ = SubResource("AnimationLibrary_31neg")
 autoplay = &"Boss"
 
 [node name="BossMap" parent="." unique_id=1505459579 instance=ExtResource("5_67f06")]
+
+[node name="GameInterface" parent="." unique_id=1741185875 node_paths=PackedStringArray("boss", "player") instance=ExtResource("4_85w88")]
+boss = NodePath("../Boss")
+player = NodePath("../Player")

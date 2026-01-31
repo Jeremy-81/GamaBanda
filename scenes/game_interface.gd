@@ -1,4 +1,4 @@
-extends Control
+extends CanvasLayer
 
 @export var boss: Node
 @export var player: Node
@@ -9,15 +9,26 @@ extends Control
 @onready var player_name: Label = $MarginContainer/VBoxContainer/HBoxContainer/PlayerName
 @onready var player_life: ProgressBar = $MarginContainer/VBoxContainer/HBoxContainer/PlayerLife
 
+var game_paused = false
+
 func _ready() -> void:
-	boss.boss_ready.connect(boss_interface_init)
-	boss.boss_damage.connect(update_boss_life)
-	boss.boss_died.connect(game_won)
+	if boss:
+		boss.boss_ready.connect(boss_interface_init)
+		boss.boss_damage.connect(update_boss_life)
+		boss.boss_died.connect(game_won)
 	
 	player.player_ready.connect(player_interface_init)
 	player.life_changed.connect(update_player_life)
 	player.player_died.connect(game_loose)
 
+func _process(delta: float) -> void:
+	if Input.is_action_just_pressed("pause"):
+		if not game_paused:
+			get_tree().paused = true
+			%GamePaused.show()
+			game_paused = true
+		else:
+			_on_continue_pressed()
 
 func update_boss_life(hp) -> void:
 	boss_life.value = hp
@@ -47,3 +58,9 @@ func game_loose() -> void:
 func _on_menu_button_pressed() -> void:
 	get_tree().paused = false
 	get_tree().change_scene_to_file("res://scenes/menu/menu.tscn")
+
+
+func _on_continue_pressed() -> void:
+	get_tree().paused = false
+	game_paused = false
+	%GamePaused.hide()
