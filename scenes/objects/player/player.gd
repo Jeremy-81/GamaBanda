@@ -16,6 +16,7 @@ var has_jumped : bool = false;
 var in_coyote_time : bool = false;
 
 var gravity : float = 1800.0;
+var jump_speed : float = 1200.0;
 
 var h_direction : float = 0.0;
 var h_speed : float = 800.0;
@@ -37,7 +38,8 @@ func _process(delta) -> void:
 	
 	h_direction = Input.get_axis("go_left", "go_right");
 	
-	$AnimationTree.set("parameters/Direction/blend_position", h_direction);
+	if h_direction != 0.0:
+		$AnimationTree.set("parameters/Direction/blend_position", h_direction);
 	$AnimationTree.set("parameters/Movement/blend_position", h_direction);
 	
 	if is_on_floor():
@@ -58,11 +60,12 @@ func _process(delta) -> void:
 		$DashTimer.start();
 		_shake_screen();
 		_darken_screen($DashTimer.wait_time);
+		$AnimationTree.set("parameters/Dash/request", AnimationNodeOneShot.ONE_SHOT_REQUEST_FIRE);
 		can_dash = false;
 		return;
 	
 	if Input.is_action_just_pressed("jump") and (in_coyote_time and $CoyoteTimer.time_left > 0.0 || is_on_floor()):
-		v_speed = -800.0;
+		v_speed = -jump_speed;
 		$AnimationTree.set("parameters/Jump/request", AnimationNodeOneShot.ONE_SHOT_REQUEST_FIRE);
 	if Input.is_action_just_released("jump") and !has_jumped:
 		has_jumped = true;
