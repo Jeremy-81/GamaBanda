@@ -272,6 +272,11 @@ animations = [{
 "name": &"land",
 "speed": 6.0
 }, {
+"frames": [],
+"loop": true,
+"name": &"new_animation",
+"speed": 5.0
+}, {
 "frames": [{
 "duration": 1.0,
 "texture": SubResource("AtlasTexture_jx0p0")
@@ -291,7 +296,7 @@ animations = [{
 "duration": 1.0,
 "texture": SubResource("AtlasTexture_iwans")
 }],
-"loop": true,
+"loop": false,
 "name": &"run",
 "speed": 12.0
 }]

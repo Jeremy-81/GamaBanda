@@ -1,0 +1,30 @@
+[gd_scene format=3 uid="uid://cfknhhh86ohip"]
+
+[node name="BossMap" type="Node2D" unique_id=1505459579]
+position = Vector2(-74, -239)
+
+[node name="Polygon2D" type="Polygon2D" parent="." unique_id=961812553]
+polygon = PackedVector2Array(-968, -266, -811, -272, -823, 453, -960, 442)
+
+[node name="StaticBody2D" type="StaticBody2D" parent="Polygon2D" unique_id=747548630]
+
+[node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="Polygon2D/StaticBody2D" unique_id=1068840249]
+polygon = PackedVector2Array(-973, -269, -806, -281, -817, 452, -935, 433, -941.3467, 315.75494)
+
+[node name="Polygon2D2" type="Polygon2D" parent="." unique_id=1494530669]
+polygon = PackedVector2Array(1217, -269, 1380, -277, 1371, 470, 1251, 476)
+
+[node name="StaticBody2D" type="StaticBody2D" parent="Polygon2D2" unique_id=1844289201]
+
+[node name="CollisionPolygon2D2" type="CollisionPolygon2D" parent="Polygon2D2/StaticBody2D" unique_id=23844639]
+position = Vector2(2184, 0)
+polygon = PackedVector2Array(-973, -269, -806, -281, -817, 452, -935, 433)
+
+[node name="Polygon2D3" type="Polygon2D" parent="." unique_id=856242044]
+polygon = PackedVector2Array(-991, 345, 1394, 330, 1394, 493, -971, 459)
+
+[node name="StaticBody2D" type="StaticBody2D" parent="Polygon2D3" unique_id=695200397]
+
+[node name="CollisionPolygon2D3" type="CollisionPolygon2D" parent="Polygon2D3/StaticBody2D" unique_id=1189729715]
+position = Vector2(1151, 163)
+polygon = PackedVector2Array(-2134, 170, 394, 165, 406, 321, -2131, 290)

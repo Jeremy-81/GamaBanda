@@ -1,29 +1,37 @@
 [gd_resource type="Theme" format=3 uid="uid://duj7cgl0u7wd3"]
 
 [ext_resource type="FontFile" uid="uid://chla6mhf6wpl0" path="res://assets/fonts/Jersey_10/Jersey10-Regular.ttf" id="1_jb3ky"]
+[ext_resource type="Texture2D" uid="uid://b4l0uirr773kj" path="res://assets/button/Button-NoTEXT-Normal.png" id="2_502qo"]
 [ext_resource type="FontFile" uid="uid://duqx5nydbyw75" path="res://assets/fonts/Jacquard_24/Jacquard24-Regular.ttf" id="2_cgoy4"]
+[ext_resource type="Texture2D" uid="uid://1fbi8rrchs8w" path="res://assets/button/Button-NoTEXT-Hover.png" id="2_l3ktj"]
+[ext_resource type="Texture2D" uid="uid://vaqqg8polq4c" path="res://assets/button/Button-NoTEXT-Pressed.png" id="4_7065j"]
 
-[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_502qo"]
-bg_color = Color(0.5356966, 0.35413286, 0.07996858, 1)
-corner_radius_top_left = 5
-corner_radius_top_right = 5
-corner_radius_bottom_right = 5
-corner_radius_bottom_left = 5
-expand_margin_left = 20.0
-expand_margin_top = 10.0
-expand_margin_right = 20.0
-expand_margin_bottom = 10.0
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_7065j"]
+texture = ExtResource("2_l3ktj")
+texture_margin_left = 17.0
+texture_margin_top = 20.0
+texture_margin_right = 17.0
+texture_margin_bottom = 20.0
+expand_margin_left = 10.0
+expand_margin_right = 10.0
 
-[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_cgkd3"]
-bg_color = Color(0.3557113, 0.14816836, 0.6657926, 1)
-corner_radius_top_left = 5
-corner_radius_top_right = 5
-corner_radius_bottom_right = 5
-corner_radius_bottom_left = 5
-expand_margin_left = 20.0
-expand_margin_top = 10.0
-expand_margin_right = 20.0
-expand_margin_bottom = 10.0
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_l3ktj"]
+texture = ExtResource("2_502qo")
+texture_margin_left = 17.0
+texture_margin_top = 20.0
+texture_margin_right = 17.0
+texture_margin_bottom = 20.0
+expand_margin_left = 10.0
+expand_margin_right = 10.0
+
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_x62ba"]
+texture = ExtResource("4_7065j")
+texture_margin_left = 17.0
+texture_margin_top = 20.0
+texture_margin_right = 17.0
+texture_margin_bottom = 20.0
+expand_margin_left = 10.0
+expand_margin_right = 10.0
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_cgoy4"]
 bg_color = Color(0.21927088, 0.19392738, 0.20286453, 1)
@@ -51,10 +59,11 @@ corner_radius_bottom_left = 10
 
 [resource]
 Button/constants/outline_size = 7
-Button/font_sizes/font_size = 30
+Button/font_sizes/font_size = 27
 Button/fonts/font = ExtResource("1_jb3ky")
-Button/styles/hover = SubResource("StyleBoxFlat_502qo")
-Button/styles/normal = SubResource("StyleBoxFlat_cgkd3")
+Button/styles/hover = SubResource("StyleBoxTexture_7065j")
+Button/styles/normal = SubResource("StyleBoxTexture_l3ktj")
+Button/styles/pressed = SubResource("StyleBoxTexture_x62ba")
 Label/constants/outline_size = 3
 Label/font_sizes/font_size = 37
 Label/fonts/font = ExtResource("1_jb3ky")

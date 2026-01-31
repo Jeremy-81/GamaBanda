@@ -10,6 +10,12 @@ func take_damage(amount: float) -> void:
 		push_error("No take_damage method in the called entity")
 
 func _on_area_entered(area: Area2D) -> void:
-	take_damage(area.get_parent().get_damage())
-	if area.get_parent().has_method("destroy_object"):
-		area.get_parent().destroy_object()
+	entity.in_range = true
+	if area.is_in_group("boss_attack"):
+		take_damage(area.get_parent().get_damage())
+		if area.get_parent().has_method("destroy_object"):
+			area.get_parent().destroy_object()
+
+
+func _on_area_exited(area: Area2D) -> void:
+	entity.in_range = false
