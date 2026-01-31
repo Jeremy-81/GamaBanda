@@ -1,0 +1,41 @@
+[gd_scene format=3 uid="uid://dtictd2rlmcds"]
+
+[ext_resource type="Script" uid="uid://c534fct84mkiw" path="res://scenes/boss_attacks/laugh_attack/laugh_attack.gd" id="1_d6gqr"]
+[ext_resource type="FontFile" uid="uid://chla6mhf6wpl0" path="res://assets/fonts/Jersey_10/Jersey10-Regular.ttf" id="2_326ms"]
+
+[sub_resource type="LabelSettings" id="LabelSettings_d6gqr"]
+font = ExtResource("2_326ms")
+font_size = 100
+outline_size = 12
+outline_color = Color(0, 0, 0, 1)
+shadow_size = 12
+shadow_color = Color(0, 0, 0, 1)
+shadow_offset = Vector2(0, 3.12)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_d6gqr"]
+size = Vector2(260, 60)
+
+[node name="LaughAttack" type="Area2D" unique_id=218304327]
+collision_layer = 0
+collision_mask = 0
+monitorable = false
+script = ExtResource("1_d6gqr")
+speed = 1000.0
+lifetime = null
+metadata/_custom_type_script = "uid://ct2ao5y04qtji"
+
+[node name="Label" type="Label" parent="." unique_id=52620194]
+grow_horizontal = 2
+grow_vertical = 2
+text = "HAHAHA"
+label_settings = SubResource("LabelSettings_d6gqr")
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=1249291259]
+shape = SubResource("RectangleShape2D_d6gqr")
+
+[node name="LifeTimer" type="Timer" parent="." unique_id=612783027]
+one_shot = true
+
+[connection signal="timeout" from="LifeTimer" to="." method="_on_life_timer_timeout"]

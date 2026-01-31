@@ -51,6 +51,5 @@ func deal_damage(damagable : Hurtbox) -> void:
 
 func _hit_on_touch(area : Area2D):
 	if area is Hurtbox:
-		print(area);
 		deal_damage(area);
 	pass;
