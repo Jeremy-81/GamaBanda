@@ -43,6 +43,12 @@ _data = {
 &"frame_blink": SubResource("Animation_xf48k")
 }
 
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_rlj65"]
+size = Vector2(326, 61)
+
+[sub_resource type="LabelSettings" id="LabelSettings_rlj65"]
+font_size = 60
+
 [node name="Backstage1" type="Node" unique_id=192916966]
 script = ExtResource("1_ebnwq")
 
@@ -61,6 +67,10 @@ polygon = PackedVector2Array(-1973, 589, 2562, 571, 2621, -978, 2842, -932, 2819
 
 [node name="Polygon2D2" type="Polygon2D" parent="StaticPlatforms" unique_id=1145942782]
 polygon = PackedVector2Array(-1234, 327, -1004, 313, -1032, 589, -1229, 585)
+
+[node name="Polygon2D3" type="Polygon2D" parent="StaticPlatforms" unique_id=761101750]
+position = Vector2(-74, 221)
+polygon = PackedVector2Array(-734, -62, -725, 154, -201, 149, -201, -76)
 
 [node name="Back" type="Parallax2D" parent="." unique_id=1750456039]
 metadata/_edit_lock_ = true
@@ -88,6 +98,43 @@ metadata/_edit_lock_ = true
 libraries/ = SubResource("AnimationLibrary_pt1xq")
 
 [node name="HandFallTimer" type="Timer" parent="." unique_id=8882749]
+wait_time = 2.0
+one_shot = true
 autostart = true
 
+[node name="DashTutorialArea" type="Area2D" parent="." unique_id=1039336202]
+position = Vector2(-542, 69)
+collision_layer = 2
+collision_mask = 2
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="DashTutorialArea" unique_id=934572968]
+position = Vector2(13, 69.5)
+shape = SubResource("RectangleShape2D_rlj65")
+
+[node name="CanvasLayer" type="CanvasLayer" parent="." unique_id=1581637307]
+
+[node name="ExtraGUI" type="Control" parent="CanvasLayer" unique_id=1195161210]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="DashTutorialLabel" type="Label" parent="CanvasLayer/ExtraGUI" unique_id=1741047891]
+visible = false
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.3
+anchor_top = 0.2
+anchor_right = 0.7
+anchor_bottom = 0.2
+grow_horizontal = 2
+grow_vertical = 2
+text = "Dash with SHIFT"
+label_settings = SubResource("LabelSettings_rlj65")
+horizontal_alignment = 1
+vertical_alignment = 1
+
 [connection signal="timeout" from="HandFallTimer" to="." method="_on_hand_fall_timer_timeout"]
+[connection signal="area_entered" from="DashTutorialArea" to="." method="_on_dash_tutorial_area_area_entered"]
