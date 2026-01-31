@@ -11,7 +11,8 @@ signal boss_died()
 @export var player : Node
 
 @onready var sprite_2d: Sprite2D = $Sprite2D
-@onready var hit_paritcules: GPUParticles2D = $HitParitcules
+@onready var hit_paritcules := preload("uid://hqlkttia3yu4")
+@onready var big_hit_paritcules: GPUParticles2D = $BigHitParitcules
 
 var in_range: bool = false
 
@@ -31,12 +32,19 @@ func attack() -> void:
 func get_damage() -> float:
 	return damage
 
-func take_player_damage(amount: float) -> void:
+func take_player_damage(amount: float, type: int) -> void:
 	if in_range:
-		take_damage(amount)
+		take_damage(amount, type)
 
-func take_damage(amount: float) -> void:
-	hit_paritcules.restart()
+func take_damage(amount: float, type: int) -> void:
+	if type == 0:
+		var hit_p = hit_paritcules.instantiate()
+		hit_p.global_position = position
+		get_parent().add_child(hit_p)
+		hit_p.emitting = true
+	else:
+		big_hit_paritcules.emitting = true
+		
 	hp -= amount
 	if hp < 0.0:
 		hp = 0.0

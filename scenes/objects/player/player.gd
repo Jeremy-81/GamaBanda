@@ -99,14 +99,14 @@ func _process(delta) -> void:
 	
 	if Input.is_action_just_released("attack"):
 		if loading_attack > 2.0:
-			attack(damage * 10)
+			attack(damage * 10, 1)
 		else:
-			attack(damage)
+			attack(damage, 0)
 			
 		loading_attack = 0.0
 
-func attack(attack_damage: float) -> void:
-	attack_boss.emit(attack_damage)
+func attack(attack_damage: float, type: int) -> void:
+	attack_boss.emit(attack_damage, type)
 
 func _shake_screen(random_shake := false, shake_time : float = 1.0) -> void:
 	var shake_tween : Tween = get_tree().create_tween();
