@@ -5,6 +5,7 @@
 [ext_resource type="Texture2D" uid="uid://bchj10suhlit2" path="res://assets/level/floor.png" id="3_7k31f"]
 [ext_resource type="Texture2D" uid="uid://brslvtbp3rqb6" path="res://assets/level/frame_off.png" id="4_rlj65"]
 [ext_resource type="Texture2D" uid="uid://56cat0h7lfsa" path="res://assets/level/frame_on.png" id="5_rlj65"]
+[ext_resource type="PackedScene" uid="uid://bo8pyxkcykbab" path="res://scenes/game_interface.tscn" id="6_xf48k"]
 
 [sub_resource type="Animation" id="Animation_rlj65"]
 length = 0.001
@@ -47,7 +48,7 @@ _data = {
 script = ExtResource("1_ebnwq")
 
 [node name="Player" parent="." unique_id=2105575625 instance=ExtResource("1_q63md")]
-position = Vector2(-2325, 372)
+position = Vector2(-5, 377)
 
 [node name="Camera2D" type="Camera2D" parent="." unique_id=1538928803]
 zoom = Vector2(0.75, 0.75)
@@ -55,9 +56,9 @@ zoom = Vector2(0.75, 0.75)
 [node name="StaticPlatforms" type="Node" parent="." unique_id=1097559836]
 
 [node name="Polygon2D" type="Polygon2D" parent="StaticPlatforms" unique_id=834708997]
-position = Vector2(-308, -23)
+position = Vector2(-329, -21)
 color = Color(1, 1, 1, 0)
-polygon = PackedVector2Array(-1973, 589, 2562, 571, 2621, -978, 2842, -932, 2819, 801, -2208, 911, -2194, -927, -2107, -817)
+polygon = PackedVector2Array(-1908, 573, 2562, 571, 2543, -986, 2842, -932, 2819, 801, -2208, 911, -2194, -927, -1906, -926)
 
 [node name="Polygon2D2" type="Polygon2D" parent="StaticPlatforms" unique_id=1145942782]
 polygon = PackedVector2Array(-1234, 327, -1004, 313, -1032, 589, -1229, 585)
@@ -89,5 +90,8 @@ libraries/ = SubResource("AnimationLibrary_pt1xq")
 
 [node name="HandFallTimer" type="Timer" parent="." unique_id=8882749]
 autostart = true
+
+[node name="GameInterface" parent="." unique_id=1587630800 node_paths=PackedStringArray("player") instance=ExtResource("6_xf48k")]
+player = NodePath("../Player")
 
 [connection signal="timeout" from="HandFallTimer" to="." method="_on_hand_fall_timer_timeout"]

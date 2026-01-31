@@ -4,11 +4,11 @@
 [ext_resource type="PackedScene" uid="uid://btg0d1sc8nd3r" path="res://scenes/objects/player/player.tscn" id="2_7ydql"]
 [ext_resource type="PackedScene" uid="uid://cq6iebmicilbf" path="res://scenes/objects/boss/boss.tscn" id="3_7ydql"]
 [ext_resource type="PackedScene" uid="uid://bo8pyxkcykbab" path="res://scenes/game_interface.tscn" id="4_85w88"]
-[ext_resource type="PackedScene" uid="uid://cfknhhh86ohip" path="res://scenes/boss_map/boss_map.tscn" id="5_67f06"]
+[ext_resource type="PackedScene" uid="uid://bobfy0d4m1l1k" path="res://scenes/base_map/base_map.tscn" id="5_67f06"]
 
 [sub_resource type="Animation" id="Animation_85w88"]
 resource_name = "new_animation"
-length = 3.0
+length = 9.0
 loop_mode = 1
 tracks/0/type = "value"
 tracks/0/imported = false
@@ -17,10 +17,10 @@ tracks/0/path = NodePath("Boss:position")
 tracks/0/interp = 1
 tracks/0/loop_wrap = true
 tracks/0/keys = {
-"times": PackedFloat32Array(0, 1.0333333, 2, 3),
+"times": PackedFloat32Array(0, 2.9666667, 6, 8.966666),
 "transitions": PackedFloat32Array(1, 1, 1, 1),
 "update": 0,
-"values": [Vector2(-1, -27), Vector2(955, -172), Vector2(-1020, -189), Vector2(-1, -27)]
+"values": [Vector2(-9, 319), Vector2(1954, 352), Vector2(-1973, 352), Vector2(7, 369)]
 }
 
 [sub_resource type="Animation" id="Animation_67f06"]
@@ -47,11 +47,19 @@ _data = {
 [node name="BossFight" type="Node2D" unique_id=1442488628]
 script = ExtResource("1_1hapx")
 
-[node name="Player" parent="." unique_id=2105575625 instance=ExtResource("2_7ydql")]
-position = Vector2(0, -3)
-player_name = "GamaPlayer"
-damage = 7.0
-ko_damage = 13.0
+[node name="BaseMap" parent="." unique_id=1651728083 instance=ExtResource("5_67f06")]
+position = Vector2(0, -219)
+
+[node name="Player" parent="." unique_id=596732785 instance=ExtResource("2_7ydql")]
+position = Vector2(5, 466)
+
+[node name="Camera2D" type="Camera2D" parent="." unique_id=1386835362]
+position = Vector2(0, 4)
+ignore_rotation = false
+
+[node name="GameInterface" parent="." unique_id=1741185875 node_paths=PackedStringArray("boss", "player") instance=ExtResource("4_85w88")]
+boss = NodePath("../Boss")
+player = NodePath("../Player")
 
 [node name="Boss" parent="." unique_id=623795894 node_paths=PackedStringArray("player") instance=ExtResource("3_7ydql")]
 position = Vector2(-1, -27)
@@ -59,16 +67,6 @@ boss_name = "Boss One"
 hp = 100.0
 player = NodePath("../Player")
 
-[node name="Camera2D" type="Camera2D" parent="." unique_id=1386835362]
-position = Vector2(0, 4)
-ignore_rotation = false
-
 [node name="AnimationBoss" type="AnimationPlayer" parent="." unique_id=964214574]
 libraries/ = SubResource("AnimationLibrary_31neg")
 autoplay = &"Boss"
-
-[node name="BossMap" parent="." unique_id=1505459579 instance=ExtResource("5_67f06")]
-
-[node name="GameInterface" parent="." unique_id=1741185875 node_paths=PackedStringArray("boss", "player") instance=ExtResource("4_85w88")]
-boss = NodePath("../Boss")
-player = NodePath("../Player")

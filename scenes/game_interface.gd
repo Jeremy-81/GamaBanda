@@ -16,6 +16,9 @@ func _ready() -> void:
 		boss.boss_ready.connect(boss_interface_init)
 		boss.boss_damage.connect(update_boss_life)
 		boss.boss_died.connect(game_won)
+	else:
+		boss_life.hide()
+		boss_name.hide()
 	
 	player.player_ready.connect(player_interface_init)
 	player.life_changed.connect(update_player_life)
