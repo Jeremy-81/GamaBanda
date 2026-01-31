@@ -20,10 +20,10 @@ func _init():
 func _ready():
 	if is_player:
 		set_collision_layer_value(2, true);
-		set_collision_mask_value(2, true);
+		set_collision_mask_value(5, true);
 	else:
 		set_collision_layer_value(3, true);
-		set_collision_mask_value(3, true);
+		set_collision_mask_value(4, true);
 	pass;
 
 func _enter_tree():
