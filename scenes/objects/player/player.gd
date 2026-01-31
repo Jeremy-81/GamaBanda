@@ -3,10 +3,14 @@ extends CharacterBody2D
 signal life_changed(life)
 signal player_ready(name, hp)
 signal player_died
+signal attack_boss
 
 @export var hp: float
 @export var player_name: String
 @export var damage: float
+
+var in_range: bool = false
+var loading_attack: float = 0.0
 
 var base_darken_factor : float;
 
@@ -85,11 +89,22 @@ func _process(delta) -> void:
 		$FloorImpactParticles.restart();
 	pass;
 	
-	if Input.is_action_just_pressed("attack"):
-		attack()
+	#if Input.is_action_just_pressed("attack"):
+		#attack()
+	
+	if Input.is_action_pressed("attack"):
+		loading_attack += delta
+	
+	if Input.is_action_just_released("attack"):
+		if loading_attack > 2.0:
+			attack(damage * 10)
+		else:
+			attack(damage)
+			
+		loading_attack = 0.0
 
-func attack() -> void:
-	pass
+func attack(attack_damage: float) -> void:
+	attack_boss.emit(attack_damage)
 
 func _shake_screen(random_shake := false, shake_time : float = 1.0) -> void:
 	var shake_tween : Tween = get_tree().create_tween();

@@ -12,9 +12,12 @@ signal boss_died()
 
 @onready var sprite_2d: Sprite2D = $Sprite2D
 
+var in_range: bool = false
+
 func _ready() -> void:
 	await get_tree().process_frame
 	boss_ready.emit(boss_name, hp)
+	player.attack_boss.connect(take_player_damage)
 
 func _on_timer_timeout() -> void:
 	attack()
@@ -26,6 +29,10 @@ func attack() -> void:
 
 func get_damage() -> float:
 	return damage
+
+func take_player_damage(amount: float) -> void:
+	if in_range:
+		take_damage(amount)
 
 func take_damage(amount: float) -> void:
 	hp -= amount
