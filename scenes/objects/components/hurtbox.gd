@@ -11,17 +11,19 @@ var _invencibility_timer : Timer = null;
 
 func _init():
 	monitorable = true;
-	monitoring = false;
+	monitoring = true;
 	
 	# Layer separation
 	set_collision_layer_value(1, false);
 	set_collision_mask_value(1, false);
+
+func _ready():
 	if is_player:
-		set_collision_layer_value(3, true);
-		set_collision_mask_value(3, true);
-	else:
 		set_collision_layer_value(2, true);
 		set_collision_mask_value(2, true);
+	else:
+		set_collision_layer_value(3, true);
+		set_collision_mask_value(3, true);
 	pass;
 
 func _enter_tree():

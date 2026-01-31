@@ -699,8 +699,6 @@ shape = SubResource("CapsuleShape2D_io36v")
 script = ExtResource("7_ponut")
 entity = NodePath("..")
 damage = 10.0
-ko_damage = null
-hit_on_touch = null
 is_player = true
 metadata/_custom_type_script = "uid://ct2ao5y04qtji"
 

@@ -11,15 +11,18 @@ extends Area2D
 signal has_damaged();
 
 func _init():
-	monitorable = false;
+	monitorable = true;
 	monitoring = true;
-	
-	if hit_on_touch:
-		area_entered.connect(_hit_on_touch);
 	
 	# Layer separation
 	set_collision_layer_value(1, false);
 	set_collision_mask_value(1, false);
+	pass;
+
+func _ready():
+	if hit_on_touch:
+		area_entered.connect(_hit_on_touch);
+	
 	if is_player:
 		set_collision_layer_value(3, true);
 		set_collision_mask_value(3, true);
@@ -47,7 +50,7 @@ func deal_damage(damagable : Hurtbox) -> void:
 	has_damaged.emit();
 
 func _hit_on_touch(area : Area2D):
-	print("Damaging");
 	if area is Hurtbox:
+		print(area);
 		deal_damage(area);
 	pass;
