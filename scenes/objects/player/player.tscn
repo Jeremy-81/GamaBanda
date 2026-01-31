@@ -194,6 +194,11 @@ animations = [{
 "name": &"jump",
 "speed": 12.0
 }, {
+"frames": [],
+"loop": true,
+"name": &"new_animation",
+"speed": 5.0
+}, {
 "frames": [{
 "duration": 1.0,
 "texture": SubResource("AtlasTexture_jx0p0")
@@ -213,7 +218,7 @@ animations = [{
 "duration": 1.0,
 "texture": SubResource("AtlasTexture_iwans")
 }],
-"loop": true,
+"loop": false,
 "name": &"run",
 "speed": 12.0
 }]
@@ -395,6 +400,7 @@ blend_point_2/pos = -0.1
 blend_mode = 1
 
 [sub_resource type="AnimationNodeBlendTree" id="AnimationNodeBlendTree_bdcal"]
+graph_offset = Vector2(-706.6167, 72.86835)
 nodes/Direction/node = SubResource("AnimationNodeBlendSpace1D_gmdvr")
 nodes/Direction/position = Vector2(-840, 160)
 nodes/Jump/node = SubResource("AnimationNodeOneShot_gmdvr")

@@ -15,13 +15,8 @@ signal boss_died()
 func _ready() -> void:
 	await get_tree().process_frame
 	boss_ready.emit(boss_name, hp)
-	
-
-func moove_to_background() -> void:
-	sprite_2d.scale = sprite_2d.scale /2
 
 func _on_timer_timeout() -> void:
-	moove_to_background()
 	attack()
 
 func attack() -> void:

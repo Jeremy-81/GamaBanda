@@ -81,7 +81,12 @@ func _process(delta) -> void:
 		_darken_screen();
 		$FloorImpactParticles.restart();
 	pass;
+	
+	if Input.is_action_just_pressed("attack"):
+		attack()
 
+func attack() -> void:
+	pass
 
 func _shake_screen(random_shake := false, shake_time : float = 1.0) -> void:
 	var shake_tween : Tween = get_tree().create_tween();
