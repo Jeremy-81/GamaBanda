@@ -24,10 +24,10 @@ func _ready():
 		area_entered.connect(_hit_on_touch);
 	
 	if is_player:
-		set_collision_layer_value(3, true);
+		set_collision_layer_value(4, true);
 		set_collision_mask_value(3, true);
 	else:
-		set_collision_layer_value(2, true);
+		set_collision_layer_value(5, true);
 		set_collision_mask_value(2, true);
 	pass;
 

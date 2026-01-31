@@ -50,7 +50,8 @@ script = ExtResource("1_1hapx")
 [node name="Player" parent="." unique_id=2105575625 instance=ExtResource("2_7ydql")]
 position = Vector2(0, -3)
 player_name = "GamaPlayer"
-damage = 1.0
+damage = 7.0
+ko_damage = 13.0
 
 [node name="Boss" parent="." unique_id=623795894 node_paths=PackedStringArray("player") instance=ExtResource("3_7ydql")]
 position = Vector2(-1, -27)

@@ -8,6 +8,7 @@ signal player_died
 @export var hp: float
 @export var player_name: String
 @export var damage: float
+@export var ko_damage: float
 
 @onready var hitbox: Hitbox = $Hitbox
 @onready var dash_timer: Timer = $DashTimer
@@ -33,6 +34,9 @@ var jump_speed : float = 1200.0;
 var h_direction : float = 0.0;
 var h_speed : float = 800.0;
 var v_speed : float = 0.0;
+
+@export var clicked : int = 0
+var combo_time_ellapsed: float = 10.0
 
 func _ready():
 	base_darken_factor = screen_shadow.texture.gradient.get_offset(0);
@@ -61,12 +65,12 @@ func _process(delta) -> void:
 	elif not in_coyote_time:
 		coyote_timer.start();
 		in_coyote_time = true;
-	animation_tree.set("parameters/StateMachine/conditions/landed", is_on_floor());
+	animation_tree.set("parameters/StateMachineJump/conditions/landed", is_on_floor());
 	
 	var is_speed_falling := false;
 	if has_jumped and not is_on_floor() and Input.is_action_pressed("jump"):
 		is_speed_falling = true;
-	animation_tree.set("parameters/StateMachine/conditions/impulse", is_speed_falling);
+	animation_tree.set("parameters/StateMachineJump/conditions/impulse", is_speed_falling);
 	
 	if Input.is_action_just_pressed("dash") and can_dash and h_direction != 0.0:
 		h_direction = sign(h_direction);
@@ -99,18 +103,22 @@ func _process(delta) -> void:
 		$FloorImpactParticles.restart();
 	pass;
 	
-	# Attack inputs
+	combo_time_ellapsed += delta
+	print(clicked)
 	if Input.is_action_just_pressed("attack"):
-		hitbox.attack();
-	
-	if Input.is_action_pressed("attack"):
-		loading_attack += delta;
-	
-	if Input.is_action_just_released("attack"):
+		if combo_time_ellapsed > 0.5:
+			clicked = 0
+			combo_time_ellapsed = 0.0
+		print(clicked)
+		clicked += 1
+			
 		if loading_attack > 1.0:
-			hitbox.attack(damage, 2.0);
+			hitbox.attack(damage + ko_damage, 2.0);
 		else:
 			hitbox.attack();
+		if not animation_tree.get("parameters/Attack/active"):
+			animation_tree.set("parameters/Attack/request", AnimationNodeOneShot.ONE_SHOT_REQUEST_FIRE)
+			
 		loading_attack = 0.0;
 
 
@@ -137,6 +145,7 @@ func _update_darken(value) -> void:
 	
 
 func take_damage(amount: float, _ko_damage : float) -> void:
+	_shake_screen()
 	hp -= amount
 	if hp < 0.0:
 		hp = 0.0
