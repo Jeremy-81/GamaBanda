@@ -4,7 +4,9 @@
 [ext_resource type="Texture2D" uid="uid://dr0qawuq7wi86" path="res://assets/player/jump-Sheet 80x80.png" id="2_0a575"]
 [ext_resource type="Texture2D" uid="uid://c62574nyu5pg2" path="res://assets/player/roll-dash-Sheet 80x80.png" id="2_nkbs0"]
 [ext_resource type="PackedScene" uid="uid://v03j4dmf32so" path="res://scenes/objects/hitbox/hitbox.tscn" id="3_0a575"]
+[ext_resource type="Texture2D" uid="uid://0i4vxouppdl6" path="res://assets/player/speed-fall-Sheet 80x80.png" id="4_io36v"]
 [ext_resource type="Texture2D" uid="uid://bjhocqn3kj700" path="res://assets/player/run-Sheet 80x80.png" id="4_wim6f"]
+[ext_resource type="PackedScene" uid="uid://d2yx60hb2b6t" path="res://scenes/objects/hurtbox/hurtbox.tscn" id="5_gmdvr"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_g65c7"]
 atlas = ExtResource("2_nkbs0")
@@ -45,6 +47,38 @@ region = Rect2(0, 0, 80, 80)
 [sub_resource type="AtlasTexture" id="AtlasTexture_5t4rm"]
 atlas = ExtResource("2_0a575")
 region = Rect2(80, 0, 80, 80)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_p6mts"]
+atlas = ExtResource("4_io36v")
+region = Rect2(0, 0, 80, 80)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_obp0u"]
+atlas = ExtResource("4_io36v")
+region = Rect2(80, 0, 80, 80)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_w3xsa"]
+atlas = ExtResource("4_io36v")
+region = Rect2(160, 0, 80, 80)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_l4xa5"]
+atlas = ExtResource("4_io36v")
+region = Rect2(240, 0, 80, 80)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_7ovy6"]
+atlas = ExtResource("4_io36v")
+region = Rect2(320, 0, 80, 80)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_51wug"]
+atlas = ExtResource("4_io36v")
+region = Rect2(400, 0, 80, 80)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_j0ia0"]
+atlas = ExtResource("4_io36v")
+region = Rect2(480, 0, 80, 80)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_3o2k0"]
+atlas = ExtResource("2_0a575")
+region = Rect2(560, 0, 80, 80)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_nkbs0"]
 atlas = ExtResource("2_0a575")
@@ -157,6 +191,45 @@ animations = [{
 "speed": 1.0
 }, {
 "frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_p6mts")
+}, {
+"duration": 0.5,
+"texture": SubResource("AtlasTexture_obp0u")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_w3xsa")
+}],
+"loop": true,
+"name": &"fall_impulse",
+"speed": 12.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_l4xa5")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_7ovy6")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_51wug")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_j0ia0")
+}],
+"loop": true,
+"name": &"falling_fast",
+"speed": 12.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_3o2k0")
+}],
+"loop": true,
+"name": &"falling_normal",
+"speed": 12.0
+}, {
+"frames": [{
 "duration": 0.2,
 "texture": SubResource("AtlasTexture_nkbs0")
 }, {
@@ -180,19 +253,24 @@ animations = [{
 }, {
 "duration": 1.0,
 "texture": SubResource("AtlasTexture_vwou5")
+}],
+"loop": true,
+"name": &"jump",
+"speed": 12.0
 }, {
-"duration": 1.0,
+"frames": [{
+"duration": 0.6,
 "texture": SubResource("AtlasTexture_qfccq")
 }, {
-"duration": 1.0,
+"duration": 0.8,
 "texture": SubResource("AtlasTexture_ejlqc")
 }, {
 "duration": 1.0,
 "texture": SubResource("AtlasTexture_rp72t")
 }],
 "loop": true,
-"name": &"jump",
-"speed": 12.0
+"name": &"land",
+"speed": 6.0
 }, {
 "frames": [{
 "duration": 1.0,
@@ -264,6 +342,18 @@ tracks/0/keys = {
 "update": 1,
 "values": [false]
 }
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("AnimatedSprite:animation")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [&"run"]
+}
 
 [sub_resource type="Animation" id="Animation_dvfu2"]
 resource_name = "dash"
@@ -279,6 +369,52 @@ tracks/0/keys = {
 "transitions": PackedFloat32Array(1),
 "update": 1,
 "values": [&"dash"]
+}
+
+[sub_resource type="Animation" id="Animation_qfccq"]
+resource_name = "fall_impulse"
+length = 0.2083
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("AnimatedSprite:animation")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [&"fall_impulse"]
+}
+
+[sub_resource type="Animation" id="Animation_ejlqc"]
+resource_name = "falling_fast"
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("AnimatedSprite:animation")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [&"falling_fast"]
+}
+
+[sub_resource type="Animation" id="Animation_vwou5"]
+resource_name = "falling_normal"
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("AnimatedSprite:animation")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [&"falling_normal"]
 }
 
 [sub_resource type="Animation" id="Animation_bdcal"]
@@ -298,7 +434,7 @@ tracks/0/keys = {
 
 [sub_resource type="Animation" id="Animation_io36v"]
 resource_name = "jump"
-length = 0.6417
+length = 0.45
 tracks/0/type = "value"
 tracks/0/imported = false
 tracks/0/enabled = true
@@ -310,6 +446,22 @@ tracks/0/keys = {
 "transitions": PackedFloat32Array(1),
 "update": 1,
 "values": [&"jump"]
+}
+
+[sub_resource type="Animation" id="Animation_g65c7"]
+resource_name = "land"
+length = 0.4
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("AnimatedSprite:animation")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [&"land"]
 }
 
 [sub_resource type="Animation" id="Animation_ponut"]
@@ -363,8 +515,12 @@ tracks/0/keys = {
 _data = {
 &"RESET": SubResource("Animation_nkbs0"),
 &"dash": SubResource("Animation_dvfu2"),
+&"fall_impulse": SubResource("Animation_qfccq"),
+&"falling_fast": SubResource("Animation_ejlqc"),
+&"falling_normal": SubResource("Animation_vwou5"),
 &"idle": SubResource("Animation_bdcal"),
 &"jump": SubResource("Animation_io36v"),
+&"land": SubResource("Animation_g65c7"),
 &"run": SubResource("Animation_ponut"),
 &"turn_left": SubResource("Animation_wim6f"),
 &"turn_right": SubResource("Animation_gmdvr")
@@ -376,9 +532,6 @@ filters = ["AnimatedSprite:animation"]
 
 [sub_resource type="AnimationNodeAnimation" id="AnimationNodeAnimation_dvfu2"]
 animation = &"dash"
-
-[sub_resource type="AnimationNodeAnimation" id="AnimationNodeAnimation_wim6f"]
-animation = &"jump"
 
 [sub_resource type="AnimationNodeOneShot" id="AnimationNodeOneShot_vwou5"]
 filter_enabled = true
@@ -396,6 +549,40 @@ blend_point_0/pos = -1.0
 blend_point_1/node = SubResource("AnimationNodeAnimation_gmdvr")
 blend_point_1/pos = 1.0
 blend_mode = 1
+
+[sub_resource type="AnimationNodeAnimation" id="AnimationNodeAnimation_qfccq"]
+animation = &"fall_impulse"
+
+[sub_resource type="AnimationNodeAnimation" id="AnimationNodeAnimation_ejlqc"]
+animation = &"falling_fast"
+
+[sub_resource type="AnimationNodeAnimation" id="AnimationNodeAnimation_rp72t"]
+animation = &"land"
+
+[sub_resource type="AnimationNodeStateMachineTransition" id="AnimationNodeStateMachineTransition_g65c7"]
+advance_mode = 2
+
+[sub_resource type="AnimationNodeStateMachineTransition" id="AnimationNodeStateMachineTransition_japq8"]
+switch_mode = 2
+advance_mode = 2
+
+[sub_resource type="AnimationNodeStateMachineTransition" id="AnimationNodeStateMachineTransition_absnx"]
+advance_mode = 2
+advance_condition = &"landed"
+
+[sub_resource type="AnimationNodeStateMachineTransition" id="AnimationNodeStateMachineTransition_a2h7i"]
+switch_mode = 2
+advance_mode = 2
+
+[sub_resource type="AnimationNodeStateMachine" id="AnimationNodeStateMachine_ejlqc"]
+states/Start/position = Vector2(211, 82)
+states/fall_impulse/node = SubResource("AnimationNodeAnimation_qfccq")
+states/fall_impulse/position = Vector2(376, 74)
+states/falling_fast/node = SubResource("AnimationNodeAnimation_ejlqc")
+states/falling_fast/position = Vector2(606, 55)
+states/land/node = SubResource("AnimationNodeAnimation_rp72t")
+states/land/position = Vector2(743, 72)
+transitions = ["Start", "fall_impulse", SubResource("AnimationNodeStateMachineTransition_g65c7"), "fall_impulse", "falling_fast", SubResource("AnimationNodeStateMachineTransition_japq8"), "falling_fast", "land", SubResource("AnimationNodeStateMachineTransition_absnx"), "land", "End", SubResource("AnimationNodeStateMachineTransition_a2h7i")]
 
 [sub_resource type="AnimationNodeOneShot" id="AnimationNodeOneShot_gmdvr"]
 filter_enabled = true
@@ -419,24 +606,61 @@ blend_point_2/node = SubResource("AnimationNodeAnimation_ponut")
 blend_point_2/pos = -0.1
 blend_mode = 1
 
+[sub_resource type="AnimationNodeAnimation" id="AnimationNodeAnimation_vwou5"]
+animation = &"falling_normal"
+
+[sub_resource type="AnimationNodeAnimation" id="AnimationNodeAnimation_absnx"]
+animation = &"jump"
+
+[sub_resource type="AnimationNodeAnimation" id="AnimationNodeAnimation_a2h7i"]
+animation = &"land"
+
+[sub_resource type="AnimationNodeStateMachineTransition" id="AnimationNodeStateMachineTransition_nqkks"]
+advance_mode = 2
+
+[sub_resource type="AnimationNodeStateMachineTransition" id="AnimationNodeStateMachineTransition_8bans"]
+switch_mode = 2
+advance_mode = 2
+
+[sub_resource type="AnimationNodeStateMachineTransition" id="AnimationNodeStateMachineTransition_jxhie"]
+break_loop_at_end = true
+advance_mode = 2
+advance_condition = &"landed"
+
+[sub_resource type="AnimationNodeStateMachineTransition" id="AnimationNodeStateMachineTransition_qfccq"]
+switch_mode = 2
+advance_mode = 2
+
+[sub_resource type="AnimationNodeStateMachine" id="AnimationNodeStateMachine_vx2qb"]
+states/Start/position = Vector2(198, 100)
+states/falling_normal/node = SubResource("AnimationNodeAnimation_vwou5")
+states/falling_normal/position = Vector2(542, 99)
+states/jump/node = SubResource("AnimationNodeAnimation_absnx")
+states/jump/position = Vector2(362, 95)
+states/land/node = SubResource("AnimationNodeAnimation_a2h7i")
+states/land/position = Vector2(716, 95)
+transitions = ["Start", "jump", SubResource("AnimationNodeStateMachineTransition_nqkks"), "land", "End", SubResource("AnimationNodeStateMachineTransition_8bans"), "falling_normal", "land", SubResource("AnimationNodeStateMachineTransition_jxhie"), "jump", "falling_normal", SubResource("AnimationNodeStateMachineTransition_qfccq")]
+
 [sub_resource type="AnimationNodeBlendTree" id="AnimationNodeBlendTree_bdcal"]
-graph_offset = Vector2(-584.8584, 18.72744)
-nodes/output/position = Vector2(540, 140)
+graph_offset = Vector2(-387.36435, 18.985031)
+nodes/output/position = Vector2(820, 140)
 nodes/Direction/node = SubResource("AnimationNodeBlendSpace1D_gmdvr")
 nodes/Direction/position = Vector2(-840, 160)
-nodes/Jump/node = SubResource("AnimationNodeOneShot_gmdvr")
-nodes/Jump/position = Vector2(20, 140)
-nodes/Animation/node = SubResource("AnimationNodeAnimation_wim6f")
-nodes/Animation/position = Vector2(-200, 460)
+"nodes/Animation 2/node" = SubResource("AnimationNodeAnimation_dvfu2")
+"nodes/Animation 2/position" = Vector2(140, 480)
+nodes/StateMachine/node = SubResource("AnimationNodeStateMachine_vx2qb")
+nodes/StateMachine/position = Vector2(-220, 460)
 nodes/Add2/node = SubResource("AnimationNodeAdd2_nkbs0")
 nodes/Add2/position = Vector2(-220, 140)
 nodes/Movement/node = SubResource("AnimationNodeBlendSpace1D_dvfu2")
 nodes/Movement/position = Vector2(-840, 400)
 nodes/Dash/node = SubResource("AnimationNodeOneShot_vwou5")
-nodes/Dash/position = Vector2(340, 140)
-"nodes/Animation 2/node" = SubResource("AnimationNodeAnimation_dvfu2")
-"nodes/Animation 2/position" = Vector2(140, 480)
-node_connections = [&"output", 0, &"Dash", &"Jump", 0, &"Add2", &"Jump", 1, &"Animation", &"Add2", 0, &"Direction", &"Add2", 1, &"Movement", &"Dash", 0, &"Jump", &"Dash", 1, &"Animation 2"]
+nodes/Dash/position = Vector2(320, 160)
+nodes/Jump/node = SubResource("AnimationNodeOneShot_gmdvr")
+nodes/Jump/position = Vector2(40, 140)
+nodes/FastFall/node = SubResource("AnimationNodeStateMachine_ejlqc")
+nodes/FastFall/position = Vector2(480, 520)
+node_connections = [&"output", 0, &"Dash", &"Add2", 0, &"Direction", &"Add2", 1, &"Movement", &"Dash", 0, &"Jump", &"Dash", 1, &"Animation 2", &"Jump", 0, &"Add2", &"Jump", 1, &"StateMachine"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_0a575"]
 size = Vector2(80, 131)
@@ -450,14 +674,12 @@ scale = Vector2(2, 2)
 sprite_frames = SubResource("SpriteFrames_g65c7")
 animation = &"run"
 autoplay = "default"
-frame_progress = 0.9769773
+frame_progress = 0.08054538
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=1364101473]
 shape = SubResource("CapsuleShape2D_g10m2")
 
-[node name="Hurtbox" type="Area2D" parent="." unique_id=2067084583]
-
-[node name="CollisionShape2D" type="CollisionShape2D" parent="Hurtbox" unique_id=1155637641]
+[node name="Hurtbox" parent="." unique_id=561438575 instance=ExtResource("5_gmdvr")]
 
 [node name="CameraTransform" type="RemoteTransform2D" parent="." unique_id=1222825734]
 position = Vector2(0, -76)
@@ -493,15 +715,17 @@ process_material = SubResource("ParticleProcessMaterial_wim6f")
 [node name="AnimationTree" type="AnimationTree" parent="." unique_id=1704876674]
 libraries/ = SubResource("AnimationLibrary_io36v")
 tree_root = SubResource("AnimationNodeBlendTree_bdcal")
-parameters/Direction/blend_position = -0.482
-parameters/Jump/active = false
-parameters/Jump/internal_active = false
-parameters/Jump/request = 0
+parameters/Direction/blend_position = 1.18
+parameters/StateMachine/conditions/landed = false
 parameters/Add2/add_amount = 1.0
-parameters/Movement/blend_position = 0.691
+parameters/Movement/blend_position = 0.389
 parameters/Dash/active = false
 parameters/Dash/internal_active = false
 parameters/Dash/request = 0
+parameters/Jump/active = false
+parameters/Jump/internal_active = false
+parameters/Jump/request = 0
+parameters/FastFall/conditions/landed = false
 
 [node name="Hitbox" parent="." unique_id=487133279 node_paths=PackedStringArray("entity") instance=ExtResource("3_0a575")]
 collision_layer = 2

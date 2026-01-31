@@ -15,7 +15,7 @@ var can_dash : bool = false;
 var has_jumped : bool = false;
 var in_coyote_time : bool = false;
 
-var gravity : float = 1800.0;
+var gravity : float = 2200.0;
 var jump_speed : float = 1200.0;
 
 var h_direction : float = 0.0;
