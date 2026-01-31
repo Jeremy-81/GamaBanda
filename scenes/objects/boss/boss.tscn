@@ -1,7 +1,7 @@
 [gd_scene format=3 uid="uid://cq6iebmicilbf"]
 
-[ext_resource type="Texture2D" uid="uid://61wvyl0hmq1o" path="res://icon.svg" id="1_adfyq"]
 [ext_resource type="Script" uid="uid://ldec8y3af7ov" path="res://scenes/objects/boss/boss.gd" id="1_mar8m"]
+[ext_resource type="Texture2D" uid="uid://c7kj83h2nr211" path="res://assets/player/run-Sheet 80x80 (final).png" id="2_b41nh"]
 [ext_resource type="Script" uid="uid://ct2ao5y04qtji" path="res://scenes/objects/components/hitbox.gd" id="3_dnwl1"]
 [ext_resource type="PackedScene" uid="uid://hqlkttia3yu4" path="res://scenes/objects/boss/hurt_particule.tscn" id="4_dnwl1"]
 [ext_resource type="Script" uid="uid://b13w1i1ecf06o" path="res://scenes/objects/components/hurtbox.gd" id="5_b41nh"]
@@ -28,10 +28,11 @@ script = ExtResource("1_mar8m")
 
 [node name="Sprite2D" type="Sprite2D" parent="." unique_id=1546540065]
 modulate = Color(0.47164172, 0.00017933518, 0.4805516, 1)
-position = Vector2(-0.99993896, -174.99995)
-rotation = 3.154859
-scale = Vector2(3, 3)
-texture = ExtResource("1_adfyq")
+position = Vector2(0, -175)
+scale = Vector2(5, 5)
+texture = ExtResource("2_b41nh")
+region_enabled = true
+region_rect = Rect2(0, 0, 88.436356, 80)
 
 [node name="Timer" type="Timer" parent="." unique_id=2083284811]
 wait_time = 2.0

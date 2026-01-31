@@ -2,6 +2,7 @@
 
 [ext_resource type="Theme" uid="uid://duj7cgl0u7wd3" path="res://ressources/theme.tres" id="1_klgdb"]
 [ext_resource type="Script" uid="uid://dsw7v56tqh14n" path="res://scenes/menu/menu.gd" id="2_mcvr8"]
+[ext_resource type="Texture2D" uid="uid://cqdfvbsup22tp" path="res://assets/options/sound-on.png" id="3_e0arn"]
 
 [node name="Menu" type="Control" unique_id=2033538670]
 layout_mode = 3
@@ -34,54 +35,111 @@ theme_override_constants/margin_top = 30
 theme_override_constants/margin_right = 30
 theme_override_constants/margin_bottom = 30
 
-[node name="HBoxContainer" type="HBoxContainer" parent="MarginContainer" unique_id=1365943540]
+[node name="MenuContainer" type="HBoxContainer" parent="MarginContainer" unique_id=1365943540]
+unique_name_in_owner = true
 layout_mode = 2
 alignment = 1
 
-[node name="VBoxContainer" type="VBoxContainer" parent="MarginContainer/HBoxContainer" unique_id=1369192969]
+[node name="VBoxContainer2" type="VBoxContainer" parent="MarginContainer/MenuContainer" unique_id=12569]
 layout_mode = 2
+size_flags_horizontal = 3
 alignment = 1
 
-[node name="GameName" type="Label" parent="MarginContainer/HBoxContainer/VBoxContainer" unique_id=1303340132]
+[node name="VBoxContainer" type="VBoxContainer" parent="MarginContainer/MenuContainer" unique_id=1369192969]
+layout_mode = 2
+size_flags_horizontal = 3
+theme_override_constants/separation = 70
+alignment = 1
+
+[node name="GameName" type="Label" parent="MarginContainer/MenuContainer/VBoxContainer" unique_id=1303340132]
 layout_mode = 2
 size_flags_vertical = 2
 theme_type_variation = &"Title"
-text = "Gama Banda"
+theme_override_font_sizes/font_size = 130
+text = "Gamask"
 horizontal_alignment = 1
 
-[node name="VBoxContainer" type="VBoxContainer" parent="MarginContainer/HBoxContainer/VBoxContainer" unique_id=112595923]
+[node name="VBoxContainer" type="VBoxContainer" parent="MarginContainer/MenuContainer/VBoxContainer" unique_id=112595923]
 layout_mode = 2
 size_flags_horizontal = 4
+size_flags_vertical = 6
 theme_override_constants/separation = 17
 alignment = 1
 
-[node name="Play" type="Button" parent="MarginContainer/HBoxContainer/VBoxContainer/VBoxContainer" unique_id=993924126]
+[node name="Play" type="Button" parent="MarginContainer/MenuContainer/VBoxContainer/VBoxContainer" unique_id=993924126]
 layout_mode = 2
 size_flags_vertical = 6
 text = "Play"
 
-[node name="Play2" type="Button" parent="MarginContainer/HBoxContainer/VBoxContainer/VBoxContainer" unique_id=1354137266]
+[node name="Play2" type="Button" parent="MarginContainer/MenuContainer/VBoxContainer/VBoxContainer" unique_id=1354137266]
 layout_mode = 2
 size_flags_vertical = 6
 text = "BOSS"
 
-[node name="Options" type="Button" parent="MarginContainer/HBoxContainer/VBoxContainer/VBoxContainer" unique_id=491111347]
+[node name="Credits" type="Button" parent="MarginContainer/MenuContainer/VBoxContainer/VBoxContainer" unique_id=491111347]
 layout_mode = 2
 size_flags_vertical = 6
-text = "Options
-"
+text = "Credits"
 
-[node name="Exit" type="Button" parent="MarginContainer/HBoxContainer/VBoxContainer/VBoxContainer" unique_id=226776282]
+[node name="Exit" type="Button" parent="MarginContainer/MenuContainer/VBoxContainer/VBoxContainer" unique_id=226776282]
 layout_mode = 2
 size_flags_vertical = 6
 text = "Exit"
 
-[node name="Version" type="Label" parent="MarginContainer/HBoxContainer/VBoxContainer" unique_id=859609522]
+[node name="Version" type="Label" parent="MarginContainer/MenuContainer/VBoxContainer" unique_id=859609522]
 layout_mode = 2
 size_flags_vertical = 10
 text = "0.0.1"
 horizontal_alignment = 1
 
-[connection signal="pressed" from="MarginContainer/HBoxContainer/VBoxContainer/VBoxContainer/Play" to="." method="_on_play_pressed"]
-[connection signal="pressed" from="MarginContainer/HBoxContainer/VBoxContainer/VBoxContainer/Play2" to="." method="_on_play_2_pressed"]
-[connection signal="pressed" from="MarginContainer/HBoxContainer/VBoxContainer/VBoxContainer/Exit" to="." method="_on_exit_pressed"]
+[node name="VBoxContainer3" type="VBoxContainer" parent="MarginContainer/MenuContainer" unique_id=374874377]
+layout_mode = 2
+size_flags_horizontal = 10
+alignment = 1
+
+[node name="SoundButton" type="TextureButton" parent="MarginContainer/MenuContainer/VBoxContainer3" unique_id=1029381544]
+unique_name_in_owner = true
+custom_minimum_size = Vector2(70, 70)
+layout_mode = 2
+texture_normal = ExtResource("3_e0arn")
+stretch_mode = 5
+
+[node name="CreditsContainer" type="VBoxContainer" parent="MarginContainer" unique_id=2069487974]
+unique_name_in_owner = true
+visible = false
+layout_mode = 2
+
+[node name="ColorRect" type="ColorRect" parent="MarginContainer/CreditsContainer" unique_id=1320240027]
+layout_mode = 2
+size_flags_vertical = 3
+color = Color(0, 0, 0, 0.9019608)
+
+[node name="RichTextLabel" type="RichTextLabel" parent="MarginContainer/CreditsContainer/ColorRect" unique_id=199409759]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+text = "Gamask
+
+Game makers : 
+- Jonh F
+- Ariel
+- Memi
+- Zoriko"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="ButtonBack" type="Button" parent="MarginContainer/CreditsContainer" unique_id=789947998]
+layout_mode = 2
+size_flags_horizontal = 4
+size_flags_vertical = 4
+text = "Back"
+
+[connection signal="pressed" from="MarginContainer/MenuContainer/VBoxContainer/VBoxContainer/Play" to="." method="_on_play_pressed"]
+[connection signal="pressed" from="MarginContainer/MenuContainer/VBoxContainer/VBoxContainer/Play2" to="." method="_on_play_2_pressed"]
+[connection signal="pressed" from="MarginContainer/MenuContainer/VBoxContainer/VBoxContainer/Credits" to="." method="_on_credits_pressed"]
+[connection signal="pressed" from="MarginContainer/MenuContainer/VBoxContainer/VBoxContainer/Exit" to="." method="_on_exit_pressed"]
+[connection signal="pressed" from="MarginContainer/MenuContainer/VBoxContainer3/SoundButton" to="." method="_on_texture_button_pressed"]
+[connection signal="pressed" from="MarginContainer/CreditsContainer/ButtonBack" to="." method="_on_button_back_pressed"]
