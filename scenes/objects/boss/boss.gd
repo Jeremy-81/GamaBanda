@@ -11,6 +11,8 @@ signal boss_died()
 
 @onready var sprite_2d: Sprite2D = $Sprite2D
 @onready var hit_paritcules := preload("uid://hqlkttia3yu4")
+@onready var big_hit_particles: GPUParticles2D = $BigHitParticles
+
 
 var in_range: bool = false
 var atck_rand := RandomNumberGenerator.new()
@@ -25,18 +27,18 @@ func _on_timer_timeout() -> void:
 
 func attack() -> void:
 	var rand_attack = atck_rand.randi_range(1, 10)
-	var attack : Node = preload("res://scenes/boss_attacks/homing_attack/homing_attack.tscn").instantiate();
+	var attack_scene : Node = preload("res://scenes/boss_attacks/homing_attack/homing_attack.tscn").instantiate();
 	
-	attack.objective = player;
+	attack_scene.objective = player;
 	
-	add_child(attack)
+	add_child(attack_scene)
 	
-	attack.global_position = global_position
+	attack_scene.global_position = global_position
 	if rand_attack < 5:
 		pass
 	else: 
-		attack.damage *= 2
-		attack.speed *= 4
+		attack_scene.damage *= 2
+		attack_scene.speed *= 4
 
 
 func take_damage(damage: float, ko_damage: float) -> void:
@@ -46,7 +48,7 @@ func take_damage(damage: float, ko_damage: float) -> void:
 		get_parent().add_child(hit_p)
 		hit_p.emitting = true
 	else:
-		$BigHitParticles.emitting = true;
+		big_hit_particles.emitting = true;
 	
 	hp -= damage
 	if hp < 0.0:

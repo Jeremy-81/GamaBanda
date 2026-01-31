@@ -31,8 +31,11 @@ func _init():
 # Deals damage to all the overlapping hurtboxes
 func attack(extra_damage : float = 0.0, extra_ko : float = 0.0) -> void:
 	var is_touching := false;
-	
+
 	for damagable_area in get_overlapping_areas():
+		print("Overlapping with area: " + damagable_area.name + " / " + damagable_area.get_parent().name)
+		if damagable_area.get_parent() == get_parent():
+			return
 		if damagable_area is Hurtbox:
 			is_touching = true;
 			damagable_area.take_damage(damage + extra_damage, ko_damage + extra_ko, entity);

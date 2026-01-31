@@ -21,7 +21,7 @@ func _ready() -> void:
 	player.life_changed.connect(update_player_life)
 	player.player_died.connect(game_loose)
 
-func _process(delta: float) -> void:
+func _process(_delta: float) -> void:
 	if Input.is_action_just_pressed("pause"):
 		if not game_paused:
 			get_tree().paused = true
@@ -36,13 +36,13 @@ func update_boss_life(hp) -> void:
 func update_player_life(hp) -> void:
 	player_life.value = hp
 
-func boss_interface_init(name, hp) -> void:
-	boss_name.text = name
+func boss_interface_init(name_boss, hp) -> void:
+	boss_name.text = name_boss
 	boss_life.max_value = hp
 	boss_life.value = hp
 
-func player_interface_init(name, hp) -> void:
-	player_name.text = name
+func player_interface_init(name_player, hp) -> void:
+	player_name.text = name_player
 	player_life.max_value = hp
 	player_life.value = hp
 
