@@ -4,6 +4,7 @@
 [ext_resource type="Script" uid="uid://ldec8y3af7ov" path="res://scenes/objects/boss/boss.gd" id="1_mar8m"]
 [ext_resource type="Script" uid="uid://ct2ao5y04qtji" path="res://scenes/objects/components/hitbox.gd" id="3_dnwl1"]
 [ext_resource type="PackedScene" uid="uid://hqlkttia3yu4" path="res://scenes/objects/boss/hurt_particule.tscn" id="4_dnwl1"]
+[ext_resource type="PackedScene" uid="uid://d2yx60hb2b6t" path="res://scenes/objects/hurtbox/hurtbox.tscn" id="5_b41nh"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_4e6rw"]
 size = Vector2(363.75, 369)
@@ -16,6 +17,9 @@ colors = PackedColorArray(1, 0.15686275, 0.20392157, 0.5176471)
 gradient = SubResource("Gradient_0a575")
 width = 48
 height = 48
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_b41nh"]
+radius = 279.1451
 
 [node name="Boss" type="CharacterBody2D" unique_id=623795894]
 script = ExtResource("1_mar8m")
@@ -34,6 +38,8 @@ wait_time = 2.0
 autostart = true
 
 [node name="Hitbox" type="Area2D" parent="." unique_id=571835088]
+collision_layer = 16
+collision_mask = 3
 script = ExtResource("3_dnwl1")
 metadata/_custom_type_script = "uid://ct2ao5y04qtji"
 
@@ -44,5 +50,13 @@ shape = SubResource("RectangleShape2D_4e6rw")
 [node name="BigHitParticles" parent="." unique_id=1008605748 instance=ExtResource("4_dnwl1")]
 amount = 100
 texture = SubResource("GradientTexture2D_dnwl1")
+
+[node name="Hurtbox" parent="." unique_id=561438575 instance=ExtResource("5_b41nh")]
+collision_layer = 4
+collision_mask = 9
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Hurtbox" unique_id=691134351]
+position = Vector2(0, -182)
+shape = SubResource("CircleShape2D_b41nh")
 
 [connection signal="timeout" from="Timer" to="." method="_on_timer_timeout"]

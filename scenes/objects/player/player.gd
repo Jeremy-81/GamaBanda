@@ -9,6 +9,14 @@ signal player_died
 @export var player_name: String
 @export var damage: float
 
+@onready var hitbox: Hitbox = $Hitbox
+@onready var dash_timer: Timer = $DashTimer
+@onready var coyote_timer: Timer = $CoyoteTimer
+@onready var screen_shadow: TextureRect = %ScreenShadow
+@onready var animation_tree: AnimationTree = $AnimationTree
+@onready var camera_transform: RemoteTransform2D = $CameraTransform
+
+
 var in_range: bool = false
 var loading_attack: float = 0.0
 
@@ -27,7 +35,7 @@ var h_speed : float = 800.0;
 var v_speed : float = 0.0;
 
 func _ready():
-	base_darken_factor = %ScreenShadow.texture.gradient.get_offset(0);
+	base_darken_factor = screen_shadow.texture.gradient.get_offset(0);
 	
 	await get_tree().process_frame
 	player_ready.emit(player_name, hp)
@@ -35,7 +43,7 @@ func _ready():
 
 func _process(delta) -> void:
 	# Dash state overwrites all movement.
-	if $DashTimer.time_left > 0.0:
+	if dash_timer.time_left > 0.0:
 		velocity = Vector2(DASH_SPEED * h_direction, v_speed);
 		move_and_slide();
 		return;
@@ -43,36 +51,36 @@ func _process(delta) -> void:
 	h_direction = Input.get_axis("go_left", "go_right");
 	
 	if h_direction != 0.0:
-		$AnimationTree.set("parameters/Direction/blend_position", h_direction);
-	$AnimationTree.set("parameters/Movement/blend_position", h_direction);
+		animation_tree.set("parameters/Direction/blend_position", h_direction);
+	animation_tree.set("parameters/Movement/blend_position", h_direction);
 	
 	if is_on_floor():
 		can_dash = true;
 		has_jumped = false;
 		in_coyote_time = false;
 	elif not in_coyote_time:
-		$CoyoteTimer.start();
+		coyote_timer.start();
 		in_coyote_time = true;
-	$AnimationTree.set("parameters/StateMachine/conditions/landed", is_on_floor());
+	animation_tree.set("parameters/StateMachine/conditions/landed", is_on_floor());
 	
 	var is_speed_falling := false;
 	if has_jumped and not is_on_floor() and Input.is_action_pressed("jump"):
 		is_speed_falling = true;
-	$AnimationTree.set("parameters/StateMachine/conditions/impulse", is_speed_falling);
+	animation_tree.set("parameters/StateMachine/conditions/impulse", is_speed_falling);
 	
 	if Input.is_action_just_pressed("dash") and can_dash and h_direction != 0.0:
 		h_direction = sign(h_direction);
 		v_speed = 0.0;
-		$DashTimer.start();
+		dash_timer.start();
 		_shake_screen();
-		_darken_screen($DashTimer.wait_time);
-		$AnimationTree.set("parameters/Dash/request", AnimationNodeOneShot.ONE_SHOT_REQUEST_FIRE);
+		_darken_screen(dash_timer.wait_time);
+		animation_tree.set("parameters/Dash/request", AnimationNodeOneShot.ONE_SHOT_REQUEST_FIRE);
 		can_dash = false;
 		return;
 	
-	if Input.is_action_just_pressed("jump") and (in_coyote_time and $CoyoteTimer.time_left > 0.0 || is_on_floor()):
+	if Input.is_action_just_pressed("jump") and (in_coyote_time and coyote_timer.time_left > 0.0 || is_on_floor()):
 		v_speed = -jump_speed;
-		$AnimationTree.set("parameters/Jump/request", AnimationNodeOneShot.ONE_SHOT_REQUEST_FIRE);
+		animation_tree.set("parameters/Jump/request", AnimationNodeOneShot.ONE_SHOT_REQUEST_FIRE);
 	if Input.is_action_just_released("jump") and !has_jumped:
 		has_jumped = true;
 	
@@ -93,24 +101,24 @@ func _process(delta) -> void:
 	
 	# Attack inputs
 	if Input.is_action_just_pressed("attack"):
-		$Hitbox.attack();
+		hitbox.attack();
 	
 	if Input.is_action_pressed("attack"):
 		loading_attack += delta;
 	
 	if Input.is_action_just_released("attack"):
 		if loading_attack > 1.0:
-			$Hitbox.attack(damage, 2.0);
+			hitbox.attack(damage, 2.0);
 		else:
-			$Hitbox.attack();
+			hitbox.attack();
 		loading_attack = 0.0;
 
 
 func _shake_screen(random_shake: bool = false, shake_time: float = 1.0) -> void:
 	var shake_tween : Tween = get_tree().create_tween();
 	var shake_direction : float = (-1.0 if randi() % 2 == 0 else 1.0) if random_shake else h_direction;
-	shake_tween.tween_property($CameraTransform, "rotation", -0.08 * shake_direction, 0.2 * shake_time);
-	shake_tween.tween_property($CameraTransform, "rotation", 0., 0.1 * shake_time);
+	shake_tween.tween_property(camera_transform, "rotation", -0.08 * shake_direction, 0.2 * shake_time);
+	shake_tween.tween_property(camera_transform, "rotation", 0., 0.1 * shake_time);
 	shake_tween.play();
 	pass;
 
@@ -124,7 +132,7 @@ func _darken_screen(wait_time : float = 0.0) -> void:
 	pass;
 
 func _update_darken(value) -> void:
-	%ScreenShadow.texture.gradient.set_offset(0, value);
+	screen_shadow.texture.gradient.set_offset(0, value);
 	pass;
 	
 
