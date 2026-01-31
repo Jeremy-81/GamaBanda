@@ -53,10 +53,12 @@ func _process(delta) -> void:
 	elif not in_coyote_time:
 		$CoyoteTimer.start();
 		in_coyote_time = true;
+	$AnimationTree.set("parameters/StateMachine/conditions/landed", is_on_floor());
 	
 	var is_speed_falling := false;
 	if has_jumped and not is_on_floor() and Input.is_action_pressed("jump"):
 		is_speed_falling = true;
+	$AnimationTree.set("parameters/StateMachine/conditions/impulse", is_speed_falling);
 	
 	if Input.is_action_just_pressed("dash") and can_dash and h_direction != 0.0:
 		h_direction = sign(h_direction);
@@ -75,7 +77,7 @@ func _process(delta) -> void:
 		has_jumped = true;
 	
 	if is_speed_falling:
-		v_speed += gravity * delta * 16;
+		v_speed += gravity * delta * 4;
 	else:
 		v_speed += gravity * delta;
 	
