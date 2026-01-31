@@ -98,7 +98,7 @@ func _process(delta) -> void:
 		loading_attack += delta
 	
 	if Input.is_action_just_released("attack"):
-		if loading_attack > 2.0:
+		if loading_attack > 1.0:
 			attack(damage * 10, 1)
 		else:
 			attack(damage, 0)

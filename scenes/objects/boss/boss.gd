@@ -15,6 +15,7 @@ signal boss_died()
 @onready var big_hit_paritcules: GPUParticles2D = $BigHitParitcules
 
 var in_range: bool = false
+var atck_rand := RandomNumberGenerator.new()
 
 func _ready() -> void:
 	await get_tree().process_frame
@@ -25,9 +26,17 @@ func _on_timer_timeout() -> void:
 	attack()
 
 func attack() -> void:
+	var rand_attack = atck_rand.randi_range(1, 10)
 	var attack : Node = preload("res://scenes/boss_attacks/boss_attack.tscn").instantiate()
 	attack.player = player
+	
 	add_child(attack)
+	attack.global_position = global_position
+	if rand_attack < 5:
+		pass
+	else: 
+		attack.damage *= 2
+		attack.speed *= 4
 
 func get_damage() -> float:
 	return damage

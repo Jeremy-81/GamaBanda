@@ -45,7 +45,7 @@ size = Vector2(74, 74)
 [node name="BossAttack" type="AnimatableBody2D" unique_id=1234559325 groups=["boss_attack"]]
 script = ExtResource("1_fefrm")
 damage = 5.0
-speed = 1.0
+speed = 150.0
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="." unique_id=398896364]
 scale = Vector2(2.25, 2.25)

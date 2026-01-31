@@ -128,6 +128,12 @@ theme_type_variation = &"Title"
 text = "Game Won !"
 horizontal_alignment = 1
 
+[node name="NextBoss" type="Button" parent="GameWon/MarginContainer/VBoxContainer" unique_id=1042770933]
+layout_mode = 2
+size_flags_horizontal = 4
+size_flags_vertical = 4
+text = "Next boss"
+
 [node name="MenuButton" type="Button" parent="GameWon/MarginContainer/VBoxContainer" unique_id=674199456]
 layout_mode = 2
 size_flags_horizontal = 4
@@ -179,6 +185,7 @@ size_flags_vertical = 4
 text = "Menu"
 
 [connection signal="pressed" from="GameOver/MarginContainer/VBoxContainer/MenuButton" to="." method="_on_menu_button_pressed"]
+[connection signal="pressed" from="GameWon/MarginContainer/VBoxContainer/NextBoss" to="." method="_on_next_boss_pressed"]
 [connection signal="pressed" from="GameWon/MarginContainer/VBoxContainer/MenuButton" to="." method="_on_menu_button_pressed"]
 [connection signal="pressed" from="GamePaused/MarginContainer/VBoxContainer/Continue" to="." method="_on_continue_pressed"]
 [connection signal="pressed" from="GamePaused/MarginContainer/VBoxContainer/MenuButton" to="." method="_on_menu_button_pressed"]

@@ -64,3 +64,8 @@ func _on_continue_pressed() -> void:
 	get_tree().paused = false
 	game_paused = false
 	%GamePaused.hide()
+
+
+func _on_next_boss_pressed() -> void:
+	game_paused = false
+	get_tree().change_scene_to_file("res://scenes/boss_fight.tscn")
