@@ -8,7 +8,7 @@
 
 [sub_resource type="Animation" id="Animation_85w88"]
 resource_name = "new_animation"
-length = 9.0
+length = 50.133335
 loop_mode = 1
 tracks/0/type = "value"
 tracks/0/imported = false
@@ -17,10 +17,102 @@ tracks/0/path = NodePath("Boss:position")
 tracks/0/interp = 1
 tracks/0/loop_wrap = true
 tracks/0/keys = {
-"times": PackedFloat32Array(0, 2.9666667, 6, 8.966666),
-"transitions": PackedFloat32Array(1, 1, 1, 1),
+"times": PackedFloat32Array(0, 1, 4.0333333, 7.1, 9.1, 14.1, 16.933332, 20.066668, 24.7, 28.166666, 30, 34.566666, 37.166668, 40.133335, 42.166668, 44.933334, 48.1),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1),
 "update": 0,
-"values": [Vector2(-9, 319), Vector2(1954, 352), Vector2(-1973, 352), Vector2(7, 369)]
+"values": [Vector2(4, 290), Vector2(481, 424), Vector2(-725, 432), Vector2(-1509, 104), Vector2(-1084, 352), Vector2(1544, -42), Vector2(2070, 403), Vector2(518, 403), Vector2(-751, 160), Vector2(204, 175), Vector2(204, 175), Vector2(-1928, 442), Vector2(-1069, 275), Vector2(139, 245), Vector2(1994, 381), Vector2(1120, -44), Vector2(-2, 386)]
+}
+tracks/1/type = "method"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("Boss")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(1, 3.2333333, 3.9333334, 4.6666665, 9.233334, 10.166667, 13.933333, 16, 17.166666, 19.7, 21.9, 25.7, 28.166666, 28.5, 29, 30.066668, 32.666668, 34.4, 35.933334, 38.8, 40.966667, 43.666668, 44.4, 46.1, 47.233334, 47.533333, 48.2),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1),
+"values": [{
+"args": [],
+"method": &"attack"
+}, {
+"args": [],
+"method": &"attack"
+}, {
+"args": [],
+"method": &"attack"
+}, {
+"args": [],
+"method": &"attack"
+}, {
+"args": [],
+"method": &"attack"
+}, {
+"args": [],
+"method": &"attack"
+}, {
+"args": [],
+"method": &"attack"
+}, {
+"args": [],
+"method": &"attack"
+}, {
+"args": [],
+"method": &"attack"
+}, {
+"args": [],
+"method": &"attack"
+}, {
+"args": [],
+"method": &"attack"
+}, {
+"args": [],
+"method": &"attack"
+}, {
+"args": [],
+"method": &"attack"
+}, {
+"args": [],
+"method": &"attack"
+}, {
+"args": [],
+"method": &"attack"
+}, {
+"args": [],
+"method": &"attack"
+}, {
+"args": [],
+"method": &"attack"
+}, {
+"args": [],
+"method": &"attack"
+}, {
+"args": [],
+"method": &"attack"
+}, {
+"args": [],
+"method": &"attack"
+}, {
+"args": [],
+"method": &"attack"
+}, {
+"args": [],
+"method": &"attack"
+}, {
+"args": [],
+"method": &"attack"
+}, {
+"args": [],
+"method": &"attack"
+}, {
+"args": [],
+"method": &"attack"
+}, {
+"args": [],
+"method": &"attack"
+}, {
+"args": [],
+"method": &"attack"
+}]
 }
 
 [sub_resource type="Animation" id="Animation_67f06"]
@@ -48,10 +140,10 @@ _data = {
 script = ExtResource("1_1hapx")
 
 [node name="BaseMap" parent="." unique_id=1651728083 instance=ExtResource("5_67f06")]
-position = Vector2(0, -219)
+position = Vector2(13, 19)
 
 [node name="Player" parent="." unique_id=596732785 instance=ExtResource("2_7ydql")]
-position = Vector2(5, 466)
+position = Vector2(-1, 498)
 
 [node name="Camera2D" type="Camera2D" parent="." unique_id=1386835362]
 position = Vector2(0, 4)

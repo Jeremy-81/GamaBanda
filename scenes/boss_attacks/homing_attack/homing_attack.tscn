@@ -1,98 +1,119 @@
 [gd_scene format=3 uid="uid://bgvesaacofdjy"]
 
 [ext_resource type="Script" uid="uid://ctvwpnuy61a2o" path="res://scenes/boss_attacks/homing_attack/homing_attack.gd" id="1_tih41"]
-[ext_resource type="Texture2D" uid="uid://1fbi8rrchs8w" path="res://assets/button/Button-NoTEXT-Hover.png" id="2_tih41"]
+[ext_resource type="FontFile" uid="uid://chla6mhf6wpl0" path="res://assets/fonts/Jersey_10/Jersey10-Regular.ttf" id="2_c6ewg"]
+[ext_resource type="Texture2D" uid="uid://1fbi8rrchs8w" path="res://assets/button/Button-NoTEXT-Hover.png" id="3_0jkhv"]
 [ext_resource type="Script" uid="uid://ct2ao5y04qtji" path="res://scenes/objects/components/hitbox.gd" id="3_mwh2y"]
+[ext_resource type="Texture2D" uid="uid://b4l0uirr773kj" path="res://assets/button/Button-NoTEXT-Normal.png" id="4_rusal"]
+[ext_resource type="Texture2D" uid="uid://vaqqg8polq4c" path="res://assets/button/Button-NoTEXT-Pressed.png" id="5_iq3gp"]
+[ext_resource type="FontFile" uid="uid://duqx5nydbyw75" path="res://assets/fonts/Jacquard_24/Jacquard24-Regular.ttf" id="6_bvwf4"]
 
-[sub_resource type="AtlasTexture" id="AtlasTexture_qm56a"]
-atlas = ExtResource("2_tih41")
-region = Rect2(0, 28, 64, 28)
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_7065j"]
+texture = ExtResource("3_0jkhv")
+texture_margin_left = 17.0
+texture_margin_top = 20.0
+texture_margin_right = 17.0
+texture_margin_bottom = 20.0
+expand_margin_left = 10.0
+expand_margin_right = 10.0
 
-[sub_resource type="AtlasTexture" id="AtlasTexture_mwh2y"]
-atlas = ExtResource("2_tih41")
-region = Rect2(64, 28, 64, 28)
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_l3ktj"]
+texture = ExtResource("4_rusal")
+texture_margin_left = 17.0
+texture_margin_top = 20.0
+texture_margin_right = 17.0
+texture_margin_bottom = 20.0
+expand_margin_left = 10.0
+expand_margin_right = 10.0
 
-[sub_resource type="AtlasTexture" id="AtlasTexture_6jaju"]
-atlas = ExtResource("2_tih41")
-region = Rect2(128, 28, 64, 28)
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_x62ba"]
+texture = ExtResource("5_iq3gp")
+texture_margin_left = 17.0
+texture_margin_top = 20.0
+texture_margin_right = 17.0
+texture_margin_bottom = 20.0
+expand_margin_left = 10.0
+expand_margin_right = 10.0
 
-[sub_resource type="AtlasTexture" id="AtlasTexture_c6ewg"]
-atlas = ExtResource("2_tih41")
-region = Rect2(0, 56, 64, 28)
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_cgoy4"]
+bg_color = Color(0.21927088, 0.19392738, 0.20286453, 1)
+border_width_left = 1
+border_width_top = 1
+border_width_right = 1
+border_width_bottom = 1
+border_color = Color(0, 0, 0, 1)
+corner_radius_top_left = 10
+corner_radius_top_right = 10
+corner_radius_bottom_right = 10
+corner_radius_bottom_left = 10
 
-[sub_resource type="AtlasTexture" id="AtlasTexture_0jkhv"]
-atlas = ExtResource("2_tih41")
-region = Rect2(64, 56, 64, 28)
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_jb3ky"]
+bg_color = Color(1, 0.2901961, 0.16862746, 1)
+border_width_left = 1
+border_width_top = 1
+border_width_right = 1
+border_width_bottom = 1
+border_color = Color(0, 0, 0, 1)
+corner_radius_top_left = 10
+corner_radius_top_right = 10
+corner_radius_bottom_right = 10
+corner_radius_bottom_left = 10
 
-[sub_resource type="AtlasTexture" id="AtlasTexture_rusal"]
-atlas = ExtResource("2_tih41")
-region = Rect2(128, 56, 64, 28)
-
-[sub_resource type="AtlasTexture" id="AtlasTexture_iq3gp"]
-atlas = ExtResource("2_tih41")
-region = Rect2(0, 84, 64, 28)
-
-[sub_resource type="AtlasTexture" id="AtlasTexture_bvwf4"]
-atlas = ExtResource("2_tih41")
-region = Rect2(64, 84, 64, 28)
-
-[sub_resource type="AtlasTexture" id="AtlasTexture_4tyoy"]
-atlas = ExtResource("2_tih41")
-region = Rect2(128, 84, 64, 28)
-
-[sub_resource type="SpriteFrames" id="SpriteFrames_sddsa"]
-animations = [{
-"frames": [{
-"duration": 1.0,
-"texture": SubResource("AtlasTexture_qm56a")
-}, {
-"duration": 1.0,
-"texture": SubResource("AtlasTexture_mwh2y")
-}, {
-"duration": 1.0,
-"texture": SubResource("AtlasTexture_6jaju")
-}, {
-"duration": 1.0,
-"texture": SubResource("AtlasTexture_c6ewg")
-}, {
-"duration": 1.0,
-"texture": SubResource("AtlasTexture_0jkhv")
-}, {
-"duration": 1.0,
-"texture": SubResource("AtlasTexture_rusal")
-}, {
-"duration": 1.0,
-"texture": SubResource("AtlasTexture_iq3gp")
-}, {
-"duration": 1.0,
-"texture": SubResource("AtlasTexture_bvwf4")
-}, {
-"duration": 1.0,
-"texture": SubResource("AtlasTexture_4tyoy")
-}],
-"loop": true,
-"name": &"default",
-"speed": 5.0
-}]
+[sub_resource type="Theme" id="Theme_4tyoy"]
+AttackLabel/base_type = &"Label"
+AttackLabel/constants/outline_size = 7
+AttackLabel/font_sizes/font_size = 30
+Button/constants/outline_size = 7
+Button/font_sizes/font_size = 27
+Button/fonts/font = ExtResource("2_c6ewg")
+Button/styles/hover = SubResource("StyleBoxTexture_7065j")
+Button/styles/normal = SubResource("StyleBoxTexture_l3ktj")
+Button/styles/pressed = SubResource("StyleBoxTexture_x62ba")
+Label/constants/outline_size = 3
+Label/font_sizes/font_size = 37
+Label/fonts/font = ExtResource("2_c6ewg")
+ProgressBar/font_sizes/font_size = 30
+ProgressBar/fonts/font = ExtResource("2_c6ewg")
+ProgressBar/styles/background = SubResource("StyleBoxFlat_cgoy4")
+ProgressBar/styles/fill = SubResource("StyleBoxFlat_jb3ky")
+Title/base_type = &"Label"
+Title/font_sizes/font_size = 70
+Title/fonts/font = ExtResource("6_bvwf4")
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_fefrm"]
-size = Vector2(74, 74)
+size = Vector2(99, 15.5)
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_tih41"]
-size = Vector2(80, 80)
+size = Vector2(99, 16)
 
 [node name="HomingAttack" type="AnimatableBody2D" unique_id=1234559325]
 script = ExtResource("1_tih41")
 damage = 5.0
-speed = 150.0
+speed = 330.0
+lifetime = 5.0
+label_attack = "Weeeeeeeea"
 
-[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="." unique_id=398896364]
-scale = Vector2(2.25, 2.25)
-sprite_frames = SubResource("SpriteFrames_sddsa")
-autoplay = "default"
-frame_progress = 0.61080515
+[node name="Label" type="Label" parent="." unique_id=2082191566]
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -33.5
+offset_top = -11.5
+offset_right = 33.5
+offset_bottom = 11.5
+grow_horizontal = 2
+grow_vertical = 2
+pivot_offset_ratio = Vector2(0.5, 0.5)
+size_flags_horizontal = 4
+theme = SubResource("Theme_4tyoy")
+theme_type_variation = &"AttackLabel"
+text = "ZZZZZZZ"
+horizontal_alignment = 1
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=1558523574]
+position = Vector2(-0.5, 1.25)
 shape = SubResource("RectangleShape2D_fefrm")
 disabled = true
 debug_color = Color(0.8776978, 0.2844998, 0.4937958, 0.41960785)
@@ -105,6 +126,7 @@ hit_on_touch = true
 metadata/_custom_type_script = "uid://ct2ao5y04qtji"
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Hitbox" unique_id=1471040396]
+position = Vector2(-0.5, 1)
 shape = SubResource("RectangleShape2D_tih41")
 
 [node name="LifeTimer" type="Timer" parent="." unique_id=1318716053]

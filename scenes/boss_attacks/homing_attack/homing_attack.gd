@@ -3,12 +3,16 @@ extends AnimatableBody2D
 @export var damage: float;
 @export var speed: float;
 @export var lifetime : float = 3.0;
-
 @export var objective : Node2D;
+@export var label_attack: String
+
+@onready var label: Label = $Label
 
 func _ready():
 	$Hitbox.damage = damage;
 	$LifeTimer.start(lifetime);
+	if label.text != "":
+		label.text = label_attack
 
 func _physics_process(delta: float) -> void:
 	var direction : Vector2 = global_position.direction_to(objective.global_position);
