@@ -2,6 +2,7 @@
 
 [ext_resource type="Script" uid="uid://dvrldnci314mb" path="res://scenes/levels/backstage_1/backstage_1.gd" id="1_ebnwq"]
 [ext_resource type="PackedScene" uid="uid://btg0d1sc8nd3r" path="res://scenes/objects/player/player.tscn" id="1_q63md"]
+[ext_resource type="Texture2D" uid="uid://nm4yqiia8lqm" path="res://assets/Cajaa.png" id="5_xf48k"]
 [ext_resource type="Theme" uid="uid://duj7cgl0u7wd3" path="res://ressources/theme.tres" id="6_pt1xq"]
 [ext_resource type="PackedScene" uid="uid://bo8pyxkcykbab" path="res://scenes/game_interface.tscn" id="6_xf48k"]
 [ext_resource type="PackedScene" uid="uid://bobfy0d4m1l1k" path="res://scenes/base_map/base_map.tscn" id="8_3a54s"]
@@ -10,7 +11,7 @@
 font_size = 60
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_rlj65"]
-size = Vector2(326, 61)
+size = Vector2(418, 109)
 
 [node name="Backstage1" type="Node" unique_id=192916966]
 script = ExtResource("1_ebnwq")
@@ -37,6 +38,8 @@ anchor_right = 0.7
 anchor_bottom = 0.2
 grow_horizontal = 2
 grow_vertical = 2
+theme = ExtResource("6_pt1xq")
+theme_type_variation = &"AttackLabel"
 text = "Dash with SHIFT"
 label_settings = SubResource("LabelSettings_rlj65")
 horizontal_alignment = 1
@@ -72,11 +75,21 @@ color = Color(1, 1, 1, 0)
 polygon = PackedVector2Array(-1908, 573, 2562, 571, 2543, -986, 2842, -932, 2819, 801, -2208, 911, -2194, -927, -1906, -926)
 
 [node name="Polygon2D2" type="Polygon2D" parent="StaticPlatforms" unique_id=1145942782]
-polygon = PackedVector2Array(-1234, 327, -1004, 313, -1032, 589, -1229, 585)
+polygon = PackedVector2Array(-1233, 324, -1003, 317, -999, 583, -1241, 578)
+
+[node name="Sprite2D" type="Sprite2D" parent="StaticPlatforms/Polygon2D2" unique_id=2115046572]
+position = Vector2(-1118.5, 448.50003)
+scale = Vector2(3.597223, 6.4772716)
+texture = ExtResource("5_xf48k")
 
 [node name="Polygon2D3" type="Polygon2D" parent="StaticPlatforms" unique_id=761101750]
 position = Vector2(-74, 221)
-polygon = PackedVector2Array(-734, -62, -725, 154, -201, 149, -201, -76)
+polygon = PackedVector2Array(-710, -83, -736, 144, -185, 144, -214, -80)
+
+[node name="Sprite2D2" type="Sprite2D" parent="StaticPlatforms/Polygon2D3" unique_id=1743352894]
+position = Vector2(-462.25, 33.00001)
+scale = Vector2(7.756945, 5.681818)
+texture = ExtResource("5_xf48k")
 
 [node name="HandFallTimer" type="Timer" parent="." unique_id=8882749]
 wait_time = 2.0
@@ -89,7 +102,7 @@ collision_layer = 2
 collision_mask = 2
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="DashTutorialArea" unique_id=934572968]
-position = Vector2(13, 69.5)
+position = Vector2(4, 45.5)
 shape = SubResource("RectangleShape2D_rlj65")
 
 [node name="GameInterface" parent="." unique_id=1587630800 node_paths=PackedStringArray("player") instance=ExtResource("6_xf48k")]

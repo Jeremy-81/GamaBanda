@@ -1,7 +1,6 @@
 [gd_scene format=3 uid="uid://btg0d1sc8nd3r"]
 
 [ext_resource type="Script" uid="uid://c6cb16oqkrwgg" path="res://scenes/objects/player/player.gd" id="1_g10m2"]
-[ext_resource type="Texture2D" uid="uid://dr0qawuq7wi86" path="res://assets/player/jump-Sheet 80x80.png" id="2_0a575"]
 [ext_resource type="Texture2D" uid="uid://cdyvygemnp5vx" path="res://assets/player/Combo-Sheet 80x125.png" id="2_bdcal"]
 [ext_resource type="Texture2D" uid="uid://c62574nyu5pg2" path="res://assets/player/roll-dash-Sheet 80x80.png" id="2_nkbs0"]
 [ext_resource type="Texture2D" uid="uid://0i4vxouppdl6" path="res://assets/player/speed-fall-Sheet 80x80.png" id="4_io36v"]
@@ -94,13 +93,9 @@ region = Rect2(480, 0, 80, 80)
 atlas = ExtResource("2_nkbs0")
 region = Rect2(560, 0, 80, 80)
 
-[sub_resource type="AtlasTexture" id="AtlasTexture_ibpxp"]
-atlas = ExtResource("2_0a575")
-region = Rect2(0, 0, 80, 80)
-
-[sub_resource type="AtlasTexture" id="AtlasTexture_5t4rm"]
-atlas = ExtResource("2_0a575")
-region = Rect2(80, 0, 80, 80)
+[sub_resource type="AtlasTexture" id="AtlasTexture_bdcal"]
+atlas = ExtResource("6_ponut")
+region = Rect2(0, 0, 80, 90)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_n8a43"]
 atlas = ExtResource("6_ponut")
@@ -273,14 +268,11 @@ animations = [{
 }, {
 "frames": [{
 "duration": 1.0,
-"texture": SubResource("AtlasTexture_ibpxp")
-}, {
-"duration": 0.2,
-"texture": SubResource("AtlasTexture_5t4rm")
+"texture": SubResource("AtlasTexture_bdcal")
 }],
 "loop": true,
 "name": &"default",
-"speed": 1.0
+"speed": 2.0
 }, {
 "frames": [{
 "duration": 1.0,
@@ -389,8 +381,8 @@ radius = 38.0
 height = 122.0
 
 [sub_resource type="Gradient" id="Gradient_0a575"]
-offsets = PackedFloat32Array(1)
-colors = PackedColorArray(1, 1, 1, 1)
+offsets = PackedFloat32Array(0.9904306)
+colors = PackedColorArray(0.39215687, 0.27450982, 0.23137255, 1)
 
 [sub_resource type="GradientTexture2D" id="GradientTexture2D_nkbs0"]
 gradient = SubResource("Gradient_0a575")
@@ -398,11 +390,12 @@ gradient = SubResource("Gradient_0a575")
 [sub_resource type="ParticleProcessMaterial" id="ParticleProcessMaterial_wim6f"]
 particle_flag_disable_z = true
 direction = Vector3(0, -1, 0)
+spread = 25.0
 initial_velocity_min = 414.28998
 initial_velocity_max = 414.28998
-gravity = Vector3(0, 1800, 0)
-scale_min = 0.19999999
-scale_max = 0.59999996
+gravity = Vector3(0, 2500, 0)
+scale_min = 0.099999994
+scale_max = 0.29999998
 
 [sub_resource type="Gradient" id="Gradient_g10m2"]
 offsets = PackedFloat32Array(0.78313255, 1)
@@ -860,6 +853,7 @@ scale = Vector2(2, 2)
 sprite_frames = SubResource("SpriteFrames_g65c7")
 animation = &"run"
 autoplay = "default"
+frame_progress = 0.7596671
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=1364101473]
 shape = SubResource("CapsuleShape2D_g10m2")
@@ -903,7 +897,7 @@ shape = SubResource("CapsuleShape2D_bdcal")
 [node name="FloorImpactParticles" type="GPUParticles2D" parent="." unique_id=1556150090]
 position = Vector2(0, 72)
 emitting = false
-amount = 20
+amount = 15
 texture = SubResource("GradientTexture2D_nkbs0")
 one_shot = true
 explosiveness = 1.0

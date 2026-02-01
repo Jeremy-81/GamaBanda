@@ -91,7 +91,7 @@ text = "Exit"
 [node name="Version" type="Label" parent="MarginContainer/MenuContainer/VBoxContainer" unique_id=859609522]
 layout_mode = 2
 size_flags_vertical = 10
-text = "0.0.1"
+text = "Ariel - Memi - John - Zoriko"
 horizontal_alignment = 1
 
 [node name="VBoxContainer3" type="VBoxContainer" parent="MarginContainer/MenuContainer" unique_id=374874377]
