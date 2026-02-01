@@ -1,0 +1,171 @@
+[gd_scene format=3 uid="uid://cor7j4v0a3kxu"]
+
+[ext_resource type="Script" uid="uid://i5t8ocx0b20l" path="res://scenes/objects/curtains/curtains.gd" id="1_ftmiv"]
+[ext_resource type="Texture2D" uid="uid://d0lutbm07fgry" path="res://assets/Cortina_close.png" id="1_mvmw4"]
+[ext_resource type="Texture2D" uid="uid://b2kmm4cy716xe" path="res://assets/curtains_closed.png" id="2_ftmiv"]
+
+[node name="Curtains" type="Node2D" unique_id=1934925256]
+z_index = 2
+position = Vector2(0, -263)
+scale = Vector2(4, 4)
+script = ExtResource("1_ftmiv")
+
+[node name="OpenLeft" type="Sprite2D" parent="." unique_id=700464968]
+position = Vector2(0, 65.75)
+texture = ExtResource("1_mvmw4")
+metadata/_edit_lock_ = true
+
+[node name="OpenRight" type="Sprite2D" parent="." unique_id=1132549143]
+position = Vector2(0, 65.75)
+texture = ExtResource("1_mvmw4")
+flip_h = true
+metadata/_edit_lock_ = true
+
+[node name="RightSide" type="Node2D" parent="." unique_id=1947793991]
+metadata/_edit_lock_ = true
+
+[node name="Sprite2D" type="Sprite2D" parent="RightSide" unique_id=907775919]
+modulate = Color(1, 1, 1, 0)
+texture = ExtResource("2_ftmiv")
+region_enabled = true
+region_rect = Rect2(482, 72, 70, 454)
+metadata/_edit_lock_ = true
+
+[node name="Sprite2D2" type="Sprite2D" parent="RightSide" unique_id=1513652231]
+modulate = Color(1, 1, 1, 0)
+position = Vector2(70, 0)
+texture = ExtResource("2_ftmiv")
+region_enabled = true
+region_rect = Rect2(482, 72, 70, 454)
+metadata/_edit_lock_ = true
+
+[node name="Sprite2D3" type="Sprite2D" parent="RightSide" unique_id=137110061]
+modulate = Color(1, 1, 1, 0)
+position = Vector2(140, 0)
+texture = ExtResource("2_ftmiv")
+region_enabled = true
+region_rect = Rect2(482, 72, 70, 454)
+metadata/_edit_lock_ = true
+
+[node name="Sprite2D4" type="Sprite2D" parent="RightSide" unique_id=719469741]
+modulate = Color(1, 1, 1, 0)
+position = Vector2(210, 0)
+texture = ExtResource("2_ftmiv")
+region_enabled = true
+region_rect = Rect2(482, 72, 70, 454)
+metadata/_edit_lock_ = true
+
+[node name="Sprite2D5" type="Sprite2D" parent="RightSide" unique_id=215853255]
+modulate = Color(1, 1, 1, 0)
+position = Vector2(280, 0)
+texture = ExtResource("2_ftmiv")
+region_enabled = true
+region_rect = Rect2(482, 72, 70, 454)
+metadata/_edit_lock_ = true
+
+[node name="Sprite2D6" type="Sprite2D" parent="RightSide" unique_id=843431999]
+modulate = Color(1, 1, 1, 0)
+position = Vector2(350, 0)
+texture = ExtResource("2_ftmiv")
+region_enabled = true
+region_rect = Rect2(482, 72, 70, 454)
+metadata/_edit_lock_ = true
+
+[node name="Sprite2D7" type="Sprite2D" parent="RightSide" unique_id=1880353323]
+modulate = Color(1, 1, 1, 0)
+position = Vector2(420, 0)
+texture = ExtResource("2_ftmiv")
+region_enabled = true
+region_rect = Rect2(482, 72, 70, 454)
+metadata/_edit_lock_ = true
+
+[node name="Sprite2D8" type="Sprite2D" parent="RightSide" unique_id=979212586]
+modulate = Color(1, 1, 1, 0)
+position = Vector2(490, 0)
+texture = ExtResource("2_ftmiv")
+region_enabled = true
+region_rect = Rect2(482, 72, 70, 454)
+metadata/_edit_lock_ = true
+
+[node name="Sprite2D9" type="Sprite2D" parent="RightSide" unique_id=517560427]
+modulate = Color(1, 1, 1, 0)
+position = Vector2(560, 0)
+texture = ExtResource("2_ftmiv")
+region_enabled = true
+region_rect = Rect2(482, 72, 70, 454)
+metadata/_edit_lock_ = true
+
+[node name="LeftSide" type="Node2D" parent="." unique_id=1217168363]
+scale = Vector2(-1, 1)
+metadata/_edit_lock_ = true
+
+[node name="Sprite2D" type="Sprite2D" parent="LeftSide" unique_id=275651809]
+modulate = Color(1, 1, 1, 0)
+texture = ExtResource("2_ftmiv")
+region_enabled = true
+region_rect = Rect2(482, 72, 70, 454)
+metadata/_edit_lock_ = true
+
+[node name="Sprite2D2" type="Sprite2D" parent="LeftSide" unique_id=1298587398]
+modulate = Color(1, 1, 1, 0)
+position = Vector2(70, 0)
+texture = ExtResource("2_ftmiv")
+region_enabled = true
+region_rect = Rect2(482, 72, 70, 454)
+metadata/_edit_lock_ = true
+
+[node name="Sprite2D3" type="Sprite2D" parent="LeftSide" unique_id=1435127436]
+modulate = Color(1, 1, 1, 0)
+position = Vector2(140, 0)
+texture = ExtResource("2_ftmiv")
+region_enabled = true
+region_rect = Rect2(482, 72, 70, 454)
+metadata/_edit_lock_ = true
+
+[node name="Sprite2D4" type="Sprite2D" parent="LeftSide" unique_id=845343745]
+modulate = Color(1, 1, 1, 0)
+position = Vector2(210, 0)
+texture = ExtResource("2_ftmiv")
+region_enabled = true
+region_rect = Rect2(482, 72, 70, 454)
+metadata/_edit_lock_ = true
+
+[node name="Sprite2D5" type="Sprite2D" parent="LeftSide" unique_id=30248959]
+modulate = Color(1, 1, 1, 0)
+position = Vector2(280, 0)
+texture = ExtResource("2_ftmiv")
+region_enabled = true
+region_rect = Rect2(482, 72, 70, 454)
+metadata/_edit_lock_ = true
+
+[node name="Sprite2D6" type="Sprite2D" parent="LeftSide" unique_id=25762989]
+modulate = Color(1, 1, 1, 0)
+position = Vector2(350, 0)
+texture = ExtResource("2_ftmiv")
+region_enabled = true
+region_rect = Rect2(482, 72, 70, 454)
+metadata/_edit_lock_ = true
+
+[node name="Sprite2D7" type="Sprite2D" parent="LeftSide" unique_id=135898127]
+modulate = Color(1, 1, 1, 0)
+position = Vector2(420, 0)
+texture = ExtResource("2_ftmiv")
+region_enabled = true
+region_rect = Rect2(482, 72, 70, 454)
+metadata/_edit_lock_ = true
+
+[node name="Sprite2D8" type="Sprite2D" parent="LeftSide" unique_id=815388609]
+modulate = Color(1, 1, 1, 0)
+position = Vector2(490, 0)
+texture = ExtResource("2_ftmiv")
+region_enabled = true
+region_rect = Rect2(482, 72, 70, 454)
+metadata/_edit_lock_ = true
+
+[node name="Sprite2D9" type="Sprite2D" parent="LeftSide" unique_id=1392321227]
+modulate = Color(1, 1, 1, 0)
+position = Vector2(560, 0)
+texture = ExtResource("2_ftmiv")
+region_enabled = true
+region_rect = Rect2(482, 72, 70, 454)
+metadata/_edit_lock_ = true

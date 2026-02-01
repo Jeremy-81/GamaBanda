@@ -106,64 +106,10 @@ func _on_mannequin_fell():
 
 func _on_end_area_area_entered(area):
 	$AnimationPlayer.play("end_tutorial");
-	close_curtains();
+	%Curtains.close_curtains();
 	var tween = create_tween();
 	tween.tween_property($Camera2D, "global_position", Vector2.ZERO, 3.0);
 	tween.parallel();
 	tween.tween_property($Camera2D, "zoom", Vector2.ONE * 0.25, 2.0);
 	tween.play();
-	pass;
-
-
-func open_curtains() -> void:
-	%Curtains/OpenLeft.show();
-	%Curtains/OpenRight.show();
-	var curtain_tween = create_tween();
-	for i in range(%Curtains/LeftSide.get_child_count()):
-		var subtween = create_tween();
-		var curtain : Sprite2D = %Curtains/LeftSide.get_child(i);
-		subtween.tween_property(curtain, "position:x", 70 * i + 35, 0.2).from(70 * i);
-		subtween.parallel();
-		subtween.tween_property(curtain, "modulate", Color8(100, 100, 100, 100), 0.2);
-		subtween.tween_property(curtain, "modulate", Color8(0, 0, 0, 0), 0.25);
-		curtain_tween.tween_subtween(subtween);
-		curtain_tween.parallel();
-		
-		subtween = create_tween();
-		curtain = %Curtains/RightSide.get_child(i);
-		subtween.tween_property(curtain, "position:x", 70 * i + 35, 0.2).from(70 * i);
-		subtween.parallel();
-		subtween.tween_property(curtain, "modulate", Color8(100, 100, 100, 100), 0.2);
-		subtween.tween_property(curtain, "modulate", Color8(0, 0, 0, 0), 0.25);
-		curtain_tween.tween_subtween(subtween);
-		pass;
-	curtain_tween.play();
-	pass;
-
-func close_curtains() -> void:
-	%Curtains/OpenLeft.hide();
-	%Curtains/OpenRight.hide();
-	%Curtains/LeftSide.show();
-	%Curtains/RightSide.show();
-	var curtain_tween = create_tween();
-	
-	for i in range(%Curtains/LeftSide.get_child_count() - 1, 0, -1):
-		var subtween = create_tween();
-		var curtain : Sprite2D = %Curtains/LeftSide.get_child(i);
-		subtween.tween_property(curtain, "position:x", 70 * i - 35, 0.2).from(70 * i);
-		subtween.parallel();
-		subtween.tween_property(curtain, "modulate", Color8(100, 100, 100, 100), 0.2);
-		subtween.tween_property(curtain, "modulate", Color8(255, 255, 255, 255), 0.25);
-		curtain_tween.tween_subtween(subtween);
-		curtain_tween.parallel();
-		
-		subtween = create_tween();
-		curtain = %Curtains/RightSide.get_child(i);
-		subtween.tween_property(curtain, "position:x", 70 * i - 35, 0.2).from(70 * i);
-		subtween.parallel();
-		subtween.tween_property(curtain, "modulate", Color8(100, 100, 100, 100), 0.2);
-		subtween.tween_property(curtain, "modulate", Color8(255, 255, 255, 255), 0.25);
-		curtain_tween.tween_subtween(subtween);
-		pass;
-	curtain_tween.play();
 	pass;

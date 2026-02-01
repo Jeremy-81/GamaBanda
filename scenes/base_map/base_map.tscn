@@ -6,7 +6,7 @@
 [ext_resource type="Texture2D" uid="uid://brslvtbp3rqb6" path="res://assets/level/frame_off.png" id="3_lg6w2"]
 [ext_resource type="Texture2D" uid="uid://ch3u5d7uuc0fw" path="res://assets/Stars_bg_total.png" id="3_oj4ub"]
 [ext_resource type="Texture2D" uid="uid://56cat0h7lfsa" path="res://assets/level/frame_on.png" id="4_oj4ub"]
-[ext_resource type="Texture2D" uid="uid://d0lutbm07fgry" path="res://assets/Cortina_close.png" id="5_b3o4f"]
+[ext_resource type="PackedScene" uid="uid://cor7j4v0a3kxu" path="res://scenes/objects/curtains/curtains.tscn" id="5_s270e"]
 [ext_resource type="AudioStream" uid="uid://gwrwuoo0gynk" path="res://sounds/music/Teatre.ogg" id="8_s270e"]
 
 [sub_resource type="Animation" id="Animation_rlj65"]
@@ -86,6 +86,9 @@ metadata/_edit_lock_ = true
 [node name="Front" type="Parallax2D" parent="." unique_id=1432342346]
 metadata/_edit_lock_ = true
 
+[node name="Curtains" parent="Front" unique_id=1934925256 instance=ExtResource("5_s270e")]
+start_open = false
+
 [node name="FrameOff" type="Sprite2D" parent="Front" unique_id=548276273]
 scale = Vector2(4, 4)
 texture = ExtResource("3_lg6w2")
@@ -96,16 +99,6 @@ modulate = Color(1, 1, 1, 0)
 scale = Vector2(4, 4)
 texture = ExtResource("4_oj4ub")
 metadata/_edit_lock_ = true
-
-[node name="FrameOn2" type="Sprite2D" parent="Front" unique_id=1388891547]
-scale = Vector2(4, 4)
-texture = ExtResource("5_b3o4f")
-metadata/_edit_lock_ = true
-
-[node name="FrameOn3" type="Sprite2D" parent="Front" unique_id=1044198234]
-scale = Vector2(4, 4)
-texture = ExtResource("5_b3o4f")
-flip_h = true
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="Front" unique_id=152628298]
 libraries/ = SubResource("AnimationLibrary_s270e")
