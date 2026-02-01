@@ -61,6 +61,18 @@ region = Rect2(1116, 0, 124, 85)
 atlas = ExtResource("3_ponut")
 region = Rect2(1240, 0, 124, 85)
 
+[sub_resource type="AtlasTexture" id="AtlasTexture_ior6t"]
+atlas = ExtResource("3_ponut")
+region = Rect2(992, 0, 124, 85)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_ehpfv"]
+atlas = ExtResource("3_ponut")
+region = Rect2(1116, 0, 124, 85)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_6tsh0"]
+atlas = ExtResource("3_ponut")
+region = Rect2(1240, 0, 124, 85)
+
 [sub_resource type="AtlasTexture" id="AtlasTexture_g65c7"]
 atlas = ExtResource("3_bdcal")
 region = Rect2(0, 0, 80, 80)
@@ -235,6 +247,20 @@ animations = [{
 }],
 "loop": true,
 "name": &"attack3",
+"speed": 12.0
+}, {
+"frames": [{
+"duration": 0.4,
+"texture": SubResource("AtlasTexture_ior6t")
+}, {
+"duration": 2.0,
+"texture": SubResource("AtlasTexture_ehpfv")
+}, {
+"duration": 1.2,
+"texture": SubResource("AtlasTexture_6tsh0")
+}],
+"loop": true,
+"name": &"charge_attack",
 "speed": 12.0
 }, {
 "frames": [{
@@ -448,6 +474,63 @@ tracks/2/keys = {
 "update": 0,
 "values": [Vector2(1, 1)]
 }
+tracks/3/type = "value"
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/path = NodePath("Pivot/ChargeAttack:emitting")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [false]
+}
+
+[sub_resource type="Animation" id="Animation_nqkks"]
+resource_name = "charge_attack"
+length = 0.2
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("AnimatedSprite:animation")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [&"charge_attack"]
+}
+tracks/1/type = "method"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("Pivot/HeavyHitbox")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"values": [{
+"args": [0.0, 0.0],
+"method": &"attack"
+}]
+}
+
+[sub_resource type="Animation" id="Animation_jxhie"]
+resource_name = "charge_ready"
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("AnimatedSprite:animation")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [&"hold_attack1"]
+}
 
 [sub_resource type="Animation" id="Animation_dvfu2"]
 resource_name = "dash"
@@ -555,6 +638,33 @@ tracks/2/keys = {
 "args": [0.0, 0.0],
 "method": &"attack"
 }]
+}
+
+[sub_resource type="Animation" id="Animation_a2h7i"]
+resource_name = "hold_attack"
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("AnimatedSprite:animation")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [&"hold_attack1"]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("Pivot/ChargeAttack:emitting")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0, 1),
+"transitions": PackedFloat32Array(1, 1),
+"update": 1,
+"values": [false, true]
 }
 
 [sub_resource type="Animation" id="Animation_bdcal"]
@@ -766,11 +876,14 @@ tracks/1/keys = {
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_io36v"]
 _data = {
 &"RESET": SubResource("Animation_nkbs0"),
+&"charge_attack": SubResource("Animation_nqkks"),
+&"charge_ready": SubResource("Animation_jxhie"),
 &"dash": SubResource("Animation_dvfu2"),
 &"fall_impulse": SubResource("Animation_qfccq"),
 &"falling_fast": SubResource("Animation_ejlqc"),
 &"falling_normal": SubResource("Animation_vwou5"),
 &"first_attack": SubResource("Animation_rp72t"),
+&"hold_attack": SubResource("Animation_a2h7i"),
 &"idle": SubResource("Animation_bdcal"),
 &"jump": SubResource("Animation_io36v"),
 &"land": SubResource("Animation_g65c7"),
@@ -790,10 +903,19 @@ animation = &"dash"
 
 [sub_resource type="AnimationNodeOneShot" id="AnimationNodeOneShot_bdcal"]
 filter_enabled = true
-filters = [".", "AnimatedSprite:animation", "HeavyHitbox", "Hitbox", "Pivot/HeavyHitbox", "Pivot/Hitbox"]
+filters = [".", "AnimatedSprite:animation", "HeavyHitbox", "Hitbox", "Pivot/ChargeAttack:emitting", "Pivot/HeavyHitbox", "Pivot/Hitbox"]
+
+[sub_resource type="AnimationNodeAnimation" id="AnimationNodeAnimation_jxhie"]
+animation = &"charge_attack"
 
 [sub_resource type="AnimationNodeAnimation" id="AnimationNodeAnimation_qfccq"]
 animation = &"first_attack"
+
+[sub_resource type="AnimationNodeAnimation" id="AnimationNodeAnimation_nqkks"]
+animation = &"hold_attack"
+
+[sub_resource type="AnimationNodeAnimation" id="AnimationNodeAnimation_8bans"]
+animation = &"charge_ready"
 
 [sub_resource type="AnimationNodeAnimation" id="AnimationNodeAnimation_ejlqc"]
 animation = &"last_attack"
@@ -819,7 +941,7 @@ switch_mode = 2
 advance_mode = 2
 
 [sub_resource type="AnimationNodeStateMachineTransition" id="AnimationNodeStateMachineTransition_bdcal"]
-priority = 2
+priority = 3
 switch_mode = 2
 advance_mode = 2
 advance_expression = "attack_counter <= 0"
@@ -830,17 +952,45 @@ switch_mode = 2
 advance_mode = 2
 advance_expression = "attack_counter <= 0"
 
+[sub_resource type="AnimationNodeStateMachineTransition" id="AnimationNodeStateMachineTransition_dvfu2"]
+switch_mode = 2
+advance_mode = 2
+advance_expression = "is_holding_attack"
+
+[sub_resource type="AnimationNodeStateMachineTransition" id="AnimationNodeStateMachineTransition_vwou5"]
+advance_mode = 2
+advance_expression = "!is_holding_attack"
+
+[sub_resource type="AnimationNodeStateMachineTransition" id="AnimationNodeStateMachineTransition_578jl"]
+switch_mode = 2
+advance_mode = 2
+
+[sub_resource type="AnimationNodeStateMachineTransition" id="AnimationNodeStateMachineTransition_jx0p0"]
+priority = 2
+switch_mode = 2
+advance_mode = 2
+
+[sub_resource type="AnimationNodeStateMachineTransition" id="AnimationNodeStateMachineTransition_c1gjl"]
+advance_mode = 2
+advance_expression = "!is_holding_attack"
+
 [sub_resource type="AnimationNodeStateMachine" id="AnimationNodeStateMachine_nqkks"]
 states/End/position = Vector2(897, 100)
 states/Start/position = Vector2(159, 100)
+states/charge_attack/node = SubResource("AnimationNodeAnimation_jxhie")
+states/charge_attack/position = Vector2(807, 8)
 states/first_attack/node = SubResource("AnimationNodeAnimation_qfccq")
 states/first_attack/position = Vector2(358, 100)
+states/hold_attack/node = SubResource("AnimationNodeAnimation_nqkks")
+states/hold_attack/position = Vector2(396, 8)
+states/hold_attack_complete/node = SubResource("AnimationNodeAnimation_8bans")
+states/hold_attack_complete/position = Vector2(601, -19)
 states/last_attack/node = SubResource("AnimationNodeAnimation_ejlqc")
 states/last_attack/position = Vector2(762, 268)
 states/second_attack/node = SubResource("AnimationNodeAnimation_rp72t")
 states/second_attack/position = Vector2(418, 268)
-transitions = ["Start", "first_attack", SubResource("AnimationNodeStateMachineTransition_g65c7"), "first_attack", "second_attack", SubResource("AnimationNodeStateMachineTransition_japq8"), "second_attack", "last_attack", SubResource("AnimationNodeStateMachineTransition_absnx"), "last_attack", "End", SubResource("AnimationNodeStateMachineTransition_a2h7i"), "first_attack", "End", SubResource("AnimationNodeStateMachineTransition_bdcal"), "second_attack", "End", SubResource("AnimationNodeStateMachineTransition_ponut")]
-graph_offset = Vector2(0, 71)
+transitions = ["Start", "first_attack", SubResource("AnimationNodeStateMachineTransition_g65c7"), "first_attack", "second_attack", SubResource("AnimationNodeStateMachineTransition_japq8"), "second_attack", "last_attack", SubResource("AnimationNodeStateMachineTransition_absnx"), "last_attack", "End", SubResource("AnimationNodeStateMachineTransition_a2h7i"), "first_attack", "End", SubResource("AnimationNodeStateMachineTransition_bdcal"), "second_attack", "End", SubResource("AnimationNodeStateMachineTransition_ponut"), "first_attack", "hold_attack", SubResource("AnimationNodeStateMachineTransition_dvfu2"), "hold_attack", "End", SubResource("AnimationNodeStateMachineTransition_vwou5"), "charge_attack", "End", SubResource("AnimationNodeStateMachineTransition_578jl"), "hold_attack", "hold_attack_complete", SubResource("AnimationNodeStateMachineTransition_jx0p0"), "hold_attack_complete", "charge_attack", SubResource("AnimationNodeStateMachineTransition_c1gjl")]
+graph_offset = Vector2(121, -48)
 
 [sub_resource type="AnimationNodeOneShot" id="AnimationNodeOneShot_vwou5"]
 filter_enabled = true
@@ -944,7 +1094,7 @@ states/land/position = Vector2(723, 95)
 transitions = ["Start", "jump", SubResource("AnimationNodeStateMachineTransition_nqkks"), "land", "End", SubResource("AnimationNodeStateMachineTransition_8bans"), "falling_normal", "land", SubResource("AnimationNodeStateMachineTransition_jxhie"), "jump", "falling_normal", SubResource("AnimationNodeStateMachineTransition_qfccq"), "falling_normal", "fall_impulse", SubResource("AnimationNodeStateMachineTransition_vx2qb"), "fall_impulse", "falling_fast", SubResource("AnimationNodeStateMachineTransition_ibpxp"), "falling_fast", "land", SubResource("AnimationNodeStateMachineTransition_5t4rm"), "jump", "fall_impulse", SubResource("AnimationNodeStateMachineTransition_io36v")]
 
 [sub_resource type="AnimationNodeBlendTree" id="AnimationNodeBlendTree_bdcal"]
-graph_offset = Vector2(-102.607056, 588.73413)
+graph_offset = Vector2(266.0655, 990.5834)
 nodes/output/position = Vector2(1380, 940)
 nodes/Direction/node = SubResource("AnimationNodeBlendSpace1D_gmdvr")
 nodes/Direction/position = Vector2(80, 940)
@@ -1019,7 +1169,7 @@ scale = Vector2(2, 2)
 sprite_frames = SubResource("SpriteFrames_g65c7")
 animation = &"run"
 autoplay = "default"
-frame_progress = 0.7161389
+frame_progress = 0.8516075
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=1364101473]
 shape = SubResource("CapsuleShape2D_g10m2")
@@ -1093,7 +1243,9 @@ position = Vector2(0, -49)
 emitting = false
 amount = 16
 texture = SubResource("GradientTexture2D_ponut")
+one_shot = true
 preprocess = 0.2
+explosiveness = 1.0
 process_material = SubResource("ParticleProcessMaterial_bdcal")
 
 [node name="Hitbox" type="Area2D" parent="Pivot" unique_id=1495450262 node_paths=PackedStringArray("entity")]
@@ -1117,6 +1269,7 @@ shape = SubResource("CapsuleShape2D_bdcal")
 position = Vector2(79, -5)
 script = ExtResource("7_ponut")
 entity = NodePath("../..")
+damage = 1.5
 ko_damage = 2.0
 is_player = true
 metadata/_custom_type_script = "uid://ct2ao5y04qtji"

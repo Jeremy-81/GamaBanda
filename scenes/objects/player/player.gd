@@ -16,9 +16,9 @@ signal player_died
 @onready var animation_tree: AnimationTree = $AnimationTree
 @onready var camera_transform: RemoteTransform2D = $CameraTransform
 
-
-var in_range: bool = false
-var loading_attack: float = 0.0
+var loading_attack: float = 0.0;
+var is_holding_attack := false;
+@export var attack_counter : int = 0;
 
 var base_darken_factor : float;
 
@@ -34,7 +34,6 @@ var h_direction : float = 0.0;
 var h_speed : float = 800.0;
 var v_speed : float = 0.0;
 
-@export var attack_counter : int = 0;
 
 func _ready():
 	base_darken_factor = screen_shadow.texture.gradient.get_offset(0);
@@ -106,9 +105,11 @@ func _process(delta) -> void:
 			animation_tree.set("parameters/Attack/request", AnimationNodeOneShot.ONE_SHOT_REQUEST_FIRE);
 	
 	if Input.is_action_pressed("attack"):
+		is_holding_attack = true;
 		loading_attack += delta;
 	
-	if Input.is_action_just_released("attack") and loading_attack >= 1.0:
+	if Input.is_action_just_released("attack"):
+		is_holding_attack = false;
 		loading_attack = 0.0;
 
 
