@@ -91,7 +91,7 @@ script = ExtResource("1_tih41")
 damage = 7.0
 speed = 330.0
 lifetime = 3.5
-label_attack = "Weeeeeeeea"
+label_attack = "Pchiouuuu"
 
 [node name="Label" type="Label" parent="." unique_id=2082191566]
 anchors_preset = 8

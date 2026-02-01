@@ -10,7 +10,7 @@ size = Vector2(160, 70)
 script = ExtResource("1_pya30")
 fall_speed = 3000.0
 entity = NodePath(".")
-damage = 50.0
+damage = 13.0
 hit_on_touch = true
 metadata/_custom_type_script = "uid://ct2ao5y04qtji"
 
