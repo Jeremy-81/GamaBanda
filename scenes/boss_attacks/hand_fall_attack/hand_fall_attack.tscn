@@ -1,7 +1,7 @@
 [gd_scene format=3 uid="uid://bxhlr7x4n4rmk"]
 
 [ext_resource type="Script" uid="uid://k8eewg76tfs3" path="res://scenes/boss_attacks/hand_fall_attack/hand_fall_attack.gd" id="1_pya30"]
-[ext_resource type="Texture2D" uid="uid://nm4yqiia8lqm" path="res://assets/Cajaa.png" id="2_fpmfr"]
+[ext_resource type="Texture2D" uid="uid://cfhptx5706lmh" path="res://assets/boss/hand_attack.png" id="2_fpmfr"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_pya30"]
 size = Vector2(160, 70)
