@@ -846,6 +846,7 @@ node_connections = [&"output", 0, &"Attack", &"AddMovement", 0, &"Direction", &"
 script = ExtResource("1_g10m2")
 hp = 100.0
 player_name = "Player"
+ko_damage = 1.88
 
 [node name="AnimatedSprite" type="AnimatedSprite2D" parent="." unique_id=66283099]
 texture_filter = 3

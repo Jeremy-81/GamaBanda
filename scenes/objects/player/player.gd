@@ -109,17 +109,19 @@ func _process(delta) -> void:
 		if combo_time_ellapsed > 0.5:
 			clicked = 0
 			combo_time_ellapsed = 0.0
-		print(clicked)
 		clicked += 1
-			
-		if loading_attack > 1.0:
-			hitbox.attack(damage + ko_damage, 2.0);
-		else:
-			hitbox.attack();
+		
+		hitbox.attack();
 		if not animation_tree.get("parameters/Attack/active"):
 			animation_tree.set("parameters/Attack/request", AnimationNodeOneShot.ONE_SHOT_REQUEST_FIRE)
 			
 		loading_attack = 0.0;
+	
+	if Input.is_action_pressed("attack"):
+		loading_attack += delta;
+	
+	if Input.is_action_just_released("attack") and loading_attack >= 1.0:
+		hitbox.attack(damage, ko_damage);
 
 
 func _shake_screen(random_shake: bool = false, shake_time: float = 1.0) -> void:
