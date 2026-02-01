@@ -4,4 +4,5 @@ extends Node2D
 @onready var player: CharacterBody2D = $Player
 
 func _ready():
-	$Player/CameraTransform.remote_path = $Camera2D.get_path()
+	$Player/CameraTransform.remote_path = $Camera2D.get_path();
+	$BaseMap/Front/Curtains.open_curtains();

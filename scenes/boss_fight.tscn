@@ -323,8 +323,12 @@ shape = SubResource("RectangleShape2D_x4w2v")
 one_way_collision = true
 
 [node name="PointLight2D" type="PointLight2D" parent="." unique_id=1479562897]
+<<<<<<< HEAD
 position = Vector2(1067, 748)
 color = Color(1, 1, 1, 0.6666667)
+=======
+position = Vector2(4, 815)
+>>>>>>> refs/remotes/origin/main
 texture = SubResource("GradientTexture2D_ewvlg")
 texture_scale = 8.0
 
