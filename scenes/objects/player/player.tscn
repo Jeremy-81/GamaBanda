@@ -8,6 +8,9 @@
 [ext_resource type="Texture2D" uid="uid://datgtv3kbm2jx" path="res://assets/player/jump-sheet.png" id="6_ponut"]
 [ext_resource type="Texture2D" uid="uid://c7kj83h2nr211" path="res://assets/player/run-sheet.png" id="7_dvfu2"]
 [ext_resource type="Script" uid="uid://ct2ao5y04qtji" path="res://scenes/objects/components/hitbox.gd" id="7_ponut"]
+[ext_resource type="AudioStream" uid="uid://dmngqf3mdmvey" path="res://sounds/attack.ogg" id="9_vwou5"]
+[ext_resource type="AudioStream" uid="uid://boawuxfy1r3fx" path="res://sounds/dash.ogg" id="10_qfccq"]
+[ext_resource type="AudioStream" uid="uid://bqr3ljvm1jqp1" path="res://sounds/jump.ogg" id="11_ejlqc"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_ibpxp"]
 atlas = ExtResource("3_ponut")
@@ -504,6 +507,20 @@ tracks/1/keys = {
 "method": &"attack"
 }]
 }
+tracks/2/type = "method"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("AttackSound3")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"values": [{
+"args": [0.0],
+"method": &"play"
+}]
+}
 
 [sub_resource type="Animation" id="Animation_jxhie"]
 resource_name = "charge_ready"
@@ -534,6 +551,20 @@ tracks/0/keys = {
 "transitions": PackedFloat32Array(1),
 "update": 1,
 "values": [&"dash"]
+}
+tracks/1/type = "method"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("DashSound")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"values": [{
+"args": [0.0],
+"method": &"play"
+}]
 }
 
 [sub_resource type="Animation" id="Animation_qfccq"]
@@ -627,6 +658,20 @@ tracks/2/keys = {
 "method": &"attack"
 }]
 }
+tracks/3/type = "method"
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/path = NodePath("AttackSound")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"values": [{
+"args": [0.0],
+"method": &"play"
+}]
+}
 
 [sub_resource type="Animation" id="Animation_a2h7i"]
 resource_name = "hold_attack"
@@ -688,6 +733,20 @@ tracks/0/keys = {
 "update": 1,
 "values": [&"jump"]
 }
+tracks/1/type = "method"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("JumpSound")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"values": [{
+"args": [0.0],
+"method": &"play"
+}]
+}
 
 [sub_resource type="Animation" id="Animation_g65c7"]
 resource_name = "land"
@@ -748,6 +807,20 @@ tracks/2/keys = {
 "method": &"attack"
 }]
 }
+tracks/3/type = "method"
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/path = NodePath("AttackSound3")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"values": [{
+"args": [0.0],
+"method": &"play"
+}]
+}
 
 [sub_resource type="Animation" id="Animation_ponut"]
 resource_name = "run"
@@ -805,6 +878,20 @@ tracks/2/keys = {
 "values": [{
 "args": [0.0, 0.0],
 "method": &"attack"
+}]
+}
+tracks/3/type = "method"
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/path = NodePath("AttackSound2")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"values": [{
+"args": [0.0],
+"method": &"play"
 }]
 }
 
@@ -894,7 +981,7 @@ animation = &"dash"
 
 [sub_resource type="AnimationNodeOneShot" id="AnimationNodeOneShot_bdcal"]
 filter_enabled = true
-filters = [".", "AnimatedSprite:animation", "HeavyHitbox", "Hitbox", "Pivot/ChargeAttack", "Pivot/ChargeAttack:emitting", "Pivot/HeavyHitbox", "Pivot/Hitbox"]
+filters = [".", "AnimatedSprite:animation", "AttackSound", "AttackSound2", "AttackSound2:playing", "AttackSound3", "AttackSound3:playing", "AttackSound:playing", "HeavyHitbox", "Hitbox", "Pivot/ChargeAttack", "Pivot/ChargeAttack:emitting", "Pivot/HeavyHitbox", "Pivot/Hitbox"]
 
 [sub_resource type="AnimationNodeAnimation" id="AnimationNodeAnimation_jxhie"]
 animation = &"charge_attack"
@@ -985,7 +1072,7 @@ graph_offset = Vector2(121, -48)
 
 [sub_resource type="AnimationNodeOneShot" id="AnimationNodeOneShot_vwou5"]
 filter_enabled = true
-filters = ["AnimatedSprite:animation"]
+filters = ["AnimatedSprite:animation", "DashSound"]
 
 [sub_resource type="AnimationNodeAnimation" id="AnimationNodeAnimation_nkbs0"]
 animation = &"turn_left"
@@ -1002,7 +1089,7 @@ blend_mode = 1
 
 [sub_resource type="AnimationNodeOneShot" id="AnimationNodeOneShot_gmdvr"]
 filter_enabled = true
-filters = ["AnimatedSprite:animation"]
+filters = ["AnimatedSprite:animation", "JumpSound"]
 
 [sub_resource type="AnimationNodeAnimation" id="AnimationNodeAnimation_io36v"]
 animation = &"run"
@@ -1085,7 +1172,7 @@ states/land/position = Vector2(723, 95)
 transitions = ["Start", "jump", SubResource("AnimationNodeStateMachineTransition_nqkks"), "land", "End", SubResource("AnimationNodeStateMachineTransition_8bans"), "falling_normal", "land", SubResource("AnimationNodeStateMachineTransition_jxhie"), "jump", "falling_normal", SubResource("AnimationNodeStateMachineTransition_qfccq"), "falling_normal", "fall_impulse", SubResource("AnimationNodeStateMachineTransition_vx2qb"), "fall_impulse", "falling_fast", SubResource("AnimationNodeStateMachineTransition_ibpxp"), "falling_fast", "land", SubResource("AnimationNodeStateMachineTransition_5t4rm"), "jump", "fall_impulse", SubResource("AnimationNodeStateMachineTransition_io36v")]
 
 [sub_resource type="AnimationNodeBlendTree" id="AnimationNodeBlendTree_bdcal"]
-graph_offset = Vector2(-232.71808, 516.1903)
+graph_offset = Vector2(-147.05444, 814.7078)
 nodes/output/position = Vector2(1380, 940)
 nodes/Direction/node = SubResource("AnimationNodeBlendSpace1D_gmdvr")
 nodes/Direction/position = Vector2(80, 940)
@@ -1160,7 +1247,7 @@ scale = Vector2(2, 2)
 sprite_frames = SubResource("SpriteFrames_g65c7")
 animation = &"run"
 autoplay = "default"
-frame_progress = 0.03560641
+frame_progress = 0.3961395
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=1364101473]
 shape = SubResource("CapsuleShape2D_g10m2")
@@ -1268,3 +1355,28 @@ metadata/_custom_type_script = "uid://ct2ao5y04qtji"
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Pivot/HeavyHitbox" unique_id=1040375832]
 shape = SubResource("CapsuleShape2D_ponut")
 metadata/_edit_lock_ = true
+
+[node name="AttackSound" type="AudioStreamPlayer" parent="." unique_id=644264676]
+stream = ExtResource("9_vwou5")
+volume_db = -12.333
+max_polyphony = 3
+
+[node name="AttackSound2" type="AudioStreamPlayer" parent="." unique_id=1647712356]
+stream = ExtResource("9_vwou5")
+volume_db = -14.596
+pitch_scale = 1.1
+max_polyphony = 3
+
+[node name="AttackSound3" type="AudioStreamPlayer" parent="." unique_id=310181548]
+stream = ExtResource("9_vwou5")
+volume_db = -13.684
+pitch_scale = 0.8
+max_polyphony = 3
+
+[node name="DashSound" type="AudioStreamPlayer" parent="." unique_id=1046071363]
+stream = ExtResource("10_qfccq")
+volume_db = -17.289
+
+[node name="JumpSound" type="AudioStreamPlayer" parent="." unique_id=2007890504]
+stream = ExtResource("11_ejlqc")
+volume_db = -25.651
