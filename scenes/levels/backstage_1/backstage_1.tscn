@@ -92,7 +92,7 @@ metadata/_edit_lock_ = true
 position = Vector2(-2004, 405)
 
 [node name="Camera2D" type="Camera2D" parent="." unique_id=1538928803]
-zoom = Vector2(0.75, 0.75)
+zoom = Vector2(0.905, 0.905)
 
 [node name="StaticPlatforms" type="Node" parent="." unique_id=1097559836]
 

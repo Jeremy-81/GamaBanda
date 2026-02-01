@@ -100,21 +100,18 @@ func _process(delta) -> void:
 		_shake_screen(true, 0.5);
 		_darken_screen();
 		$FloorImpactParticles.restart();
-	pass;
 	
 	if Input.is_action_just_pressed("attack"):
 		attack_counter = clamp(attack_counter + 1, 0, 1);
-		hitbox.attack();
 		if not animation_tree.get("parameters/Attack/active"):
-			animation_tree.set("parameters/Attack/request", AnimationNodeOneShot.ONE_SHOT_REQUEST_FIRE)
-			
-		loading_attack = 0.0;
+			animation_tree.set("parameters/Attack/request", AnimationNodeOneShot.ONE_SHOT_REQUEST_FIRE);
 	
 	if Input.is_action_pressed("attack"):
 		loading_attack += delta;
 	
 	if Input.is_action_just_released("attack") and loading_attack >= 1.0:
 		hitbox.attack(damage, ko_damage);
+		loading_attack = 0.0;
 
 
 func _shake_screen(random_shake: bool = false, shake_time: float = 1.0) -> void:

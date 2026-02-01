@@ -25,7 +25,6 @@ window/stretch/mode="canvas_items"
 
 movie_writer/video_quality=0.2
 movie_writer/movie_file="C:/Users/John Fernandez/Documents/Personal/Jam/GamaBanda/out/video.avi"
-movie_writer/fps=24
 
 [input]
 
