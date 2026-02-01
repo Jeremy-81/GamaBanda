@@ -113,6 +113,14 @@ region = Rect2(480, 0, 80, 90)
 atlas = ExtResource("6_ponut")
 region = Rect2(480, 0, 80, 90)
 
+[sub_resource type="AtlasTexture" id="AtlasTexture_51wug"]
+atlas = ExtResource("3_ponut")
+region = Rect2(0, 0, 124, 85)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_j0ia0"]
+atlas = ExtResource("3_ponut")
+region = Rect2(124, 0, 124, 85)
+
 [sub_resource type="AtlasTexture" id="AtlasTexture_dvfu2"]
 atlas = ExtResource("6_ponut")
 region = Rect2(0, 0, 80, 90)
@@ -294,6 +302,17 @@ animations = [{
 "speed": 10.0
 }, {
 "frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_51wug")
+}, {
+"duration": 1.2,
+"texture": SubResource("AtlasTexture_j0ia0")
+}],
+"loop": true,
+"name": &"hold_attack1",
+"speed": 2.0
+}, {
+"frames": [{
 "duration": 0.6,
 "texture": SubResource("AtlasTexture_dvfu2")
 }, {
@@ -362,14 +381,6 @@ height = 118.0
 radius = 29.0
 height = 106.0
 
-[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_bdcal"]
-radius = 76.0
-height = 262.0
-
-[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_ponut"]
-radius = 59.0
-height = 146.0
-
 [sub_resource type="Gradient" id="Gradient_0a575"]
 offsets = PackedFloat32Array(0.9904306)
 colors = PackedColorArray(0.39215687, 0.27450982, 0.23137255, 1)
@@ -424,6 +435,18 @@ tracks/1/keys = {
 "transitions": PackedFloat32Array(1),
 "update": 1,
 "values": [&"run"]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("Pivot:scale")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(1, 1)]
 }
 
 [sub_resource type="Animation" id="Animation_dvfu2"]
@@ -522,7 +545,7 @@ tracks/1/keys = {
 tracks/2/type = "method"
 tracks/2/imported = false
 tracks/2/enabled = true
-tracks/2/path = NodePath("Hitbox")
+tracks/2/path = NodePath("Pivot/Hitbox")
 tracks/2/interp = 1
 tracks/2/loop_wrap = true
 tracks/2/keys = {
@@ -613,7 +636,7 @@ tracks/1/keys = {
 tracks/2/type = "method"
 tracks/2/imported = false
 tracks/2/enabled = true
-tracks/2/path = NodePath("HeavyHitbox")
+tracks/2/path = NodePath("Pivot/HeavyHitbox")
 tracks/2/interp = 1
 tracks/2/loop_wrap = true
 tracks/2/keys = {
@@ -672,7 +695,7 @@ tracks/1/keys = {
 tracks/2/type = "method"
 tracks/2/imported = false
 tracks/2/enabled = true
-tracks/2/path = NodePath("Hitbox")
+tracks/2/path = NodePath("Pivot/Hitbox")
 tracks/2/interp = 1
 tracks/2/loop_wrap = true
 tracks/2/keys = {
@@ -699,6 +722,18 @@ tracks/0/keys = {
 "update": 1,
 "values": [true]
 }
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("Pivot:scale")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(-1.03, 1)]
+}
 
 [sub_resource type="Animation" id="Animation_gmdvr"]
 resource_name = "turn_right"
@@ -714,6 +749,18 @@ tracks/0/keys = {
 "transitions": PackedFloat32Array(1),
 "update": 1,
 "values": [false]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("Pivot:scale")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(1, 1)]
 }
 
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_io36v"]
@@ -743,7 +790,7 @@ animation = &"dash"
 
 [sub_resource type="AnimationNodeOneShot" id="AnimationNodeOneShot_bdcal"]
 filter_enabled = true
-filters = [".", "AnimatedSprite:animation", "HeavyHitbox", "Hitbox"]
+filters = [".", "AnimatedSprite:animation", "HeavyHitbox", "Hitbox", "Pivot/HeavyHitbox", "Pivot/Hitbox"]
 
 [sub_resource type="AnimationNodeAnimation" id="AnimationNodeAnimation_qfccq"]
 animation = &"first_attack"
@@ -897,7 +944,7 @@ states/land/position = Vector2(723, 95)
 transitions = ["Start", "jump", SubResource("AnimationNodeStateMachineTransition_nqkks"), "land", "End", SubResource("AnimationNodeStateMachineTransition_8bans"), "falling_normal", "land", SubResource("AnimationNodeStateMachineTransition_jxhie"), "jump", "falling_normal", SubResource("AnimationNodeStateMachineTransition_qfccq"), "falling_normal", "fall_impulse", SubResource("AnimationNodeStateMachineTransition_vx2qb"), "fall_impulse", "falling_fast", SubResource("AnimationNodeStateMachineTransition_ibpxp"), "falling_fast", "land", SubResource("AnimationNodeStateMachineTransition_5t4rm"), "jump", "fall_impulse", SubResource("AnimationNodeStateMachineTransition_io36v")]
 
 [sub_resource type="AnimationNodeBlendTree" id="AnimationNodeBlendTree_bdcal"]
-graph_offset = Vector2(457.8192, 889.56287)
+graph_offset = Vector2(-102.607056, 588.73413)
 nodes/output/position = Vector2(1380, 940)
 nodes/Direction/node = SubResource("AnimationNodeBlendSpace1D_gmdvr")
 nodes/Direction/position = Vector2(80, 940)
@@ -919,6 +966,47 @@ nodes/Attack_state_machine/node = SubResource("AnimationNodeStateMachine_nqkks")
 nodes/Attack_state_machine/position = Vector2(1080, 1260)
 node_connections = [&"output", 0, &"Attack", &"AddMovement", 0, &"Direction", &"AddMovement", 1, &"Movement", &"Dash", 0, &"Jump", &"Dash", 1, &"Animation Dash", &"Jump", 0, &"AddMovement", &"Jump", 1, &"StateMachineJump", &"Attack", 0, &"Dash", &"Attack", 1, &"Attack_state_machine"]
 
+[sub_resource type="Gradient" id="Gradient_bdcal"]
+interpolation_mode = 1
+colors = PackedColorArray(1, 1, 1, 1, 1, 1, 1, 0)
+
+[sub_resource type="GradientTexture2D" id="GradientTexture2D_ponut"]
+gradient = SubResource("Gradient_bdcal")
+width = 32
+height = 32
+fill = 1
+fill_from = Vector2(0.5, 0.5)
+fill_to = Vector2(1, 0.5)
+
+[sub_resource type="Curve" id="Curve_bdcal"]
+_data = [Vector2(0, 1), 0.0, 0.20101261, 0, 0, Vector2(0.99999, 0), 0.4157457, 0.4157457, 0, 0, Vector2(1, 1), 0.0, 0.0, 0, 0]
+point_count = 3
+
+[sub_resource type="CurveTexture" id="CurveTexture_ponut"]
+curve = SubResource("Curve_bdcal")
+
+[sub_resource type="ParticleProcessMaterial" id="ParticleProcessMaterial_bdcal"]
+particle_flag_disable_z = true
+emission_shape = 3
+emission_box_extents = Vector3(1, 20, 1)
+spread = 180.0
+initial_velocity_min = 32.07
+initial_velocity_max = 32.07
+gravity = Vector3(0, 10, 0)
+damping_min = 7.6920004
+damping_max = 7.6920004
+scale_min = 0.29999998
+scale_max = 0.5
+scale_curve = SubResource("CurveTexture_ponut")
+
+[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_bdcal"]
+radius = 76.0
+height = 262.0
+
+[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_ponut"]
+radius = 59.0
+height = 146.0
+
 [node name="Player" type="CharacterBody2D" unique_id=2105575625]
 script = ExtResource("1_g10m2")
 hp = 100.0
@@ -931,6 +1019,7 @@ scale = Vector2(2, 2)
 sprite_frames = SubResource("SpriteFrames_g65c7")
 animation = &"run"
 autoplay = "default"
+frame_progress = 0.7161389
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=1364101473]
 shape = SubResource("CapsuleShape2D_g10m2")
@@ -956,35 +1045,6 @@ metadata/_custom_type_script = "uid://b13w1i1ecf06o"
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Hurtbox" unique_id=396951705]
 shape = SubResource("CapsuleShape2D_io36v")
-
-[node name="Hitbox" type="Area2D" parent="." unique_id=1495450262 node_paths=PackedStringArray("entity")]
-position = Vector2(7, -3)
-collision_layer = 2
-collision_mask = 5
-script = ExtResource("7_ponut")
-entity = NodePath("..")
-damage = 0.75
-ko_damage = null
-hit_on_touch = null
-is_player = true
-metadata/_custom_type_script = "uid://ct2ao5y04qtji"
-
-[node name="CollisionShape2D" type="CollisionShape2D" parent="Hitbox" unique_id=388292858]
-position = Vector2(-7, -1)
-rotation = -1.5707964
-shape = SubResource("CapsuleShape2D_bdcal")
-
-[node name="HeavyHitbox" type="Area2D" parent="." unique_id=853790108 node_paths=PackedStringArray("entity")]
-position = Vector2(79, -5)
-script = ExtResource("7_ponut")
-entity = NodePath("..")
-ko_damage = 2.0
-is_player = true
-metadata/_custom_type_script = "uid://ct2ao5y04qtji"
-
-[node name="CollisionShape2D" type="CollisionShape2D" parent="HeavyHitbox" unique_id=1040375832]
-shape = SubResource("CapsuleShape2D_ponut")
-metadata/_edit_lock_ = true
 
 [node name="FloorImpactParticles" type="GPUParticles2D" parent="." unique_id=1556150090]
 position = Vector2(0, 72)
@@ -1025,3 +1085,42 @@ parameters/Jump/request = 0
 parameters/Attack/active = false
 parameters/Attack/internal_active = false
 parameters/Attack/request = 0
+
+[node name="Pivot" type="Node2D" parent="." unique_id=1533106988]
+
+[node name="ChargeAttack" type="GPUParticles2D" parent="Pivot" unique_id=1356287075]
+position = Vector2(0, -49)
+emitting = false
+amount = 16
+texture = SubResource("GradientTexture2D_ponut")
+preprocess = 0.2
+process_material = SubResource("ParticleProcessMaterial_bdcal")
+
+[node name="Hitbox" type="Area2D" parent="Pivot" unique_id=1495450262 node_paths=PackedStringArray("entity")]
+position = Vector2(7, -3)
+collision_layer = 2
+collision_mask = 5
+script = ExtResource("7_ponut")
+entity = NodePath("../..")
+damage = 0.75
+ko_damage = null
+hit_on_touch = null
+is_player = true
+metadata/_custom_type_script = "uid://ct2ao5y04qtji"
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Pivot/Hitbox" unique_id=388292858]
+position = Vector2(-7, -1)
+rotation = -1.5707964
+shape = SubResource("CapsuleShape2D_bdcal")
+
+[node name="HeavyHitbox" type="Area2D" parent="Pivot" unique_id=853790108 node_paths=PackedStringArray("entity")]
+position = Vector2(79, -5)
+script = ExtResource("7_ponut")
+entity = NodePath("../..")
+ko_damage = 2.0
+is_player = true
+metadata/_custom_type_script = "uid://ct2ao5y04qtji"
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Pivot/HeavyHitbox" unique_id=1040375832]
+shape = SubResource("CapsuleShape2D_ponut")
+metadata/_edit_lock_ = true

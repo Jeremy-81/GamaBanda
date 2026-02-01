@@ -10,7 +10,6 @@ signal player_died
 @export var damage: float
 @export var ko_damage: float
 
-@onready var hitbox: Hitbox = $Hitbox
 @onready var dash_timer: Timer = $DashTimer
 @onready var coyote_timer: Timer = $CoyoteTimer
 @onready var screen_shadow: TextureRect = %ScreenShadow
@@ -110,7 +109,6 @@ func _process(delta) -> void:
 		loading_attack += delta;
 	
 	if Input.is_action_just_released("attack") and loading_attack >= 1.0:
-		hitbox.attack(damage, ko_damage);
 		loading_attack = 0.0;
 
 
