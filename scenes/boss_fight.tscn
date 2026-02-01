@@ -5,6 +5,7 @@
 [ext_resource type="PackedScene" uid="uid://cq6iebmicilbf" path="res://scenes/objects/boss/boss.tscn" id="3_7ydql"]
 [ext_resource type="PackedScene" uid="uid://bo8pyxkcykbab" path="res://scenes/game_interface.tscn" id="4_85w88"]
 [ext_resource type="PackedScene" uid="uid://bobfy0d4m1l1k" path="res://scenes/base_map/base_map.tscn" id="5_67f06"]
+[ext_resource type="Texture2D" uid="uid://cboed4su4o3y4" path="res://assets/level/cloud.png" id="6_31neg"]
 
 [sub_resource type="Animation" id="Animation_85w88"]
 resource_name = "new_animation"
@@ -136,6 +137,19 @@ _data = {
 &"RESET": SubResource("Animation_67f06")
 }
 
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_x4w2v"]
+size = Vector2(100, 30)
+
+[sub_resource type="Gradient" id="Gradient_adyqv"]
+offsets = PackedFloat32Array(0.3253012, 0.6686747, 1)
+colors = PackedColorArray(1, 1, 1, 1, 1, 1, 1, 0.88659793, 1, 1, 1, 0)
+
+[sub_resource type="GradientTexture2D" id="GradientTexture2D_ewvlg"]
+gradient = SubResource("Gradient_adyqv")
+fill = 1
+fill_from = Vector2(0.5, 0.5)
+fill_to = Vector2(1, 0.5)
+
 [node name="BossFight" type="Node2D" unique_id=1442488628]
 script = ExtResource("1_1hapx")
 
@@ -161,6 +175,65 @@ boss_name = "Méchant "
 hp = 100.0
 player = NodePath("../Player")
 
+[node name="RemoteTransform2D" type="RemoteTransform2D" parent="Boss" unique_id=629713711]
+position = Vector2(0, 525)
+remote_path = NodePath("../../PointLight2D")
+
 [node name="AnimationBoss" type="AnimationPlayer" parent="." unique_id=964214574]
 libraries/ = SubResource("AnimationLibrary_31neg")
 autoplay = &"Boss"
+
+[node name="Platforms" type="Node" parent="." unique_id=1446714928]
+
+[node name="Sprite2D" type="Sprite2D" parent="Platforms" unique_id=494203428]
+position = Vector2(-1001, 282.88333)
+scale = Vector2(2.5373874, 2.5373874)
+texture = ExtResource("6_31neg")
+
+[node name="StaticBody2D" type="StaticBody2D" parent="Platforms/Sprite2D" unique_id=250602212]
+position = Vector2(0, 22)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Platforms/Sprite2D/StaticBody2D" unique_id=1123996330]
+shape = SubResource("RectangleShape2D_x4w2v")
+one_way_collision = true
+
+[node name="Sprite2D2" type="Sprite2D" parent="Platforms" unique_id=1808163963]
+position = Vector2(-653, -3.1166687)
+scale = Vector2(2.5373874, 2.5373874)
+texture = ExtResource("6_31neg")
+
+[node name="StaticBody2D" type="StaticBody2D" parent="Platforms/Sprite2D2" unique_id=597716009]
+position = Vector2(0, 22)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Platforms/Sprite2D2/StaticBody2D" unique_id=1801104789]
+shape = SubResource("RectangleShape2D_x4w2v")
+one_way_collision = true
+
+[node name="Sprite2D3" type="Sprite2D" parent="Platforms" unique_id=1699540415]
+position = Vector2(1155, 282.88333)
+scale = Vector2(2.5373874, 2.5373874)
+texture = ExtResource("6_31neg")
+
+[node name="StaticBody2D" type="StaticBody2D" parent="Platforms/Sprite2D3" unique_id=502656842]
+position = Vector2(0, 22)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Platforms/Sprite2D3/StaticBody2D" unique_id=1954441342]
+shape = SubResource("RectangleShape2D_x4w2v")
+one_way_collision = true
+
+[node name="Sprite2D4" type="Sprite2D" parent="Platforms" unique_id=980569282]
+position = Vector2(743.78064, -3.1166687)
+scale = Vector2(2.5373874, 2.5373874)
+texture = ExtResource("6_31neg")
+
+[node name="StaticBody2D" type="StaticBody2D" parent="Platforms/Sprite2D4" unique_id=1400750221]
+position = Vector2(0, 22)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Platforms/Sprite2D4/StaticBody2D" unique_id=1124705428]
+shape = SubResource("RectangleShape2D_x4w2v")
+one_way_collision = true
+
+[node name="PointLight2D" type="PointLight2D" parent="." unique_id=1479562897]
+position = Vector2(-1, 498)
+texture = SubResource("GradientTexture2D_ewvlg")
+texture_scale = 8.0
