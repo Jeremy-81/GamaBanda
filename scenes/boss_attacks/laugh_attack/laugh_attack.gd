@@ -7,6 +7,7 @@ var direction : Vector2;
 var is_active := false;
 
 func _ready():
+	super();
 	rotation = randf() * PI - PI / 2.0;
 	
 	direction = global_position.direction_to(objective.global_position);

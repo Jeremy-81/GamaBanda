@@ -31,6 +31,7 @@ func _enter_tree():
 	if invencibility_time > 0.0:
 		_invencibility_timer = Timer.new();
 		_invencibility_timer.wait_time = invencibility_time;
+		_invencibility_timer.one_shot = true;
 		add_child(_invencibility_timer);
 
 
