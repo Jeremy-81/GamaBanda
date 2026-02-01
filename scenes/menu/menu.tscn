@@ -67,10 +67,10 @@ size_flags_vertical = 6
 theme_override_constants/separation = 17
 alignment = 1
 
-[node name="Play" type="Button" parent="MarginContainer/MenuContainer/VBoxContainer/VBoxContainer" unique_id=993924126]
+[node name="Tutorial" type="Button" parent="MarginContainer/MenuContainer/VBoxContainer/VBoxContainer" unique_id=993924126]
 layout_mode = 2
 size_flags_vertical = 6
-text = "Play"
+text = "Tutorial"
 
 [node name="BossFight" type="Button" parent="MarginContainer/MenuContainer/VBoxContainer/VBoxContainer" unique_id=1354137266]
 layout_mode = 2
@@ -91,7 +91,7 @@ text = "Exit"
 [node name="Version" type="Label" parent="MarginContainer/MenuContainer/VBoxContainer" unique_id=859609522]
 layout_mode = 2
 size_flags_vertical = 10
-text = "Ariel - Memi - John - Zoriko"
+text = "Ariel - Memi - John - Zoriko - Loxo"
 horizontal_alignment = 1
 
 [node name="VBoxContainer3" type="VBoxContainer" parent="MarginContainer/MenuContainer" unique_id=374874377]
@@ -146,7 +146,7 @@ size_flags_horizontal = 4
 size_flags_vertical = 4
 text = "Back"
 
-[connection signal="pressed" from="MarginContainer/MenuContainer/VBoxContainer/VBoxContainer/Play" to="." method="_on_play_pressed"]
+[connection signal="pressed" from="MarginContainer/MenuContainer/VBoxContainer/VBoxContainer/Tutorial" to="." method="_on_play_pressed"]
 [connection signal="pressed" from="MarginContainer/MenuContainer/VBoxContainer/VBoxContainer/BossFight" to="." method="_on_play_2_pressed"]
 [connection signal="pressed" from="MarginContainer/MenuContainer/VBoxContainer/VBoxContainer/Credits" to="." method="_on_credits_pressed"]
 [connection signal="pressed" from="MarginContainer/MenuContainer/VBoxContainer/VBoxContainer/Exit" to="." method="_on_exit_pressed"]
