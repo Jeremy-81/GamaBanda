@@ -3,27 +3,28 @@
 [ext_resource type="Script" uid="uid://c6cb16oqkrwgg" path="res://scenes/objects/player/player.gd" id="1_g10m2"]
 [ext_resource type="Texture2D" uid="uid://cdyvygemnp5vx" path="res://assets/player/Combo-Sheet 80x125.png" id="2_bdcal"]
 [ext_resource type="Texture2D" uid="uid://c62574nyu5pg2" path="res://assets/player/roll-dash-Sheet 80x80.png" id="2_nkbs0"]
+[ext_resource type="Texture2D" uid="uid://bwgad8ayxr78l" path="res://assets/player/combo-Sheet.png" id="3_ponut"]
 [ext_resource type="Texture2D" uid="uid://0i4vxouppdl6" path="res://assets/player/speed-fall-Sheet 80x80.png" id="4_io36v"]
 [ext_resource type="Script" uid="uid://b13w1i1ecf06o" path="res://scenes/objects/components/hurtbox.gd" id="6_bdcal"]
 [ext_resource type="Texture2D" uid="uid://datgtv3kbm2jx" path="res://assets/player/jump-sheet 80x90 (final).png" id="6_ponut"]
 [ext_resource type="Texture2D" uid="uid://c7kj83h2nr211" path="res://assets/player/run-Sheet 80x80 (final).png" id="7_dvfu2"]
 [ext_resource type="Script" uid="uid://ct2ao5y04qtji" path="res://scenes/objects/components/hitbox.gd" id="7_ponut"]
 
-[sub_resource type="AtlasTexture" id="AtlasTexture_t1oyg"]
-atlas = ExtResource("2_bdcal")
-region = Rect2(0, 0, 125, 80)
+[sub_resource type="AtlasTexture" id="AtlasTexture_ibpxp"]
+atlas = ExtResource("3_ponut")
+region = Rect2(0, 0, 124, 85)
 
-[sub_resource type="AtlasTexture" id="AtlasTexture_phcra"]
-atlas = ExtResource("2_bdcal")
-region = Rect2(125, 0, 125, 80)
+[sub_resource type="AtlasTexture" id="AtlasTexture_5t4rm"]
+atlas = ExtResource("3_ponut")
+region = Rect2(124, 0, 124, 85)
 
-[sub_resource type="AtlasTexture" id="AtlasTexture_52ie8"]
-atlas = ExtResource("2_bdcal")
-region = Rect2(250, 0, 125, 80)
+[sub_resource type="AtlasTexture" id="AtlasTexture_iwans"]
+atlas = ExtResource("3_ponut")
+region = Rect2(248, 0, 124, 85)
 
-[sub_resource type="AtlasTexture" id="AtlasTexture_cxas8"]
-atlas = ExtResource("2_bdcal")
-region = Rect2(375, 0, 125, 80)
+[sub_resource type="AtlasTexture" id="AtlasTexture_3o2k0"]
+atlas = ExtResource("3_ponut")
+region = Rect2(372, 0, 124, 85)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_eqyvc"]
 atlas = ExtResource("2_bdcal")
@@ -185,20 +186,20 @@ region = Rect2(400, 0, 80, 80)
 animations = [{
 "frames": [{
 "duration": 1.0,
-"texture": SubResource("AtlasTexture_t1oyg")
+"texture": SubResource("AtlasTexture_ibpxp")
 }, {
-"duration": 1.0,
-"texture": SubResource("AtlasTexture_phcra")
+"duration": 0.6,
+"texture": SubResource("AtlasTexture_5t4rm")
 }, {
-"duration": 1.0,
-"texture": SubResource("AtlasTexture_52ie8")
+"duration": 1.2,
+"texture": SubResource("AtlasTexture_iwans")
 }, {
-"duration": 1.0,
-"texture": SubResource("AtlasTexture_cxas8")
+"duration": 0.8,
+"texture": SubResource("AtlasTexture_3o2k0")
 }],
 "loop": true,
 "name": &"attack",
-"speed": 10.0
+"speed": 12.0
 }, {
 "frames": [{
 "duration": 1.0,
@@ -502,7 +503,7 @@ tracks/0/keys = {
 
 [sub_resource type="Animation" id="Animation_rp72t"]
 resource_name = "attack"
-length = 0.4
+length = 0.2833
 tracks/0/type = "value"
 tracks/0/imported = false
 tracks/0/enabled = true
@@ -854,7 +855,6 @@ scale = Vector2(2, 2)
 sprite_frames = SubResource("SpriteFrames_g65c7")
 animation = &"run"
 autoplay = "default"
-frame_progress = 0.7596671
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=1364101473]
 shape = SubResource("CapsuleShape2D_g10m2")
