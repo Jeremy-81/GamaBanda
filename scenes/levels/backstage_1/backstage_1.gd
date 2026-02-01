@@ -100,7 +100,6 @@ func _on_mannequin_pushed():
 func _on_mannequin_fell():
 	$CanvasLayer/ExtraGUI/ChargeAttackTutorialLabel.hide();
 	current_tutorial = TUTORIAL_TYPE.NONE;
-	get_tree().change_scene_to_file("res://scenes/boss_fight.tscn");
 	pass;
 
 
@@ -113,3 +112,6 @@ func _on_end_area_area_entered(area):
 	tween.tween_property($Camera2D, "zoom", Vector2.ONE * 0.25, 2.0);
 	tween.play();
 	pass;
+
+func finish_tutorial():
+	get_tree().change_scene_to_file("res://scenes/boss_fight.tscn");

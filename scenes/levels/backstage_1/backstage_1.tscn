@@ -23,6 +23,12 @@ size = Vector2(13.226898, 56.009293)
 [sub_resource type="CircleShape2D" id="CircleShape2D_8frrg"]
 radius = 54.147945
 
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_loovp"]
+size = Vector2(247.84131, 26.481285)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_tjnkj"]
+size = Vector2(100, 26.481)
+
 [sub_resource type="Animation" id="Animation_rlj65"]
 length = 0.001
 tracks/0/type = "value"
@@ -61,7 +67,7 @@ _data = {
 }
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_rlj65"]
-size = Vector2(418, 109)
+size = Vector2(300, 200)
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_pt1xq"]
 size = Vector2(155, 43)
@@ -133,6 +139,20 @@ tracks/1/keys = {
 "update": 1,
 "values": [true]
 }
+tracks/2/type = "method"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath(".")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(4),
+"transitions": PackedFloat32Array(1),
+"values": [{
+"args": [],
+"method": &"finish_tutorial"
+}]
+}
 
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_loovp"]
 _data = {
@@ -156,6 +176,11 @@ offset_top = -1286.0
 offset_right = 2401.0
 offset_bottom = 728.0
 texture = ExtResource("2_adyqv")
+
+[node name="Polygon2D" type="Polygon2D" parent="." unique_id=1362504388]
+z_index = 1
+color = Color(0, 0, 0, 1)
+polygon = PackedVector2Array(-4624, -3676, -3697, -1237, 2515, -1297, 2558, 859, -2543, 914, -2482, -1281, -5845, -1059, -5195, 3192, 5893, 3288, 5370, -4168)
 
 [node name="Back" type="Parallax2D" parent="." unique_id=717064075]
 metadata/_edit_lock_ = true
@@ -193,20 +218,6 @@ position = Vector2(-329, -21)
 color = Color(1, 1, 1, 0)
 polygon = PackedVector2Array(-1908, 573, 2562, 571, 2543, -986, 2842, -932, 2819, 801, -2208, 911, -2194, -927, -1906, -926)
 
-[node name="Polygon2D2" type="Polygon2D" parent="StaticPlatforms" unique_id=1145942782]
-polygon = PackedVector2Array(-1234, 327, -1004, 313, -1032, 589, -1229, 585)
-
-[node name="Polygon2D3" type="Polygon2D" parent="StaticPlatforms" unique_id=761101750]
-position = Vector2(-74, 221)
-polygon = PackedVector2Array(-758, -19, -758, 336, -667, 332, -654, 64, -136, 58, -145, -28)
-
-[node name="Polygon2D4" type="Polygon2D" parent="StaticPlatforms" unique_id=1525410370]
-polygon = PackedVector2Array(-223, -5, 593, -4, 540, 81, -140, 79, -144, 278, -222, 278, -221, 201)
-
-[node name="Polygon2D6" type="Polygon2D" parent="StaticPlatforms" unique_id=1175537053]
-visible = false
-polygon = PackedVector2Array(724, -296, 940, -302, 943, -248, 716, -232)
-
 [node name="Elements" type="Node" parent="." unique_id=1073763735]
 
 [node name="MoonEnd" type="AnimatableBody2D" parent="Elements" unique_id=1355652480]
@@ -240,15 +251,94 @@ collision_mask = 2
 shape = SubResource("CircleShape2D_8frrg")
 metadata/_edit_lock_ = true
 
-[node name="Sprite2D" type="Sprite2D" parent="Elements" unique_id=661211530]
-position = Vector2(840, -322)
-scale = Vector2(2.6416185, 2.6416185)
+[node name="Mannequin" parent="Elements" unique_id=1027526289 instance=ExtResource("7_pt1xq")]
+position = Vector2(-656, 217)
+
+[node name="StaticBody2D" type="StaticBody2D" parent="Elements" unique_id=1117229547]
+position = Vector2(-703.00006, 267)
+scale = Vector2(1.787, 1.787)
+
+[node name="Sprite2D3" type="Sprite2D" parent="Elements/StaticBody2D" unique_id=46805584]
+position = Vector2(-66.60395, -20.029472)
 texture = ExtResource("7_8frrg")
 
-[node name="Mannequin" parent="Elements" unique_id=1027526289 instance=ExtResource("7_pt1xq")]
-position = Vector2(424, -31)
+[node name="Sprite2D5" type="Sprite2D" parent="Elements/StaticBody2D" unique_id=551785509]
+position = Vector2(65.42162, -20.029472)
+texture = ExtResource("7_8frrg")
+
+[node name="Sprite2D4" type="Sprite2D" parent="Elements/StaticBody2D" unique_id=910286651]
+position = Vector2(-1.5764313, -9.388605)
+texture = ExtResource("7_8frrg")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Elements/StaticBody2D" unique_id=369557094]
+position = Vector2(-0.17129517, 1.7593613)
+scale = Vector2(0.99999994, 0.99999994)
+shape = SubResource("RectangleShape2D_loovp")
+one_way_collision = true
+
+[node name="StaticBody2D2" type="StaticBody2D" parent="Elements" unique_id=53037039]
+position = Vector2(-60, 27)
+scale = Vector2(1.787, 1.787)
+
+[node name="Sprite2D3" type="Sprite2D" parent="Elements/StaticBody2D2" unique_id=2017659483]
+position = Vector2(-66.60395, -20.029472)
+texture = ExtResource("7_8frrg")
+
+[node name="Sprite2D5" type="Sprite2D" parent="Elements/StaticBody2D2" unique_id=1529077703]
+position = Vector2(65.42162, -20.029472)
+texture = ExtResource("7_8frrg")
+
+[node name="Sprite2D4" type="Sprite2D" parent="Elements/StaticBody2D2" unique_id=115547049]
+position = Vector2(-1.5764313, -9.388605)
+texture = ExtResource("7_8frrg")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Elements/StaticBody2D2" unique_id=683128925]
+position = Vector2(-0.17129517, 1.7593613)
+scale = Vector2(0.99999994, 0.99999994)
+shape = SubResource("RectangleShape2D_loovp")
+one_way_collision = true
+
+[node name="StaticBody2D3" type="StaticBody2D" parent="Elements" unique_id=1800188491]
+position = Vector2(461.00006, 10)
+scale = Vector2(1.787, 1.787)
+
+[node name="Sprite2D5" type="Sprite2D" parent="Elements/StaticBody2D3" unique_id=1059990804]
+position = Vector2(-7.6293945e-06, -20.029472)
+texture = ExtResource("7_8frrg")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Elements/StaticBody2D3" unique_id=1050086631]
+position = Vector2(-0.17129517, 1.7593613)
+shape = SubResource("RectangleShape2D_tjnkj")
+one_way_collision = true
+
+[node name="StaticBody2D4" type="StaticBody2D" parent="Elements" unique_id=1708108082]
+position = Vector2(877, -139)
+scale = Vector2(1.787, 1.787)
+
+[node name="Sprite2D5" type="Sprite2D" parent="Elements/StaticBody2D4" unique_id=1472333647]
+position = Vector2(-7.6293945e-06, -20.029472)
+texture = ExtResource("7_8frrg")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Elements/StaticBody2D4" unique_id=569285501]
+position = Vector2(-0.17129517, 1.7593613)
+shape = SubResource("RectangleShape2D_tjnkj")
+one_way_collision = true
+
+[node name="StaticBody2D5" type="StaticBody2D" parent="Elements" unique_id=2106849419]
+position = Vector2(592.00006, -389)
+scale = Vector2(1.787, 1.787)
+
+[node name="Sprite2D5" type="Sprite2D" parent="Elements/StaticBody2D5" unique_id=634272339]
+position = Vector2(-7.6293945e-06, -20.029472)
+texture = ExtResource("7_8frrg")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Elements/StaticBody2D5" unique_id=677984368]
+position = Vector2(-0.17129517, 1.7593613)
+shape = SubResource("RectangleShape2D_tjnkj")
+one_way_collision = true
 
 [node name="Front" type="Parallax2D" parent="." unique_id=2057769260]
+z_index = 1
 metadata/_edit_lock_ = true
 
 [node name="Curtains" parent="Front" unique_id=1934925256 instance=ExtResource("9_8frrg")]
@@ -274,16 +364,17 @@ one_shot = true
 autostart = true
 
 [node name="DashTutorialArea" type="Area2D" parent="." unique_id=1039336202]
-position = Vector2(-542, 69)
+position = Vector2(-44, -118)
 collision_layer = 2
 collision_mask = 2
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="DashTutorialArea" unique_id=934572968]
 position = Vector2(13, 69.5)
 shape = SubResource("RectangleShape2D_rlj65")
+metadata/_edit_lock_ = true
 
 [node name="AttackTutorialArea" type="Area2D" parent="." unique_id=944482632]
-position = Vector2(297, -33)
+position = Vector2(-745, 220)
 collision_layer = 2
 collision_mask = 2
 
