@@ -59,7 +59,9 @@ corner_radius_bottom_left = 10
 
 [resource]
 AttackLabel/base_type = &"Label"
-AttackLabel/font_sizes/font_size = 20
+AttackLabel/constants/outline_size = 13
+AttackLabel/font_sizes/font_size = 70
+AttackLabel/fonts/font = ExtResource("1_jb3ky")
 Button/constants/outline_size = 7
 Button/font_sizes/font_size = 27
 Button/fonts/font = ExtResource("1_jb3ky")

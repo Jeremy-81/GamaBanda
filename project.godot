@@ -11,9 +11,10 @@ config_version=5
 [application]
 
 config/name="Gamask"
+config/version="0.1"
 run/main_scene="uid://bb6sfex7rg1de"
 config/features=PackedStringArray("4.6", "Forward Plus")
-config/icon="res://icon.svg"
+config/icon="uid://d1icl8vgnv400"
 
 [display]
 

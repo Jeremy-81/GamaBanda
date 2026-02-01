@@ -82,9 +82,6 @@ fill = 1
 fill_from = Vector2(0.5, 0.5)
 fill_to = Vector2(1, 0.5)
 
-[sub_resource type="LabelSettings" id="LabelSettings_rlj65"]
-font_size = 60
-
 [sub_resource type="Animation" id="Animation_8frrg"]
 length = 0.001
 tracks/0/type = "value"
@@ -197,6 +194,7 @@ metadata/_edit_lock_ = true
 
 [node name="Player" parent="." unique_id=2105575625 instance=ExtResource("1_q63md")]
 position = Vector2(-2004, 405)
+player_name = "Gamask"
 
 [node name="RemoteTransform2D" type="RemoteTransform2D" parent="Player" unique_id=1047588598]
 remote_path = NodePath("../../PointLight2D")
@@ -398,6 +396,7 @@ anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
+theme = ExtResource("6_pt1xq")
 
 [node name="DashTutorialLabel" type="Label" parent="CanvasLayer/ExtraGUI" unique_id=1741047891]
 visible = false
@@ -409,10 +408,8 @@ anchor_right = 0.7
 anchor_bottom = 0.2
 grow_horizontal = 2
 grow_vertical = 2
-theme = ExtResource("6_pt1xq")
 theme_type_variation = &"AttackLabel"
 text = "Dash with SHIFT"
-label_settings = SubResource("LabelSettings_rlj65")
 horizontal_alignment = 1
 vertical_alignment = 1
 
@@ -426,8 +423,8 @@ anchor_right = 0.7
 anchor_bottom = 0.2
 grow_horizontal = 2
 grow_vertical = 2
+theme_type_variation = &"AttackLabel"
 text = "Attack with E"
-label_settings = SubResource("LabelSettings_rlj65")
 horizontal_alignment = 1
 vertical_alignment = 1
 
@@ -441,8 +438,8 @@ anchor_right = 0.7
 anchor_bottom = 0.2
 grow_horizontal = 2
 grow_vertical = 2
+theme_type_variation = &"AttackLabel"
 text = "Charge attack holding E"
-label_settings = SubResource("LabelSettings_rlj65")
 horizontal_alignment = 1
 vertical_alignment = 1
 

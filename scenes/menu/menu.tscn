@@ -3,6 +3,7 @@
 [ext_resource type="Theme" uid="uid://duj7cgl0u7wd3" path="res://ressources/theme.tres" id="1_klgdb"]
 [ext_resource type="Script" uid="uid://dsw7v56tqh14n" path="res://scenes/menu/menu.gd" id="2_mcvr8"]
 [ext_resource type="Texture2D" uid="uid://cqdfvbsup22tp" path="res://assets/options/sound-on.png" id="3_e0arn"]
+[ext_resource type="Texture2D" uid="uid://d1icl8vgnv400" path="res://icon.png" id="3_y1o0p"]
 [ext_resource type="FontFile" uid="uid://chla6mhf6wpl0" path="res://assets/fonts/Jersey_10/Jersey10-Regular.ttf" id="4_037ec"]
 
 [node name="Menu" type="Control" unique_id=2033538670]
@@ -52,7 +53,21 @@ size_flags_horizontal = 3
 theme_override_constants/separation = 70
 alignment = 1
 
-[node name="GameName" type="Label" parent="MarginContainer/MenuContainer/VBoxContainer" unique_id=1303340132]
+[node name="HBoxContainer" type="HBoxContainer" parent="MarginContainer/MenuContainer/VBoxContainer" unique_id=1290867606]
+layout_mode = 2
+theme_override_constants/separation = 30
+alignment = 1
+
+[node name="GameName2" type="TextureRect" parent="MarginContainer/MenuContainer/VBoxContainer/HBoxContainer" unique_id=1490541119]
+custom_minimum_size = Vector2(100, 100)
+layout_mode = 2
+size_flags_vertical = 4
+theme_type_variation = &"Title"
+texture = ExtResource("3_y1o0p")
+expand_mode = 3
+stretch_mode = 5
+
+[node name="GameName" type="Label" parent="MarginContainer/MenuContainer/VBoxContainer/HBoxContainer" unique_id=1303340132]
 layout_mode = 2
 size_flags_vertical = 2
 theme_type_variation = &"Title"
