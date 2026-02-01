@@ -3,6 +3,7 @@
 [ext_resource type="Theme" uid="uid://duj7cgl0u7wd3" path="res://ressources/theme.tres" id="1_klgdb"]
 [ext_resource type="Script" uid="uid://dsw7v56tqh14n" path="res://scenes/menu/menu.gd" id="2_mcvr8"]
 [ext_resource type="Texture2D" uid="uid://cqdfvbsup22tp" path="res://assets/options/sound-on.png" id="3_e0arn"]
+[ext_resource type="FontFile" uid="uid://chla6mhf6wpl0" path="res://assets/fonts/Jersey_10/Jersey10-Regular.ttf" id="4_037ec"]
 
 [node name="Menu" type="Control" unique_id=2033538670]
 layout_mode = 3
@@ -21,7 +22,7 @@ anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
-color = Color(0.41000164, 0.13758367, 0.0033579622, 1)
+color = Color(0.15294118, 0.05490196, 0.11764706, 1)
 
 [node name="MarginContainer" type="MarginContainer" parent="." unique_id=74678415]
 layout_mode = 1
@@ -71,12 +72,13 @@ layout_mode = 2
 size_flags_vertical = 6
 text = "Play"
 
-[node name="Play2" type="Button" parent="MarginContainer/MenuContainer/VBoxContainer/VBoxContainer" unique_id=1354137266]
+[node name="BossFight" type="Button" parent="MarginContainer/MenuContainer/VBoxContainer/VBoxContainer" unique_id=1354137266]
 layout_mode = 2
 size_flags_vertical = 6
-text = "BOSS"
+text = "Boss Fight"
 
 [node name="Credits" type="Button" parent="MarginContainer/MenuContainer/VBoxContainer/VBoxContainer" unique_id=491111347]
+visible = false
 layout_mode = 2
 size_flags_vertical = 6
 text = "Credits"
@@ -95,13 +97,17 @@ horizontal_alignment = 1
 [node name="VBoxContainer3" type="VBoxContainer" parent="MarginContainer/MenuContainer" unique_id=374874377]
 layout_mode = 2
 size_flags_horizontal = 10
+size_flags_vertical = 8
 alignment = 1
 
 [node name="SoundButton" type="TextureButton" parent="MarginContainer/MenuContainer/VBoxContainer3" unique_id=1029381544]
 unique_name_in_owner = true
-custom_minimum_size = Vector2(70, 70)
+custom_minimum_size = Vector2(100, 100)
 layout_mode = 2
+size_flags_horizontal = 4
+size_flags_vertical = 4
 texture_normal = ExtResource("3_e0arn")
+ignore_texture_size = true
 stretch_mode = 5
 
 [node name="CreditsContainer" type="VBoxContainer" parent="MarginContainer" unique_id=2069487974]
@@ -121,12 +127,15 @@ anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
-text = "Gamask
-
-Game makers : 
-- Jonh F
+theme_override_fonts/normal_font = ExtResource("4_037ec")
+theme_override_font_sizes/normal_font_size = 30
+bbcode_enabled = true
+text = "Art :
 - Ariel
 - Memi
+
+Code :
+- Jonh F
 - Zoriko"
 horizontal_alignment = 1
 vertical_alignment = 1
@@ -138,7 +147,7 @@ size_flags_vertical = 4
 text = "Back"
 
 [connection signal="pressed" from="MarginContainer/MenuContainer/VBoxContainer/VBoxContainer/Play" to="." method="_on_play_pressed"]
-[connection signal="pressed" from="MarginContainer/MenuContainer/VBoxContainer/VBoxContainer/Play2" to="." method="_on_play_2_pressed"]
+[connection signal="pressed" from="MarginContainer/MenuContainer/VBoxContainer/VBoxContainer/BossFight" to="." method="_on_play_2_pressed"]
 [connection signal="pressed" from="MarginContainer/MenuContainer/VBoxContainer/VBoxContainer/Credits" to="." method="_on_credits_pressed"]
 [connection signal="pressed" from="MarginContainer/MenuContainer/VBoxContainer/VBoxContainer/Exit" to="." method="_on_exit_pressed"]
 [connection signal="pressed" from="MarginContainer/MenuContainer/VBoxContainer3/SoundButton" to="." method="_on_texture_button_pressed"]

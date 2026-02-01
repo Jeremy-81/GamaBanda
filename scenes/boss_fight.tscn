@@ -144,6 +144,7 @@ position = Vector2(13, 19)
 
 [node name="Player" parent="." unique_id=596732785 instance=ExtResource("2_7ydql")]
 position = Vector2(-1, 498)
+player_name = "Gamask"
 
 [node name="Camera2D" type="Camera2D" parent="." unique_id=1386835362]
 position = Vector2(0, 4)
@@ -155,7 +156,7 @@ player = NodePath("../Player")
 
 [node name="Boss" parent="." unique_id=623795894 node_paths=PackedStringArray("player") instance=ExtResource("3_7ydql")]
 position = Vector2(-1, -27)
-boss_name = "Boss One"
+boss_name = "Méchant "
 hp = 100.0
 player = NodePath("../Player")
 

@@ -56,6 +56,7 @@ func spawn_dash_tutorial():
 			spawn_hand();
 			Engine.time_scale = 0.1;
 			$CanvasLayer/ExtraGUI/DashTutorialLabel.show();
+			
 	);
 	dash_tween.tween_interval(0.4);
 	dash_tween.tween_callback(
@@ -79,3 +80,7 @@ func _on_dash_tutorial_area_area_entered(_area):
 	spawn_dash_tutorial();
 	$DashTutorialArea.queue_free();
 	pass;
+
+
+func _on_button_pressed() -> void:
+	get_tree().change_scene_to_file("res://scenes/boss_fight.tscn")
