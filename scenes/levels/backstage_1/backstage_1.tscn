@@ -2,10 +2,15 @@
 
 [ext_resource type="Script" uid="uid://dvrldnci314mb" path="res://scenes/levels/backstage_1/backstage_1.gd" id="1_ebnwq"]
 [ext_resource type="PackedScene" uid="uid://btg0d1sc8nd3r" path="res://scenes/objects/player/player.tscn" id="1_q63md"]
-[ext_resource type="Texture2D" uid="uid://nm4yqiia8lqm" path="res://assets/Cajaa.png" id="5_xf48k"]
+[ext_resource type="Texture2D" uid="uid://5ap15b3gcb8f" path="res://assets/pixel_art_large.png" id="2_adyqv"]
+[ext_resource type="Texture2D" uid="uid://ch3u5d7uuc0fw" path="res://assets/Stars_bg_total.png" id="2_wofeq"]
+[ext_resource type="Texture2D" uid="uid://bchj10suhlit2" path="res://assets/level/floor.png" id="3_7k31f"]
+[ext_resource type="Texture2D" uid="uid://brslvtbp3rqb6" path="res://assets/level/frame_off.png" id="4_rlj65"]
+[ext_resource type="Texture2D" uid="uid://56cat0h7lfsa" path="res://assets/level/frame_on.png" id="5_rlj65"]
 [ext_resource type="Theme" uid="uid://duj7cgl0u7wd3" path="res://ressources/theme.tres" id="6_pt1xq"]
 [ext_resource type="PackedScene" uid="uid://bo8pyxkcykbab" path="res://scenes/game_interface.tscn" id="6_xf48k"]
 [ext_resource type="PackedScene" uid="uid://dmbm5qq510rig" path="res://scenes/objects/mannequin/mannequin.tscn" id="7_pt1xq"]
+[ext_resource type="Texture2D" uid="uid://d0lutbm07fgry" path="res://assets/Cortina_close.png" id="10_wofeq"]
 
 [sub_resource type="Animation" id="Animation_rlj65"]
 length = 0.001
@@ -38,14 +43,14 @@ tracks/0/keys = {
 "values": [Color(1, 1, 1, 1), Color(1, 1, 1, 0), Color(1, 1, 1, 1)]
 }
 
-[sub_resource type="AnimationLibrary" id="AnimationLibrary_pt1xq"]
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_adyqv"]
 _data = {
 &"RESET": SubResource("Animation_rlj65"),
 &"frame_blink": SubResource("Animation_xf48k")
 }
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_rlj65"]
-size = Vector2(326, 61)
+size = Vector2(418, 109)
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_pt1xq"]
 size = Vector2(155, 43)
@@ -53,11 +58,35 @@ size = Vector2(155, 43)
 [sub_resource type="LabelSettings" id="LabelSettings_rlj65"]
 font_size = 60
 
-[sub_resource type="RectangleShape2D" id="RectangleShape2D_rlj65"]
-size = Vector2(418, 109)
-
 [node name="Backstage1" type="Node" unique_id=192916966]
 script = ExtResource("1_ebnwq")
+
+[node name="ColorRect" type="ColorRect" parent="." unique_id=780349027]
+offset_left = -3869.0
+offset_top = -2082.0
+offset_right = 4240.0
+offset_bottom = 2207.0
+color = Color(0.15294118, 0.05490196, 0.11764706, 1)
+
+[node name="TextureRect" type="TextureRect" parent="." unique_id=1237037333]
+offset_left = -2548.0
+offset_top = -1286.0
+offset_right = 2401.0
+offset_bottom = 728.0
+texture = ExtResource("2_adyqv")
+
+[node name="Back" type="Parallax2D" parent="." unique_id=717064075]
+metadata/_edit_lock_ = true
+
+[node name="FrameOn4" type="Sprite2D" parent="Back" unique_id=45462653]
+scale = Vector2(4, 4)
+texture = ExtResource("2_wofeq")
+flip_h = true
+
+[node name="Sprite2D" type="Sprite2D" parent="Back" unique_id=186640609]
+scale = Vector2(4, 4)
+texture = ExtResource("3_7k31f")
+metadata/_edit_lock_ = true
 
 [node name="Player" parent="." unique_id=2105575625 instance=ExtResource("1_q63md")]
 position = Vector2(-2004, 405)
@@ -82,30 +111,32 @@ polygon = PackedVector2Array(-758, -19, -758, 336, -667, 332, -654, 64, -136, 58
 [node name="Polygon2D4" type="Polygon2D" parent="StaticPlatforms" unique_id=1525410370]
 polygon = PackedVector2Array(-223, -5, 593, -4, 540, 81, -140, 79, -144, 278, -222, 278, -221, 201)
 
-[node name="Back" type="Parallax2D" parent="." unique_id=1750456039]
+[node name="Front" type="Parallax2D" parent="." unique_id=2057769260]
 metadata/_edit_lock_ = true
 
-[node name="Sprite2D" type="Sprite2D" parent="Back" unique_id=913168728]
-scale = Vector2(4, 4)
-texture = ExtResource("3_7k31f")
-metadata/_edit_lock_ = true
-
-[node name="Front" type="Parallax2D" parent="." unique_id=1986818313]
-metadata/_edit_lock_ = true
-
-[node name="FrameOff" type="Sprite2D" parent="Front" unique_id=231921046]
+[node name="FrameOff" type="Sprite2D" parent="Front" unique_id=245275545]
 scale = Vector2(4, 4)
 texture = ExtResource("4_rlj65")
 metadata/_edit_lock_ = true
 
-[node name="FrameOn" type="Sprite2D" parent="Front" unique_id=1758273274]
+[node name="FrameOn" type="Sprite2D" parent="Front" unique_id=227452257]
 modulate = Color(1, 1, 1, 0)
 scale = Vector2(4, 4)
 texture = ExtResource("5_rlj65")
 metadata/_edit_lock_ = true
 
-[node name="AnimationPlayer" type="AnimationPlayer" parent="Front" unique_id=951855509]
-libraries/ = SubResource("AnimationLibrary_pt1xq")
+[node name="FrameOn2" type="Sprite2D" parent="Front" unique_id=692684447]
+scale = Vector2(4, 4)
+texture = ExtResource("10_wofeq")
+metadata/_edit_lock_ = true
+
+[node name="FrameOn3" type="Sprite2D" parent="Front" unique_id=1152842128]
+scale = Vector2(4, 4)
+texture = ExtResource("10_wofeq")
+flip_h = true
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="Front" unique_id=868786463]
+libraries/ = SubResource("AnimationLibrary_adyqv")
 
 [node name="HandFallTimer" type="Timer" parent="." unique_id=8882749]
 wait_time = 2.0

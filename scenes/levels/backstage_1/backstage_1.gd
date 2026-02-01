@@ -100,5 +100,5 @@ func _on_mannequin_pushed():
 func _on_mannequin_fell():
 	$CanvasLayer/ExtraGUI/ChargeAttackTutorialLabel.hide();
 	current_tutorial = TUTORIAL_TYPE.NONE;
-    get_tree().change_scene_to_file("res://scenes/boss_fight.tscn");
+	get_tree().change_scene_to_file("res://scenes/boss_fight.tscn");
 	pass;
