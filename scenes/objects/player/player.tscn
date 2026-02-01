@@ -474,18 +474,6 @@ tracks/2/keys = {
 "update": 0,
 "values": [Vector2(1, 1)]
 }
-tracks/3/type = "value"
-tracks/3/imported = false
-tracks/3/enabled = true
-tracks/3/path = NodePath("Pivot/ChargeAttack:emitting")
-tracks/3/interp = 1
-tracks/3/loop_wrap = true
-tracks/3/keys = {
-"times": PackedFloat32Array(0),
-"transitions": PackedFloat32Array(1),
-"update": 1,
-"values": [false]
-}
 
 [sub_resource type="Animation" id="Animation_nqkks"]
 resource_name = "charge_attack"
@@ -654,17 +642,19 @@ tracks/0/keys = {
 "update": 1,
 "values": [&"hold_attack1"]
 }
-tracks/1/type = "value"
+tracks/1/type = "method"
 tracks/1/imported = false
 tracks/1/enabled = true
-tracks/1/path = NodePath("Pivot/ChargeAttack:emitting")
+tracks/1/path = NodePath("Pivot/ChargeAttack")
 tracks/1/interp = 1
 tracks/1/loop_wrap = true
 tracks/1/keys = {
-"times": PackedFloat32Array(0, 1),
-"transitions": PackedFloat32Array(1, 1),
-"update": 1,
-"values": [false, true]
+"times": PackedFloat32Array(1),
+"transitions": PackedFloat32Array(1),
+"values": [{
+"args": [false],
+"method": &"restart"
+}]
 }
 
 [sub_resource type="Animation" id="Animation_bdcal"]
@@ -903,7 +893,7 @@ animation = &"dash"
 
 [sub_resource type="AnimationNodeOneShot" id="AnimationNodeOneShot_bdcal"]
 filter_enabled = true
-filters = [".", "AnimatedSprite:animation", "HeavyHitbox", "Hitbox", "Pivot/ChargeAttack:emitting", "Pivot/HeavyHitbox", "Pivot/Hitbox"]
+filters = [".", "AnimatedSprite:animation", "HeavyHitbox", "Hitbox", "Pivot/ChargeAttack", "Pivot/ChargeAttack:emitting", "Pivot/HeavyHitbox", "Pivot/Hitbox"]
 
 [sub_resource type="AnimationNodeAnimation" id="AnimationNodeAnimation_jxhie"]
 animation = &"charge_attack"
@@ -1094,7 +1084,7 @@ states/land/position = Vector2(723, 95)
 transitions = ["Start", "jump", SubResource("AnimationNodeStateMachineTransition_nqkks"), "land", "End", SubResource("AnimationNodeStateMachineTransition_8bans"), "falling_normal", "land", SubResource("AnimationNodeStateMachineTransition_jxhie"), "jump", "falling_normal", SubResource("AnimationNodeStateMachineTransition_qfccq"), "falling_normal", "fall_impulse", SubResource("AnimationNodeStateMachineTransition_vx2qb"), "fall_impulse", "falling_fast", SubResource("AnimationNodeStateMachineTransition_ibpxp"), "falling_fast", "land", SubResource("AnimationNodeStateMachineTransition_5t4rm"), "jump", "fall_impulse", SubResource("AnimationNodeStateMachineTransition_io36v")]
 
 [sub_resource type="AnimationNodeBlendTree" id="AnimationNodeBlendTree_bdcal"]
-graph_offset = Vector2(266.0655, 990.5834)
+graph_offset = Vector2(-333.11847, 175.62534)
 nodes/output/position = Vector2(1380, 940)
 nodes/Direction/node = SubResource("AnimationNodeBlendSpace1D_gmdvr")
 nodes/Direction/position = Vector2(80, 940)
@@ -1169,7 +1159,7 @@ scale = Vector2(2, 2)
 sprite_frames = SubResource("SpriteFrames_g65c7")
 animation = &"run"
 autoplay = "default"
-frame_progress = 0.8516075
+frame_progress = 0.71644986
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=1364101473]
 shape = SubResource("CapsuleShape2D_g10m2")
