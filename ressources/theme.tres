@@ -34,7 +34,7 @@ expand_margin_left = 10.0
 expand_margin_right = 10.0
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_cgoy4"]
-bg_color = Color(0.21927088, 0.19392738, 0.20286453, 1)
+bg_color = Color(0, 0, 0, 0.9019608)
 border_width_left = 1
 border_width_top = 1
 border_width_right = 1
@@ -46,7 +46,7 @@ corner_radius_bottom_right = 10
 corner_radius_bottom_left = 10
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_jb3ky"]
-bg_color = Color(1, 0.2901961, 0.16862746, 1)
+bg_color = Color(0.7082872, 0.11989132, 8.663535e-07, 1)
 border_width_left = 1
 border_width_top = 1
 border_width_right = 1
@@ -58,15 +58,18 @@ corner_radius_bottom_right = 10
 corner_radius_bottom_left = 10
 
 [resource]
+AttackLabel/base_type = &"Label"
+AttackLabel/font_sizes/font_size = 20
 Button/constants/outline_size = 7
 Button/font_sizes/font_size = 27
 Button/fonts/font = ExtResource("1_jb3ky")
 Button/styles/hover = SubResource("StyleBoxTexture_7065j")
 Button/styles/normal = SubResource("StyleBoxTexture_l3ktj")
 Button/styles/pressed = SubResource("StyleBoxTexture_x62ba")
-Label/constants/outline_size = 3
+Label/constants/outline_size = 7
 Label/font_sizes/font_size = 37
 Label/fonts/font = ExtResource("1_jb3ky")
+ProgressBar/constants/outline_size = 5
 ProgressBar/font_sizes/font_size = 30
 ProgressBar/fonts/font = ExtResource("1_jb3ky")
 ProgressBar/styles/background = SubResource("StyleBoxFlat_cgoy4")

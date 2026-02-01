@@ -2,9 +2,8 @@
 
 [ext_resource type="Script" uid="uid://dvrldnci314mb" path="res://scenes/levels/backstage_1/backstage_1.gd" id="1_ebnwq"]
 [ext_resource type="PackedScene" uid="uid://btg0d1sc8nd3r" path="res://scenes/objects/player/player.tscn" id="1_q63md"]
-[ext_resource type="Texture2D" uid="uid://bchj10suhlit2" path="res://assets/level/floor.png" id="3_7k31f"]
-[ext_resource type="Texture2D" uid="uid://brslvtbp3rqb6" path="res://assets/level/frame_off.png" id="4_rlj65"]
-[ext_resource type="Texture2D" uid="uid://56cat0h7lfsa" path="res://assets/level/frame_on.png" id="5_rlj65"]
+[ext_resource type="Texture2D" uid="uid://nm4yqiia8lqm" path="res://assets/Cajaa.png" id="5_xf48k"]
+[ext_resource type="Theme" uid="uid://duj7cgl0u7wd3" path="res://ressources/theme.tres" id="6_pt1xq"]
 [ext_resource type="PackedScene" uid="uid://bo8pyxkcykbab" path="res://scenes/game_interface.tscn" id="6_xf48k"]
 [ext_resource type="PackedScene" uid="uid://dmbm5qq510rig" path="res://scenes/objects/mannequin/mannequin.tscn" id="7_pt1xq"]
 
@@ -53,6 +52,9 @@ size = Vector2(155, 43)
 
 [sub_resource type="LabelSettings" id="LabelSettings_rlj65"]
 font_size = 60
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_rlj65"]
+size = Vector2(418, 109)
 
 [node name="Backstage1" type="Node" unique_id=192916966]
 script = ExtResource("1_ebnwq")
@@ -148,6 +150,8 @@ anchor_right = 0.7
 anchor_bottom = 0.2
 grow_horizontal = 2
 grow_vertical = 2
+theme = ExtResource("6_pt1xq")
+theme_type_variation = &"AttackLabel"
 text = "Dash with SHIFT"
 label_settings = SubResource("LabelSettings_rlj65")
 horizontal_alignment = 1

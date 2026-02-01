@@ -2,8 +2,11 @@
 
 [ext_resource type="Script" uid="uid://dfym6wsdmqdc1" path="res://scenes/base_map/base_map.tscn.gd" id="1_f0kpl"]
 [ext_resource type="Texture2D" uid="uid://bchj10suhlit2" path="res://assets/level/floor.png" id="2_b3o4f"]
+[ext_resource type="Texture2D" uid="uid://5ap15b3gcb8f" path="res://assets/pixel_art_large.png" id="2_lg6w2"]
 [ext_resource type="Texture2D" uid="uid://brslvtbp3rqb6" path="res://assets/level/frame_off.png" id="3_lg6w2"]
+[ext_resource type="Texture2D" uid="uid://ch3u5d7uuc0fw" path="res://assets/Stars_bg_total.png" id="3_oj4ub"]
 [ext_resource type="Texture2D" uid="uid://56cat0h7lfsa" path="res://assets/level/frame_on.png" id="4_oj4ub"]
+[ext_resource type="Texture2D" uid="uid://d0lutbm07fgry" path="res://assets/Cortina_close.png" id="5_b3o4f"]
 
 [sub_resource type="Animation" id="Animation_rlj65"]
 length = 0.001
@@ -45,12 +48,31 @@ _data = {
 [node name="BaseMap" type="Node2D" unique_id=1651728083]
 script = ExtResource("1_f0kpl")
 
+[node name="ColorRect" type="ColorRect" parent="." unique_id=1338588494]
+offset_left = -3869.0
+offset_top = -2082.0
+offset_right = 4240.0
+offset_bottom = 2207.0
+color = Color(0.15294118, 0.05490196, 0.11764706, 1)
+
+[node name="TextureRect" type="TextureRect" parent="." unique_id=1025539705]
+offset_left = -2548.0
+offset_top = -1286.0
+offset_right = 2401.0
+offset_bottom = 728.0
+texture = ExtResource("2_lg6w2")
+
+[node name="FrameOn4" type="Sprite2D" parent="." unique_id=771386545]
+scale = Vector2(4, 4)
+texture = ExtResource("3_oj4ub")
+flip_h = true
+
 [node name="StaticPlatforms" type="Node" parent="." unique_id=1269913876]
 
 [node name="Polygon2D" type="Polygon2D" parent="StaticPlatforms" unique_id=1197123964]
 position = Vector2(-329, -21)
 color = Color(1, 1, 1, 0)
-polygon = PackedVector2Array(-1908, 573, 2562, 571, 2543, -986, 2842, -932, 2819, 801, -2208, 911, -2194, -927, -1906, -926)
+polygon = PackedVector2Array(-1129, 589, 1793, 584, 2546, -1100, 2887, -1103, 2880, 1145, -2230, 1142, -2228, -1120, -1883, -1083)
 
 [node name="Back" type="Parallax2D" parent="." unique_id=501635317]
 metadata/_edit_lock_ = true
@@ -73,6 +95,16 @@ modulate = Color(1, 1, 1, 0)
 scale = Vector2(4, 4)
 texture = ExtResource("4_oj4ub")
 metadata/_edit_lock_ = true
+
+[node name="FrameOn2" type="Sprite2D" parent="Front" unique_id=1388891547]
+scale = Vector2(4, 4)
+texture = ExtResource("5_b3o4f")
+metadata/_edit_lock_ = true
+
+[node name="FrameOn3" type="Sprite2D" parent="Front" unique_id=1044198234]
+scale = Vector2(4, 4)
+texture = ExtResource("5_b3o4f")
+flip_h = true
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="Front" unique_id=152628298]
 libraries/ = SubResource("AnimationLibrary_s270e")

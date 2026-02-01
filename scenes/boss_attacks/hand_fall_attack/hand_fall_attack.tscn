@@ -1,10 +1,10 @@
 [gd_scene format=3 uid="uid://bxhlr7x4n4rmk"]
 
 [ext_resource type="Script" uid="uid://k8eewg76tfs3" path="res://scenes/boss_attacks/hand_fall_attack/hand_fall_attack.gd" id="1_pya30"]
-[ext_resource type="Texture2D" uid="uid://61wvyl0hmq1o" path="res://icon.svg" id="2_ruhfv"]
+[ext_resource type="Texture2D" uid="uid://nm4yqiia8lqm" path="res://assets/Cajaa.png" id="2_fpmfr"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_pya30"]
-size = Vector2(120, 40)
+size = Vector2(160, 70)
 
 [node name="HandFallAttack" type="Area2D" unique_id=258136374 node_paths=PackedStringArray("entity")]
 script = ExtResource("1_pya30")
@@ -15,8 +15,10 @@ hit_on_touch = true
 metadata/_custom_type_script = "uid://ct2ao5y04qtji"
 
 [node name="Sprite2D" type="Sprite2D" parent="." unique_id=702656059]
-scale = Vector2(1, 0.435)
-texture = ExtResource("2_ruhfv")
+position = Vector2(1, 1)
+scale = Vector2(2.2777777, 1.6818184)
+texture = ExtResource("2_fpmfr")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=299662463]
+position = Vector2(1, 1)
 shape = SubResource("RectangleShape2D_pya30")

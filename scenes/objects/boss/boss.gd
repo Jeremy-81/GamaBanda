@@ -21,10 +21,6 @@ func _ready() -> void:
 	await get_tree().process_frame;
 	boss_ready.emit(boss_name, hp);
 
-func _on_timer_timeout() -> void:
-	attack();
-
-
 func attack() -> void:
 	var rand_attack = atck_rand.randi_range(1, 10)
 	var attack_scene : Node = preload("res://scenes/boss_attacks/homing_attack/homing_attack.tscn").instantiate();
@@ -38,7 +34,7 @@ func attack() -> void:
 		pass
 	else: 
 		attack_scene.damage *= 2
-		attack_scene.speed *= 4
+		attack_scene.speed *= 2
 
 
 func take_damage(damage: float, ko_damage: float) -> void:
