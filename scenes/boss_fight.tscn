@@ -95,6 +95,32 @@ tracks/1/keys = {
 "method": &"attack"
 }]
 }
+tracks/2/type = "method"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath(".")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(1.09, 1.3666667, 1.6, 2.6333334, 9.966666),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1),
+"values": [{
+"args": [],
+"method": &"spawn_hand"
+}, {
+"args": [],
+"method": &"spawn_hand"
+}, {
+"args": [],
+"method": &"spawn_hand"
+}, {
+"args": [],
+"method": &"_laught_circle_attack"
+}, {
+"args": [],
+"method": &"_laught_circle_attack"
+}]
+}
 
 [sub_resource type="Animation" id="Animation_x4w2v"]
 length = 0.001
@@ -323,7 +349,7 @@ shape = SubResource("RectangleShape2D_x4w2v")
 one_way_collision = true
 
 [node name="PointLight2D" type="PointLight2D" parent="." unique_id=1479562897]
-position = Vector2(1067, 748)
+position = Vector2(403.86417, 770.2152)
 color = Color(1, 1, 1, 0.6666667)
 texture = SubResource("GradientTexture2D_ewvlg")
 texture_scale = 8.0
