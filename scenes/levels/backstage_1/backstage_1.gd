@@ -106,7 +106,7 @@ func _on_mannequin_fell():
 
 func _on_end_area_area_entered(area):
 	$AnimationPlayer.play("end_tutorial");
-	close_curtains();
+	
 	var tween = create_tween();
 	tween.tween_property($Camera2D, "global_position", Vector2.ZERO, 3.0);
 	tween.parallel();
@@ -114,6 +114,8 @@ func _on_end_area_area_entered(area):
 	tween.play();
 	pass;
 
+func _on_end_tutorial() -> void:
+	get_tree().change_scene_to_file("res://scenes/boss_fight.tscn")
 
 func open_curtains() -> void:
 	%Curtains/OpenLeft.show();

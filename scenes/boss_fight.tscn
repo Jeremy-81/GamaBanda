@@ -7,10 +7,119 @@
 [ext_resource type="PackedScene" uid="uid://bobfy0d4m1l1k" path="res://scenes/base_map/base_map.tscn" id="5_67f06"]
 [ext_resource type="Texture2D" uid="uid://cboed4su4o3y4" path="res://assets/level/cloud.png" id="6_31neg"]
 
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_x4w2v"]
+size = Vector2(100, 30)
+
+[sub_resource type="Gradient" id="Gradient_adyqv"]
+offsets = PackedFloat32Array(0.3253012, 0.6686747, 1)
+colors = PackedColorArray(1, 1, 1, 1, 1, 1, 1, 0.88659793, 1, 1, 1, 0)
+
+[sub_resource type="GradientTexture2D" id="GradientTexture2D_ewvlg"]
+gradient = SubResource("Gradient_adyqv")
+fill = 1
+fill_from = Vector2(0.5, 0.5)
+fill_to = Vector2(1, 0.5)
+
+[sub_resource type="Animation" id="Animation_31neg"]
+resource_name = "Boss_movement_attack"
+length = 60.0
+loop_mode = 1
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Boss:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 3.0666666, 5.1, 8, 10.033334, 13.033334, 16, 18.133333, 21.033333, 23.133333, 26.233334, 30.2, 32.133335, 34.966667, 37.1, 40.1, 46.066666, 48.266666, 51.166668, 53.1, 57.966667),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1),
+"update": 0,
+"values": [Vector2(4, 290), Vector2(1129, 164), Vector2(-7, -166), Vector2(-7, -166), Vector2(-1543, 45), Vector2(-454, 528), Vector2(799, 479), Vector2(-8, -162), Vector2(-8, -162), Vector2(717, 547), Vector2(1351, 45), Vector2(-1341, 385), Vector2(-8, -126), Vector2(-8, -126), Vector2(-18, 440), Vector2(-1271, 497), Vector2(1251, 505), Vector2(-14, -190), Vector2(-14, -190), Vector2(-952, 220), Vector2(1067, 223)]
+}
+tracks/1/type = "method"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("Boss")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(5.466666, 6.133333, 7.133333, 18.733334, 19.266666, 19.933332, 20.3, 32.433334, 32.966667, 33.666668, 34.433334, 48.4, 48.966667, 49.533333, 50.233334, 50.666668),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1),
+"values": [{
+"args": [],
+"method": &"attack"
+}, {
+"args": [],
+"method": &"attack"
+}, {
+"args": [],
+"method": &"attack"
+}, {
+"args": [],
+"method": &"attack"
+}, {
+"args": [],
+"method": &"attack"
+}, {
+"args": [],
+"method": &"attack"
+}, {
+"args": [],
+"method": &"attack"
+}, {
+"args": [],
+"method": &"attack"
+}, {
+"args": [],
+"method": &"attack"
+}, {
+"args": [],
+"method": &"attack"
+}, {
+"args": [],
+"method": &"attack"
+}, {
+"args": [],
+"method": &"attack"
+}, {
+"args": [],
+"method": &"attack"
+}, {
+"args": [],
+"method": &"attack"
+}, {
+"args": [],
+"method": &"attack"
+}, {
+"args": [],
+"method": &"attack"
+}]
+}
+
+[sub_resource type="Animation" id="Animation_x4w2v"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Boss:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(4, 290)]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_x4w2v"]
+_data = {
+&"Boss_movement_attack": SubResource("Animation_31neg"),
+&"RESET": SubResource("Animation_x4w2v")
+}
+
 [sub_resource type="Animation" id="Animation_85w88"]
 resource_name = "new_animation"
 length = 50.133335
-loop_mode = 1
 tracks/0/type = "value"
 tracks/0/imported = false
 tracks/0/enabled = true
@@ -30,12 +139,9 @@ tracks/1/path = NodePath("Boss")
 tracks/1/interp = 1
 tracks/1/loop_wrap = true
 tracks/1/keys = {
-"times": PackedFloat32Array(1, 3.2333333, 3.9333334, 4.6666665, 9.233334, 10.166667, 13.933333, 16, 17.166666, 19.7, 21.9, 25.7, 28.166666, 28.5, 29, 30.066668, 32.666668, 34.4, 35.933334, 38.8, 40.966667, 43.666668, 44.4, 46.1, 47.233334, 47.533333, 48.2),
-"transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1),
+"times": PackedFloat32Array(3.2333333, 3.9333334, 4.6666665, 9.233334, 10.166667, 13.933333, 16, 17.166666, 19.7, 21.9, 25.7, 28.166666, 28.5, 29, 30.066668, 32.666668, 34.4, 35.933334, 38.8, 40.966667, 43.666668, 44.4, 46.1, 47.233334, 47.533333, 48.2),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1),
 "values": [{
-"args": [],
-"method": &"attack"
-}, {
 "args": [],
 "method": &"attack"
 }, {
@@ -137,19 +243,6 @@ _data = {
 &"RESET": SubResource("Animation_67f06")
 }
 
-[sub_resource type="RectangleShape2D" id="RectangleShape2D_x4w2v"]
-size = Vector2(100, 30)
-
-[sub_resource type="Gradient" id="Gradient_adyqv"]
-offsets = PackedFloat32Array(0.3253012, 0.6686747, 1)
-colors = PackedColorArray(1, 1, 1, 1, 1, 1, 1, 0.88659793, 1, 1, 1, 0)
-
-[sub_resource type="GradientTexture2D" id="GradientTexture2D_ewvlg"]
-gradient = SubResource("Gradient_adyqv")
-fill = 1
-fill_from = Vector2(0.5, 0.5)
-fill_to = Vector2(1, 0.5)
-
 [node name="BossFight" type="Node2D" unique_id=1442488628]
 script = ExtResource("1_1hapx")
 
@@ -170,7 +263,7 @@ boss = NodePath("../Boss")
 player = NodePath("../Player")
 
 [node name="Boss" parent="." unique_id=623795894 node_paths=PackedStringArray("player") instance=ExtResource("3_7ydql")]
-position = Vector2(-1, -27)
+position = Vector2(4, 290)
 boss_name = "Méchant "
 hp = 100.0
 player = NodePath("../Player")
@@ -178,10 +271,6 @@ player = NodePath("../Player")
 [node name="RemoteTransform2D" type="RemoteTransform2D" parent="Boss" unique_id=629713711]
 position = Vector2(0, 525)
 remote_path = NodePath("../../PointLight2D")
-
-[node name="AnimationBoss" type="AnimationPlayer" parent="." unique_id=964214574]
-libraries/ = SubResource("AnimationLibrary_31neg")
-autoplay = &"Boss"
 
 [node name="Platforms" type="Node" parent="." unique_id=1446714928]
 
@@ -234,6 +323,15 @@ shape = SubResource("RectangleShape2D_x4w2v")
 one_way_collision = true
 
 [node name="PointLight2D" type="PointLight2D" parent="." unique_id=1479562897]
-position = Vector2(-1, 498)
+position = Vector2(1067, 748)
+color = Color(1, 1, 1, 0.6666667)
 texture = SubResource("GradientTexture2D_ewvlg")
 texture_scale = 8.0
+
+[node name="BossAnimation" type="AnimationPlayer" parent="." unique_id=1614531394]
+libraries/ = SubResource("AnimationLibrary_x4w2v")
+autoplay = &"Boss_movement_attack"
+
+[node name="OldAnimationBoss" type="AnimationPlayer" parent="." unique_id=964214574]
+active = false
+libraries/ = SubResource("AnimationLibrary_31neg")
