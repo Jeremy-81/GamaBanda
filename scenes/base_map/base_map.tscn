@@ -7,6 +7,7 @@
 [ext_resource type="Texture2D" uid="uid://ch3u5d7uuc0fw" path="res://assets/Stars_bg_total.png" id="3_oj4ub"]
 [ext_resource type="Texture2D" uid="uid://56cat0h7lfsa" path="res://assets/level/frame_on.png" id="4_oj4ub"]
 [ext_resource type="Texture2D" uid="uid://d0lutbm07fgry" path="res://assets/Cortina_close.png" id="5_b3o4f"]
+[ext_resource type="AudioStream" uid="uid://gwrwuoo0gynk" path="res://sounds/music/Teatre.ogg" id="8_s270e"]
 
 [sub_resource type="Animation" id="Animation_rlj65"]
 length = 0.001
@@ -108,3 +109,7 @@ flip_h = true
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="Front" unique_id=152628298]
 libraries/ = SubResource("AnimationLibrary_s270e")
+
+[node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="." unique_id=257854769]
+stream = ExtResource("8_s270e")
+autoplay = true

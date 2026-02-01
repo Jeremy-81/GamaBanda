@@ -149,6 +149,7 @@ player_name = "Gamask"
 [node name="Camera2D" type="Camera2D" parent="." unique_id=1386835362]
 position = Vector2(0, 4)
 ignore_rotation = false
+zoom = Vector2(0.9, 0.9)
 
 [node name="GameInterface" parent="." unique_id=1741185875 node_paths=PackedStringArray("boss", "player") instance=ExtResource("4_85w88")]
 boss = NodePath("../Boss")

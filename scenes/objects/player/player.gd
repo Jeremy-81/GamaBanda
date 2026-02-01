@@ -5,6 +5,8 @@ signal life_changed(life)
 signal player_ready(name, hp)
 signal player_died
 
+@export var is_disabled := false;
+
 @export var hp: float
 @export var player_name: String
 @export var damage: float
@@ -43,6 +45,16 @@ func _ready():
 
 
 func _process(delta) -> void:
+	if is_disabled:
+		h_direction = 0.0;
+		h_speed = 0.0;
+		velocity = Vector2(0.0, 0.0);
+		animation_tree.set("parameters/Direction/blend_position", h_direction);
+		animation_tree.set("parameters/Movement/blend_position", h_direction);
+		camera_transform.remote_path = "";
+		move_and_slide();
+		return;
+	
 	# Dash state overwrites all movement.
 	if dash_timer.time_left > 0.0:
 		velocity = Vector2(DASH_SPEED * h_direction, v_speed);

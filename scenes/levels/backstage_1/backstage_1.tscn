@@ -7,10 +7,22 @@
 [ext_resource type="Texture2D" uid="uid://bchj10suhlit2" path="res://assets/level/floor.png" id="3_7k31f"]
 [ext_resource type="Texture2D" uid="uid://brslvtbp3rqb6" path="res://assets/level/frame_off.png" id="4_rlj65"]
 [ext_resource type="Texture2D" uid="uid://56cat0h7lfsa" path="res://assets/level/frame_on.png" id="5_rlj65"]
+[ext_resource type="Texture2D" uid="uid://coa6p20vmsa2k" path="res://assets/level/moon.png" id="6_ewvlg"]
 [ext_resource type="Theme" uid="uid://duj7cgl0u7wd3" path="res://ressources/theme.tres" id="6_pt1xq"]
 [ext_resource type="PackedScene" uid="uid://bo8pyxkcykbab" path="res://scenes/game_interface.tscn" id="6_xf48k"]
+[ext_resource type="Texture2D" uid="uid://cboed4su4o3y4" path="res://assets/level/cloud.png" id="7_8frrg"]
 [ext_resource type="PackedScene" uid="uid://dmbm5qq510rig" path="res://scenes/objects/mannequin/mannequin.tscn" id="7_pt1xq"]
 [ext_resource type="Texture2D" uid="uid://d0lutbm07fgry" path="res://assets/Cortina_close.png" id="10_wofeq"]
+[ext_resource type="Texture2D" uid="uid://b2kmm4cy716xe" path="res://assets/curtains_closed.png" id="12_3xnml"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_8frrg"]
+size = Vector2(123.894, 11.589521)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_3xnml"]
+size = Vector2(13.226898, 56.009293)
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_8frrg"]
+radius = 54.147945
 
 [sub_resource type="Animation" id="Animation_rlj65"]
 length = 0.001
@@ -55,8 +67,79 @@ size = Vector2(418, 109)
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_pt1xq"]
 size = Vector2(155, 43)
 
+[sub_resource type="Gradient" id="Gradient_adyqv"]
+offsets = PackedFloat32Array(0.3253012, 0.6686747, 1)
+colors = PackedColorArray(1, 1, 1, 1, 1, 1, 1, 0.88659793, 1, 1, 1, 0)
+
+[sub_resource type="GradientTexture2D" id="GradientTexture2D_ewvlg"]
+gradient = SubResource("Gradient_adyqv")
+fill = 1
+fill_from = Vector2(0.5, 0.5)
+fill_to = Vector2(1, 0.5)
+
 [sub_resource type="LabelSettings" id="LabelSettings_rlj65"]
 font_size = 60
+
+[sub_resource type="Animation" id="Animation_8frrg"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Elements/MoonEnd:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(1217, -571)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("Player:is_disabled")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [false]
+}
+
+[sub_resource type="Animation" id="Animation_3xnml"]
+resource_name = "end_tutorial"
+length = 4.0
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Elements/MoonEnd:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0.5, 4),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Vector2(1217, -571), Vector2(1217, -1684)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("Player:is_disabled")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0.22),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [true]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_loovp"]
+_data = {
+&"RESET": SubResource("Animation_8frrg"),
+&"end_tutorial": SubResource("Animation_3xnml")
+}
 
 [node name="Backstage1" type="Node" unique_id=192916966]
 script = ExtResource("1_ebnwq")
@@ -91,8 +174,18 @@ metadata/_edit_lock_ = true
 [node name="Player" parent="." unique_id=2105575625 instance=ExtResource("1_q63md")]
 position = Vector2(-2004, 405)
 
+[node name="RemoteTransform2D" type="RemoteTransform2D" parent="Player" unique_id=1047588598]
+remote_path = NodePath("../../PointLight2D")
+update_scale = false
+
 [node name="Camera2D" type="Camera2D" parent="." unique_id=1538928803]
-zoom = Vector2(0.905, 0.905)
+zoom = Vector2(0.9, 0.9)
+position_smoothing_enabled = true
+position_smoothing_speed = 8.0
+
+[node name="Camera2D2" type="Camera2D" parent="." unique_id=924354981]
+enabled = false
+zoom = Vector2(0.25, 0.25)
 
 [node name="StaticPlatforms" type="Node" parent="." unique_id=1097559836]
 
@@ -111,8 +204,200 @@ polygon = PackedVector2Array(-758, -19, -758, 336, -667, 332, -654, 64, -136, 58
 [node name="Polygon2D4" type="Polygon2D" parent="StaticPlatforms" unique_id=1525410370]
 polygon = PackedVector2Array(-223, -5, 593, -4, 540, 81, -140, 79, -144, 278, -222, 278, -221, 201)
 
+[node name="Polygon2D6" type="Polygon2D" parent="StaticPlatforms" unique_id=1175537053]
+visible = false
+polygon = PackedVector2Array(724, -296, 940, -302, 943, -248, 716, -232)
+
+[node name="Elements" type="Node" parent="." unique_id=1073763735]
+
+[node name="MoonEnd" type="AnimatableBody2D" parent="Elements" unique_id=1355652480]
+position = Vector2(1217, -571)
+scale = Vector2(2.0420678, 2.0420678)
+
+[node name="Sprite" type="Sprite2D" parent="Elements/MoonEnd" unique_id=2063863713]
+position = Vector2(0, -69.537384)
+texture = ExtResource("6_ewvlg")
+metadata/_edit_lock_ = true
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Elements/MoonEnd" unique_id=1638955143]
+position = Vector2(7.590454, -6.447754)
+shape = SubResource("RectangleShape2D_8frrg")
+one_way_collision = true
+metadata/_edit_lock_ = true
+
+[node name="CollisionShape2D2" type="CollisionShape2D" parent="Elements/MoonEnd" unique_id=83148125]
+position = Vector2(78.01288, -64.39557)
+scale = Vector2(2.124593, 2.124593)
+shape = SubResource("RectangleShape2D_3xnml")
+metadata/_edit_lock_ = true
+
+[node name="Interaction" type="Area2D" parent="Elements/MoonEnd" unique_id=1036070929]
+position = Vector2(29.381994, -36.727486)
+scale = Vector2(0.48969972, 0.48969972)
+collision_layer = 2
+collision_mask = 2
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Elements/MoonEnd/Interaction" unique_id=932705562]
+shape = SubResource("CircleShape2D_8frrg")
+metadata/_edit_lock_ = true
+
+[node name="Sprite2D" type="Sprite2D" parent="Elements" unique_id=661211530]
+position = Vector2(840, -322)
+scale = Vector2(2.6416185, 2.6416185)
+texture = ExtResource("7_8frrg")
+
+[node name="Mannequin" parent="Elements" unique_id=1027526289 instance=ExtResource("7_pt1xq")]
+position = Vector2(424, -31)
+
 [node name="Front" type="Parallax2D" parent="." unique_id=2057769260]
 metadata/_edit_lock_ = true
+
+[node name="Curtains" type="Node2D" parent="Front" unique_id=994695864]
+unique_name_in_owner = true
+position = Vector2(0, -263)
+scale = Vector2(4, 4)
+
+[node name="OpenLeft" type="Sprite2D" parent="Front/Curtains" unique_id=692684447]
+position = Vector2(0, 65.75)
+texture = ExtResource("10_wofeq")
+metadata/_edit_lock_ = true
+
+[node name="OpenRight" type="Sprite2D" parent="Front/Curtains" unique_id=1152842128]
+position = Vector2(0, 65.75)
+texture = ExtResource("10_wofeq")
+flip_h = true
+metadata/_edit_lock_ = true
+
+[node name="RightSide" type="Node2D" parent="Front/Curtains" unique_id=1970106546]
+metadata/_edit_lock_ = true
+
+[node name="Sprite2D" type="Sprite2D" parent="Front/Curtains/RightSide" unique_id=1513591346]
+modulate = Color(1, 1, 1, 0)
+texture = ExtResource("12_3xnml")
+region_enabled = true
+region_rect = Rect2(482, 72, 70, 454)
+
+[node name="Sprite2D2" type="Sprite2D" parent="Front/Curtains/RightSide" unique_id=2027051642]
+modulate = Color(1, 1, 1, 0)
+position = Vector2(70, 0)
+texture = ExtResource("12_3xnml")
+region_enabled = true
+region_rect = Rect2(482, 72, 70, 454)
+
+[node name="Sprite2D3" type="Sprite2D" parent="Front/Curtains/RightSide" unique_id=1162646706]
+modulate = Color(1, 1, 1, 0)
+position = Vector2(140, 0)
+texture = ExtResource("12_3xnml")
+region_enabled = true
+region_rect = Rect2(482, 72, 70, 454)
+
+[node name="Sprite2D4" type="Sprite2D" parent="Front/Curtains/RightSide" unique_id=824936381]
+modulate = Color(1, 1, 1, 0)
+position = Vector2(210, 0)
+texture = ExtResource("12_3xnml")
+region_enabled = true
+region_rect = Rect2(482, 72, 70, 454)
+
+[node name="Sprite2D5" type="Sprite2D" parent="Front/Curtains/RightSide" unique_id=1764324471]
+modulate = Color(1, 1, 1, 0)
+position = Vector2(280, 0)
+texture = ExtResource("12_3xnml")
+region_enabled = true
+region_rect = Rect2(482, 72, 70, 454)
+
+[node name="Sprite2D6" type="Sprite2D" parent="Front/Curtains/RightSide" unique_id=571415705]
+modulate = Color(1, 1, 1, 0)
+position = Vector2(350, 0)
+texture = ExtResource("12_3xnml")
+region_enabled = true
+region_rect = Rect2(482, 72, 70, 454)
+
+[node name="Sprite2D7" type="Sprite2D" parent="Front/Curtains/RightSide" unique_id=1157413906]
+modulate = Color(1, 1, 1, 0)
+position = Vector2(420, 0)
+texture = ExtResource("12_3xnml")
+region_enabled = true
+region_rect = Rect2(482, 72, 70, 454)
+
+[node name="Sprite2D8" type="Sprite2D" parent="Front/Curtains/RightSide" unique_id=467056795]
+modulate = Color(1, 1, 1, 0)
+position = Vector2(490, 0)
+texture = ExtResource("12_3xnml")
+region_enabled = true
+region_rect = Rect2(482, 72, 70, 454)
+
+[node name="Sprite2D9" type="Sprite2D" parent="Front/Curtains/RightSide" unique_id=930396875]
+modulate = Color(1, 1, 1, 0)
+position = Vector2(560, 0)
+texture = ExtResource("12_3xnml")
+region_enabled = true
+region_rect = Rect2(482, 72, 70, 454)
+
+[node name="LeftSide" type="Node2D" parent="Front/Curtains" unique_id=1740082021]
+scale = Vector2(-1, 1)
+metadata/_edit_lock_ = true
+
+[node name="Sprite2D" type="Sprite2D" parent="Front/Curtains/LeftSide" unique_id=647832681]
+modulate = Color(1, 1, 1, 0)
+texture = ExtResource("12_3xnml")
+region_enabled = true
+region_rect = Rect2(482, 72, 70, 454)
+
+[node name="Sprite2D2" type="Sprite2D" parent="Front/Curtains/LeftSide" unique_id=151347408]
+modulate = Color(1, 1, 1, 0)
+position = Vector2(70, 0)
+texture = ExtResource("12_3xnml")
+region_enabled = true
+region_rect = Rect2(482, 72, 70, 454)
+
+[node name="Sprite2D3" type="Sprite2D" parent="Front/Curtains/LeftSide" unique_id=553433298]
+modulate = Color(1, 1, 1, 0)
+position = Vector2(140, 0)
+texture = ExtResource("12_3xnml")
+region_enabled = true
+region_rect = Rect2(482, 72, 70, 454)
+
+[node name="Sprite2D4" type="Sprite2D" parent="Front/Curtains/LeftSide" unique_id=1210047920]
+modulate = Color(1, 1, 1, 0)
+position = Vector2(210, 0)
+texture = ExtResource("12_3xnml")
+region_enabled = true
+region_rect = Rect2(482, 72, 70, 454)
+
+[node name="Sprite2D5" type="Sprite2D" parent="Front/Curtains/LeftSide" unique_id=667445498]
+modulate = Color(1, 1, 1, 0)
+position = Vector2(280, 0)
+texture = ExtResource("12_3xnml")
+region_enabled = true
+region_rect = Rect2(482, 72, 70, 454)
+
+[node name="Sprite2D6" type="Sprite2D" parent="Front/Curtains/LeftSide" unique_id=336291299]
+modulate = Color(1, 1, 1, 0)
+position = Vector2(350, 0)
+texture = ExtResource("12_3xnml")
+region_enabled = true
+region_rect = Rect2(482, 72, 70, 454)
+
+[node name="Sprite2D7" type="Sprite2D" parent="Front/Curtains/LeftSide" unique_id=1950943523]
+modulate = Color(1, 1, 1, 0)
+position = Vector2(420, 0)
+texture = ExtResource("12_3xnml")
+region_enabled = true
+region_rect = Rect2(482, 72, 70, 454)
+
+[node name="Sprite2D8" type="Sprite2D" parent="Front/Curtains/LeftSide" unique_id=1066967649]
+modulate = Color(1, 1, 1, 0)
+position = Vector2(490, 0)
+texture = ExtResource("12_3xnml")
+region_enabled = true
+region_rect = Rect2(482, 72, 70, 454)
+
+[node name="Sprite2D9" type="Sprite2D" parent="Front/Curtains/LeftSide" unique_id=1572604059]
+modulate = Color(1, 1, 1, 0)
+position = Vector2(560, 0)
+texture = ExtResource("12_3xnml")
+region_enabled = true
+region_rect = Rect2(482, 72, 70, 454)
 
 [node name="FrameOff" type="Sprite2D" parent="Front" unique_id=245275545]
 scale = Vector2(4, 4)
@@ -124,16 +409,6 @@ modulate = Color(1, 1, 1, 0)
 scale = Vector2(4, 4)
 texture = ExtResource("5_rlj65")
 metadata/_edit_lock_ = true
-
-[node name="FrameOn2" type="Sprite2D" parent="Front" unique_id=692684447]
-scale = Vector2(4, 4)
-texture = ExtResource("10_wofeq")
-metadata/_edit_lock_ = true
-
-[node name="FrameOn3" type="Sprite2D" parent="Front" unique_id=1152842128]
-scale = Vector2(4, 4)
-texture = ExtResource("10_wofeq")
-flip_h = true
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="Front" unique_id=868786463]
 libraries/ = SubResource("AnimationLibrary_adyqv")
@@ -160,6 +435,12 @@ collision_mask = 2
 [node name="CollisionShape2D" type="CollisionShape2D" parent="AttackTutorialArea" unique_id=909344902]
 shape = SubResource("RectangleShape2D_pt1xq")
 metadata/_edit_lock_ = true
+
+[node name="PointLight2D" type="PointLight2D" parent="." unique_id=1749480853]
+position = Vector2(-2004, 405)
+energy = 0.5
+texture = SubResource("GradientTexture2D_ewvlg")
+texture_scale = 8.0
 
 [node name="CanvasLayer" type="CanvasLayer" parent="." unique_id=1581637307]
 
@@ -221,11 +502,12 @@ vertical_alignment = 1
 [node name="GameInterface" parent="." unique_id=1587630800 node_paths=PackedStringArray("player") instance=ExtResource("6_xf48k")]
 player = NodePath("../Player")
 
-[node name="Mannequin" parent="." unique_id=1027526289 instance=ExtResource("7_pt1xq")]
-position = Vector2(424, -31)
+[node name="AnimationPlayer" type="AnimationPlayer" parent="." unique_id=701654643]
+libraries/ = SubResource("AnimationLibrary_loovp")
 
+[connection signal="area_entered" from="Elements/MoonEnd/Interaction" to="." method="_on_end_area_area_entered"]
+[connection signal="fell" from="Elements/Mannequin" to="." method="_on_mannequin_fell"]
+[connection signal="pushed" from="Elements/Mannequin" to="." method="_on_mannequin_pushed"]
 [connection signal="timeout" from="HandFallTimer" to="." method="_on_hand_fall_timer_timeout"]
 [connection signal="area_entered" from="DashTutorialArea" to="." method="_on_dash_tutorial_area_area_entered"]
 [connection signal="area_entered" from="AttackTutorialArea" to="." method="_on_attack_tutorial_area_entered"]
-[connection signal="fell" from="Mannequin" to="." method="_on_mannequin_fell"]
-[connection signal="pushed" from="Mannequin" to="." method="_on_mannequin_pushed"]
