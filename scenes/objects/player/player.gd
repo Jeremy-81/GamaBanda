@@ -35,8 +35,7 @@ var h_direction : float = 0.0;
 var h_speed : float = 800.0;
 var v_speed : float = 0.0;
 
-@export var clicked : int = 0
-var combo_time_ellapsed: float = 10.0
+@export var attack_counter : int = 0;
 
 func _ready():
 	base_darken_factor = screen_shadow.texture.gradient.get_offset(0);
@@ -103,14 +102,8 @@ func _process(delta) -> void:
 		$FloorImpactParticles.restart();
 	pass;
 	
-	combo_time_ellapsed += delta
-	print(clicked)
 	if Input.is_action_just_pressed("attack"):
-		if combo_time_ellapsed > 0.5:
-			clicked = 0
-			combo_time_ellapsed = 0.0
-		clicked += 1
-		
+		attack_counter = clamp(attack_counter + 1, 0, 1);
 		hitbox.attack();
 		if not animation_tree.get("parameters/Attack/active"):
 			animation_tree.set("parameters/Attack/request", AnimationNodeOneShot.ONE_SHOT_REQUEST_FIRE)
@@ -157,3 +150,6 @@ func take_damage(amount: float, _ko_damage : float) -> void:
 
 func player_die() -> void:
 	player_died.emit()
+
+func consume_attack() -> void:
+	attack_counter -= 1;
