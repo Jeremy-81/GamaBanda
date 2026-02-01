@@ -40,10 +40,11 @@ func take_damage(damage: float, ko_damage: float, damage_dealer: Node) -> void:
 		if _invencibility_timer.time_left > 0.0:
 			return;
 	
-	if entity.has_method("take_damage"):
-		entity.take_damage(damage, ko_damage);
-	else: 
-		push_error("No take_damage method in the called entity");
+	if entity:
+		if entity.has_method("take_damage"):
+			entity.take_damage(damage, ko_damage);
+		else: 
+			push_error("No take_damage method in the called entity");
 	
 	if _invencibility_timer:
 		_invencibility_timer.start();

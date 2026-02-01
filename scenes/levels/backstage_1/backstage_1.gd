@@ -1,6 +1,6 @@
 extends Node
 
-enum TUTORIAL_TYPE {NONE, DASH};
+enum TUTORIAL_TYPE {NONE, DASH, ATTACK, CHARGED_ATTACK};
 
 var current_tutorial : TUTORIAL_TYPE = TUTORIAL_TYPE.NONE;
 var dash_tween : Tween = null;
@@ -78,4 +78,25 @@ func _on_hand_fall_timer_timeout():
 func _on_dash_tutorial_area_area_entered(_area):
 	spawn_dash_tutorial();
 	$DashTutorialArea.queue_free();
+	pass;
+
+
+# Attack tutorial
+func _on_attack_tutorial_area_entered(_area):
+	current_tutorial = TUTORIAL_TYPE.ATTACK;
+	$AttackTutorialArea.queue_free();
+	$CanvasLayer/ExtraGUI/AttackTutorialLabel.show();
+	pass;
+
+func _on_mannequin_pushed():
+	current_tutorial = TUTORIAL_TYPE.CHARGED_ATTACK;
+	$CanvasLayer/ExtraGUI/AttackTutorialLabel.hide();
+	$CanvasLayer/ExtraGUI/ChargeAttackTutorialLabel.show();
+	pass;
+
+
+# Charged attack tutorial
+func _on_mannequin_fell():
+	$CanvasLayer/ExtraGUI/ChargeAttackTutorialLabel.hide();
+	current_tutorial = TUTORIAL_TYPE.NONE;
 	pass;

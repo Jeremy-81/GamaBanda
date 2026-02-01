@@ -1,0 +1,53 @@
+[gd_scene format=3 uid="uid://dmbm5qq510rig"]
+
+[ext_resource type="Script" uid="uid://5j0upvvtqhqd" path="res://scenes/objects/mannequin/mannequin.gd" id="1_r6bme"]
+[ext_resource type="Texture2D" uid="uid://bndckwhckgtvj" path="res://assets/mannequin/mannequin_body.png" id="2_r6bme"]
+[ext_resource type="Texture2D" uid="uid://cqxoh0ns8mspj" path="res://assets/mannequin/mannequin_foot.png" id="3_wiyqh"]
+
+[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_r6bme"]
+radius = 24.0
+height = 118.0
+
+[sub_resource type="Gradient" id="Gradient_r6bme"]
+offsets = PackedFloat32Array(0.9819277)
+colors = PackedColorArray(0.49747366, 0.49747366, 0.49747366, 1)
+
+[sub_resource type="GradientTexture2D" id="GradientTexture2D_wiyqh"]
+gradient = SubResource("Gradient_r6bme")
+
+[sub_resource type="ParticleProcessMaterial" id="ParticleProcessMaterial_r6bme"]
+particle_flag_disable_z = true
+direction = Vector3(0, -1, 0)
+spread = 30.0
+initial_velocity_min = 414.28998
+initial_velocity_max = 414.28998
+gravity = Vector3(0, 1800, 0)
+scale_min = 0.19999999
+scale_max = 0.59999996
+
+[node name="Mannequin" type="Area2D" unique_id=1027526289]
+script = ExtResource("1_r6bme")
+metadata/_custom_type_script = "uid://b13w1i1ecf06o"
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=325322639]
+position = Vector2(0, -45)
+shape = SubResource("CapsuleShape2D_r6bme")
+
+[node name="Body" type="Sprite2D" parent="." unique_id=1978411904]
+texture = ExtResource("2_r6bme")
+offset = Vector2(0, -54)
+
+[node name="Foot" type="Sprite2D" parent="." unique_id=1993572791]
+texture = ExtResource("3_wiyqh")
+offset = Vector2(0, 13)
+
+[node name="FallParticles" type="GPUParticles2D" parent="." unique_id=1267133481]
+position = Vector2(-54, 26)
+emitting = false
+amount = 20
+texture = SubResource("GradientTexture2D_wiyqh")
+one_shot = true
+explosiveness = 1.0
+process_material = SubResource("ParticleProcessMaterial_r6bme")
+
+[connection signal="damaged" from="." to="." method="_on_damaged"]

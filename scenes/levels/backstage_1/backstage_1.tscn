@@ -6,6 +6,7 @@
 [ext_resource type="Texture2D" uid="uid://brslvtbp3rqb6" path="res://assets/level/frame_off.png" id="4_rlj65"]
 [ext_resource type="Texture2D" uid="uid://56cat0h7lfsa" path="res://assets/level/frame_on.png" id="5_rlj65"]
 [ext_resource type="PackedScene" uid="uid://bo8pyxkcykbab" path="res://scenes/game_interface.tscn" id="6_xf48k"]
+[ext_resource type="PackedScene" uid="uid://dmbm5qq510rig" path="res://scenes/objects/mannequin/mannequin.tscn" id="7_pt1xq"]
 
 [sub_resource type="Animation" id="Animation_rlj65"]
 length = 0.001
@@ -47,6 +48,9 @@ _data = {
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_rlj65"]
 size = Vector2(326, 61)
 
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_pt1xq"]
+size = Vector2(155, 43)
+
 [sub_resource type="LabelSettings" id="LabelSettings_rlj65"]
 font_size = 60
 
@@ -54,7 +58,7 @@ font_size = 60
 script = ExtResource("1_ebnwq")
 
 [node name="Player" parent="." unique_id=2105575625 instance=ExtResource("1_q63md")]
-position = Vector2(-5, 377)
+position = Vector2(-2004, 405)
 
 [node name="Camera2D" type="Camera2D" parent="." unique_id=1538928803]
 zoom = Vector2(0.75, 0.75)
@@ -71,7 +75,10 @@ polygon = PackedVector2Array(-1234, 327, -1004, 313, -1032, 589, -1229, 585)
 
 [node name="Polygon2D3" type="Polygon2D" parent="StaticPlatforms" unique_id=761101750]
 position = Vector2(-74, 221)
-polygon = PackedVector2Array(-734, -62, -725, 154, -201, 149, -201, -76)
+polygon = PackedVector2Array(-758, -19, -758, 336, -667, 332, -654, 64, -136, 58, -145, -28)
+
+[node name="Polygon2D4" type="Polygon2D" parent="StaticPlatforms" unique_id=1525410370]
+polygon = PackedVector2Array(-223, -5, 593, -4, 540, 81, -140, 79, -144, 278, -222, 278, -221, 201)
 
 [node name="Back" type="Parallax2D" parent="." unique_id=1750456039]
 metadata/_edit_lock_ = true
@@ -112,6 +119,15 @@ collision_mask = 2
 position = Vector2(13, 69.5)
 shape = SubResource("RectangleShape2D_rlj65")
 
+[node name="AttackTutorialArea" type="Area2D" parent="." unique_id=944482632]
+position = Vector2(297, -33)
+collision_layer = 2
+collision_mask = 2
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="AttackTutorialArea" unique_id=909344902]
+shape = SubResource("RectangleShape2D_pt1xq")
+metadata/_edit_lock_ = true
+
 [node name="CanvasLayer" type="CanvasLayer" parent="." unique_id=1581637307]
 
 [node name="ExtraGUI" type="Control" parent="CanvasLayer" unique_id=1195161210]
@@ -136,8 +152,45 @@ text = "Dash with SHIFT"
 label_settings = SubResource("LabelSettings_rlj65")
 horizontal_alignment = 1
 vertical_alignment = 1
+
+[node name="AttackTutorialLabel" type="Label" parent="CanvasLayer/ExtraGUI" unique_id=1065833210]
+visible = false
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.3
+anchor_top = 0.2
+anchor_right = 0.7
+anchor_bottom = 0.2
+grow_horizontal = 2
+grow_vertical = 2
+text = "Attack with E"
+label_settings = SubResource("LabelSettings_rlj65")
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="ChargeAttackTutorialLabel" type="Label" parent="CanvasLayer/ExtraGUI" unique_id=983574443]
+visible = false
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.3
+anchor_top = 0.2
+anchor_right = 0.7
+anchor_bottom = 0.2
+grow_horizontal = 2
+grow_vertical = 2
+text = "Charge attack holding E"
+label_settings = SubResource("LabelSettings_rlj65")
+horizontal_alignment = 1
+vertical_alignment = 1
+
 [node name="GameInterface" parent="." unique_id=1587630800 node_paths=PackedStringArray("player") instance=ExtResource("6_xf48k")]
 player = NodePath("../Player")
 
+[node name="Mannequin" parent="." unique_id=1027526289 instance=ExtResource("7_pt1xq")]
+position = Vector2(424, -31)
+
 [connection signal="timeout" from="HandFallTimer" to="." method="_on_hand_fall_timer_timeout"]
 [connection signal="area_entered" from="DashTutorialArea" to="." method="_on_dash_tutorial_area_area_entered"]
+[connection signal="area_entered" from="AttackTutorialArea" to="." method="_on_attack_tutorial_area_entered"]
+[connection signal="fell" from="Mannequin" to="." method="_on_mannequin_fell"]
+[connection signal="pushed" from="Mannequin" to="." method="_on_mannequin_pushed"]
